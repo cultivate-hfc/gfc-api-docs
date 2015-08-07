@@ -11,6 +11,7 @@ includes:
 - questions
 - prediction_sets
 - memberships
+- stars
 
 search: true
 ---
