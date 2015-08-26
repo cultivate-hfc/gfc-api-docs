@@ -162,4 +162,4 @@ Parameter | Default | Description
 page | 0 | Pagination page number
 tags | none | A comma separated list of tags to filter by (e.g. sports,politics,tech)
 filter | none | A filter to apply to the question list. Possible values: `starred`, `closed`
-sort | published_at | Sort order for the questions. Possible values: `ends_at`
+sort | published_at | Sort order for the questions. Possible values: `published_at`, `ends_at`
