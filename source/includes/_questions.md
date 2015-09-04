@@ -166,3 +166,5 @@ filter | active | A filter to apply to the question list. Possible values: `star
 sort | published_at | Sort order for the questions. Possible values: `published_at`, `ends_at`
 created_before | none | Returns only questions created before the passed date. Date should be in iso8601 format (e.g. 2015-08-23T15:43:11-05:00)
 created_after | none | Returns only questions created after the passed date. Date should be in iso8601 format (e.g. 2015-08-23T15:43:11-05:00)
+include_tag_ids | false | Passing "true" for this value will include an array of tag ids for the question.
+include_challenge_ids | false | Passing "true" for this value will include an array of challenge ids for the question.
