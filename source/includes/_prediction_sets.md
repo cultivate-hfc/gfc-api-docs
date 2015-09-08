@@ -117,3 +117,5 @@ page | 0 | Pagination page number
 membership_id | none | Returns predictions for a single membership id
 question_id | none | Returns predictions for a single membership id
 filter | none | Filters the question list. Possible values: `comments_with_links`, `comments_following`
+created_before | none | Returns only prediction sets created before the passed date. Date should be in iso8601 format (e.g. 2015-08-23T15:43:11-05:00)
+created_after | none | Returns only prediction sets created after the passed date. Date should be in iso8601 format (e.g. 2015-08-23T15:43:11-05:00)
