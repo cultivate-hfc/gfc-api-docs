@@ -82,3 +82,4 @@ curl "https://yoursite.cultivateforecasts.com/api/v1/memberships" \
 Parameter | Default | Description
 --------- | ------- | -----------
 page | 0 | Pagination page number
+include_profile_question_responses | false | Passing "true" for this value will include profile questions and responses for each membership.
