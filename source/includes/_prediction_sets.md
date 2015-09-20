@@ -21,7 +21,6 @@ curl "https://yoursite.cultivateforecasts.com/api/v1/prediction_sets" \
       "question_id": 1,
       "created_at": "2015-08-04T00:21:37.141Z",
       "updated_at": "2015-08-04T00:21:37.141Z",
-      "contains_links": true,
       "rationale": "0 - http://www.flyoverworks.com I live in the American Gardens Building on W. 81st Street on the 11th floor. My name is Patrick Bateman. I'm 27 years old. I believe in taking care of myself and a balanced diet and rigorous exercise routine. In the morning if my face is a little puffy I'll put on an ice pack while doing stomach crunches.",
       "predictions": [
         {
@@ -48,7 +47,6 @@ curl "https://yoursite.cultivateforecasts.com/api/v1/prediction_sets" \
       "question_id": 2,
       "created_at": "2015-08-04T00:21:40.730Z",
       "updated_at": "2015-08-04T00:21:40.730Z",
-      "contains_links": false,
       "rationale": "7 -  Well, we have to end apartheid for one. And slow down the nuclear arms race, stop terrorism and world hunger. We have to provide food and shelter for the homeless, and oppose racial discrimination and promote civil rights, while also promoting equal rights for women.",
       "predictions": [
         {
