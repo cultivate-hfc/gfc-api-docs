@@ -4,4 +4,4 @@ To deploy:
 * `rake publish`
 
 
-Pages URL: http://flyoverworks.github.io/forecasts-api-docs/
+Pages URL: http://cultivatelabs.github.io/forecasts-api-docs/
