@@ -162,8 +162,9 @@ Parameter | Default | Description
 page | 0 | Pagination page number
 tags | none | A comma separated list of tags to filter by (e.g. "sports,politics,tech")
 challenges | none | A comma separated list of challenge ids to filter by (e.g. "1,5,8"). Will return only questions in those challenges. Operates as a logical AND (ie. if you pass "1,5", it will return only questions that are in both challenges)
-filter | active | A filter to apply to the question list. Possible values: `starred`, `closed`, `all`. By default, only active questions are returned. To include all questions, you should pass `all` for this value.
-sort | published_at | Sort order for the questions. Possible values: `published_at`, `ends_at`
+filter | none | A filter to apply to the question list. Possible values: `starred`, `featured`. By default, no filter is applied.
+status | active | A question status filter to apply to the question list. Possible values: `closed`, `all`. If this value is omitted, only active questions are returned. To include all questions, you should pass `all` for this value.
+sort | published_at | Sort order for the questions. Possible values: `published_at`, `ends_at`, `resolved_at`, `prediction_sets_count`
 created_before | none | Returns only questions created before the passed date. Date should be in iso8601 format (e.g. 2015-08-23T15:43:11-05:00)
 created_after | none | Returns only questions created after the passed date. Date should be in iso8601 format (e.g. 2015-08-23T15:43:11-05:00)
 include_tag_ids | false | Passing "true" for this value will include an array of tag ids for the question.
