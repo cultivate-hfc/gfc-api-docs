@@ -12,6 +12,7 @@ includes:
 - prediction_sets
 - memberships
 - stars
+- votes
 
 search: true
 ---
@@ -56,4 +57,3 @@ password | Your password
 
 
 For subsequent requests, you must include your token as part of an authorization header.
-

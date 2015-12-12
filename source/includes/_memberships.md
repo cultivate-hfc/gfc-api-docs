@@ -3,6 +3,8 @@
 
 ## Memberships List
 
+Each user has one account & user_id, but a user can be a member of multiple sites. A membership record associates a user to a site.
+
 > Request:
 
 ```shell

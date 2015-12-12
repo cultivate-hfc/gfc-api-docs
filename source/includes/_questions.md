@@ -32,6 +32,9 @@ curl "https://yoursite.cultivateforecasts.com/api/v1/questions" \
       "brier_score": "9.99",
       "created_at": "2015-08-04T00:21:35.910Z",
       "updated_at": "2015-08-04T00:21:35.910Z",
+      "active?": true,
+      "resolved?": false,
+      "use_ordinal_scoring": false,
       "answers": [
         {
           "created_at": "2015-08-04T00:21:35.918Z",
@@ -121,6 +124,9 @@ curl "https://yoursite.cultivateforecasts.com/api/v1/questions" \
       "brier_score": "9.99",
       "created_at": "2015-08-04T00:21:35.953Z",
       "updated_at": "2015-08-04T00:21:35.953Z",
+      "active?": true,
+      "resolved?": false,
+      "use_ordinal_scoring": false,
       "answers": [
         {
           "created_at": "2015-08-04T00:21:35.965Z",
