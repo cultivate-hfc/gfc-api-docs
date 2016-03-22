@@ -8,10 +8,11 @@ toc_footers:
   - <a href='#'>Sign Up for a Developer Key</a>
 
 includes:
-- questions
-- prediction_sets
 - memberships
+- prediction_sets
+- questions
 - stars
+- users
 - votes
 
 search: true
