@@ -136,7 +136,7 @@ This endpoint can be used to submit new prediction sets. All prediction sets req
 
 ```shell
 curl -X "POST" "https://yoursite.cultivateforecasts.com/api/v1/questions/1/prediction_sets" \
-  -H "Authorization: Bearer b95b4f848cd226e55b7a42f6a8e8669350730270f5a91d64b6c70328b0156d75"
+  -H "Authorization: Bearer b95b4f848cd226e55b7a42f6a8e8669350730270f5a91d64b6c70328b0156d75" \
   -H "Content-Type: application/json" \
   -H "Accept: application/json" \
 	-d "{\"prediction_set\":{\"rationale\":\"I think this is a great forecast\",\"predictions_attributes\":[{\"spend\":-595.9105910591059,\"forecasted_probability\":0.2,\"answer_id\":78}]}}"
