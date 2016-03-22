@@ -5,6 +5,8 @@
 
 Provides a list of upvotes & downvotes. Votes with a value of 1 are upvotes and votes with a value of -1 are downvotes.
 
+This endpoint is only accessible to site administrators.
+
 > Request:
 
 ```shell
