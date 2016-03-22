@@ -142,6 +142,24 @@ curl -X "POST" "https://yoursite.cultivateforecasts.com/api/v1/questions/1/predi
 	-d "{\"prediction_set\":{\"rationale\":\"I think this is a great forecast\",\"predictions_attributes\":[{\"spend\":-595.9105910591059,\"forecasted_probability\":0.2,\"answer_id\":78}]}}"
 ```
 
+> Request body example:
+
+```json
+{
+  "prediction_set": {
+    "rationale": "This is my rationale",
+    "predictions_attributes": [
+      {
+        "spend": -595.91,
+        "forecasted_probability": 0.2,
+        "answer_id": 78
+      }
+    ]
+  }
+}
+```
+
+
 > Response:
 
 The response contains the newly created prediction set and associated prediction(s).
@@ -186,22 +204,6 @@ The response contains the newly created prediction set and associated prediction
 
 `POST https://yoursite.cultivateforecasts.com/api/v1/question/:question_id/prediction_sets`
 
-> Request body example:
-
-```json
-{
-  "prediction_set": {
-    "rationale": "This is my rationale",
-    "predictions_attributes": [
-      {
-        "spend": -595.91,
-        "forecasted_probability": 0.2,
-        "answer_id": 78
-      }
-    ]
-  }
-}
-```
 
 ### Prediction Set Parameters
 
