@@ -3,6 +3,8 @@
 
 ## Stars List
 
+If the user issuing a request to this endpoint is not an administrator, then a membership_id is required.
+
 > Request:
 
 ```shell
@@ -53,4 +55,4 @@ Parameter | Default | Description
 --------- | ------- | -----------
 page | 0 | Pagination page number
 membership_id | none | Returns stars for a single membership id
-filter | none | Filters the list of stars. Possible values: `following`, `followers`. To use a filter, a `membership_id` is required. 
+filter | none | Filters the list of stars. Possible values: `following`, `followers`. To use a filter, a `membership_id` is required.
