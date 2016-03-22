@@ -187,6 +187,7 @@ The response contains the newly created prediction set and associated prediction
 `POST https://yoursite.cultivateforecasts.com/api/v1/question/:question_id/prediction_sets`
 
 > Request body example:
+
 ```json
 {
   "prediction_set": {
