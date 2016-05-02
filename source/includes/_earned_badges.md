@@ -82,3 +82,51 @@ curl -X "DELETE" "https://yoursite.cultivateforecasts.com/api/v1/earned_badges/3
 ### Earned Badge Parameters
 
 None
+
+
+
+## Earned Badges List
+
+This endpoint is only accessible to administrators.
+
+> Request:
+
+```shell
+curl "https://yoursite.cultivateforecasts.com/api/v1/earned_badges" \
+  -H "Authorization: Bearer b95b4f848cd226e55b7a42f6a8e8669350730270f5a91d64b6c70328b0156d75"
+```
+
+> Response:
+
+```json
+{
+  "earned_badges": [
+    {
+      "id": 101,
+      "badge_id": 110,
+      "membership_id": 2726,
+      "created_at": "2016-05-02T16:01:34.951Z",
+      "updated_at": "2016-05-02T16:01:34.951Z",
+      "featured": false
+    },
+    {
+      "id": 100,
+      "badge_id": 109,
+      "membership_id": 2724,
+      "created_at": "2016-05-02T16:01:34.898Z",
+      "updated_at": "2016-05-02T16:01:34.898Z",
+      "featured": false
+    }
+  ]
+}
+```
+
+### HTTP Request
+
+`GET https://yoursite.cultivateforecasts.com/api/v1/earned_badges`
+
+### Query Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+page | 0 | Pagination page number
