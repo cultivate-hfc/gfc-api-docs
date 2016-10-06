@@ -13,6 +13,7 @@ includes:
 - memberships
 - prediction_sets
 - questions
+- scores
 - stars
 - users
 - votes
