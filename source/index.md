@@ -8,7 +8,9 @@ toc_footers:
   - <a href='#'>Sign Up for a Developer Key</a>
 
 includes:
+- aggregate_forecasts
 - badges
+- clarifications
 - earned_badges
 - memberships
 - prediction_sets
