@@ -14,6 +14,7 @@ includes:
 - earned_badges
 - memberships
 - prediction_sets
+- positions
 - questions
 - scores
 - stars
