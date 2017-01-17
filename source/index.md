@@ -9,17 +9,11 @@ toc_footers:
 
 includes:
 - external_predictions
-- badges
 - clarifications
-- earned_badges
 - memberships
 - prediction_sets
-- positions
 - questions
 - scores
-- stars
-- users
-- votes
 
 search: true
 ---
