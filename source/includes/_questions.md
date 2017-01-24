@@ -193,7 +193,7 @@ links_attributes | No | An array of links to display below the question name. Va
 starts_at | No | The time at which the question begins accepting forecasts
 ends_at | Yes | The time at which the question stops accepting forecasts
 type | Yes | Valid question types are listed below -- note that some question types are disabled on some sites
-intro | No |
+intro | No | An introduction that appears before the question name. eg "Sponsor XYZ presents:"
 use_ordinal_scoring | No | An optional scoring setting for questions with sequential answers
 rolling_range_count | No | For rolling questions, the number of answers active at a given time
 rolling_time_length | No | For rolling questions, the number of time units allotted to each answer (eg 2 for two weeks, 4 for four years)
