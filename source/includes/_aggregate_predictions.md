@@ -2,7 +2,7 @@
 
 ## Questions Index
 
-Provides predictions for active answers calculated using different aggregation methods
+Provides predictions answers calculated using different aggregation methods
 
 > Request:
 
