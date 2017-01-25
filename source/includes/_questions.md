@@ -192,20 +192,20 @@ include_challenge_ids | false | Passing "true" for this value will include an ar
     "description": "This question includes only major tournaments"
     "ends_at": "2017-12-31T23:59:59Z"
     "type": "Forecast::PM::LMSR::ExclusiveMarket"
-    "answers_attributes": [
-      {
+    "answers_attributes": {
+      "1": {
         "name": "0",
         "probability_whole_number": 47.5
       },
-      {
+      "2": {
         "name": "1-5",
         "probability_whole_number": 22.5
       },
-      {
+      "3": {
         "name": "6 or more",
         "probability_whole_number": 30
       }
-    ]
+    }
   }
 }
 ```
@@ -229,7 +229,7 @@ rolling_time_unit | No | For rolling questions, the unit of time for each answer
 roll_percentage | No | For rolling questions, the percentage of the probability assigned to the last bucket (eg 2020 or later) that will be transfered to the newly created bucket (2021 or later). The remainder will be assigned to the second last bucket (2020)
 tag_list | No | An array containing the names of tags to be assigned to this question
 challenge_ids | No | An array containing ids of challenges to be assigned to this question
-answers_attributes | Yes | An array of answer objects that are part of this question. Valid parameters for answers are listed below.
+answers_attributes | Yes | A hash of answer objects that are part of this question. Valid parameters for answers are listed below.
 suspended | No | If selected, the question is suspended and does not accept new forecasts
 
 ### Answer Parameters
