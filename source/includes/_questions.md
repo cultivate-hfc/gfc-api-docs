@@ -190,7 +190,7 @@ include_challenge_ids | false | Passing "true" for this value will include an ar
   "question": {
     "name": "How many tournaments will Tiger win this year?",
     "description": "This question includes only major tournaments"
-    "ends_at": "2017-12-31T23:59:59-06:00"
+    "ends_at": "2017-12-31T23:59:59Z"
     "type": "Forecast::PM::LMSR::ExclusiveMarket"
     "answers_attributes": [
       {
