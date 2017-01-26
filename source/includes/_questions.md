@@ -175,3 +175,91 @@ created_before | none | Returns only questions created before the passed date. D
 created_after | none | Returns only questions created after the passed date. Date should be in iso8601 format (e.g. 2015-08-23T15:43:11-05:00)
 include_tag_ids | false | Passing "true" for this value will include an array of tag ids for the question.
 include_challenge_ids | false | Passing "true" for this value will include an array of challenge ids for the question.
+
+## Questions Creation and Updating
+
+> HTTP Request:
+
+`POST https://yoursite.cultivateforecasts.com/api/v1/questions`
+`PATCH https://yoursite.cultivateforecasts.com/api/v1/questions/:id`
+
+> Request body example:
+
+```json
+{
+  "question": {
+    "name": "How many tournaments will Tiger win this year?",
+    "description": "This question includes only major tournaments"
+    "ends_at": "2017-12-31T23:59:59Z"
+    "type": "Forecast::PM::LMSR::ExclusiveMarket"
+    "answers_attributes": {
+      "1": {
+        "name": "0",
+        "probability_whole_number": 47.5
+      },
+      "2": {
+        "name": "1-5",
+        "probability_whole_number": 22.5
+      },
+      "3": {
+        "name": "6 or more",
+        "probability_whole_number": 30
+      }
+    }
+  }
+}
+```
+
+
+### Question Parameters
+
+Parameter | Required? | Description
+--------- | --------- | -----------
+name | Yes | The name of the question
+description | Yes | Background information, displays below the question name
+links_attributes | No | An array of links to display below the question name. Valid parameters for links are listed below.
+starts_at | No | The time at which the question begins accepting forecasts
+ends_at | Yes | The time at which the question stops accepting forecasts
+type | Yes | Valid question types are listed below -- note that some question types are disabled on some sites
+intro | No | An introduction that appears before the question name. eg "Sponsor XYZ presents:"
+use_ordinal_scoring | No | An optional scoring setting for questions with sequential answers
+rolling_range_count | No | For rolling questions, the number of answers active at a given time
+rolling_time_length | No | For rolling questions, the number of time units allotted to each answer (eg 2 for two weeks, 4 for four years)
+rolling_time_unit | No | For rolling questions, the unit of time for each answer. Options: "day", "week", "month", "year"
+roll_percentage | No | For rolling questions, the percentage of the probability assigned to the last bucket (eg 2020 or later) that will be transfered to the newly created bucket (2021 or later). The remainder will be assigned to the second last bucket (2020)
+tag_list | No | An array containing the names of tags to be assigned to this question
+challenge_ids | No | An array containing ids of challenges to be assigned to this question
+answers_attributes | Yes | A hash of answer objects that are part of this question. Valid parameters for answers are listed below.
+suspended | No | If selected, the question is suspended and does not accept new forecasts
+
+### Answer Parameters
+
+Parameter | Required? | Description
+--------- | --------- | -----------
+name | Yes | The name of the answer
+probability_whole_number | Yes | The starting probability of the answer
+sort_order | No | The order in which this answer is displayed
+id | No | The unique id of the answer--use only for updating
+discover_answer_id | No | For questions created via Discover, the id of the Discover answer that corresponds to this answer
+_destroy | No | Set to "true" to destroy this answer
+
+### Link Parameters
+
+Parameter | Description
+--------- | -----------
+id | The unique id of the link--use only for updating
+url | The url address of this link
+description | The text that displays for this link
+_destroy | Set to "true" to destroy this link
+
+### Question Types
+
+Question Type | Description
+------------- | -----------
+"Forecast::Question" | A multi-answer prediction pool
+"Forecast::Binary::Question" | A prediction pool with only one answer (eg Yes/No)
+"Forecast::RollingQuestion" | A rolling prediction pool, with new answers appearing over time
+"Forecast::PM::LMSR::ExclusiveMarket" | A multi-answer prediction market with one correct answer
+"Forecast::PM::LMSR::NonExclusiveMarket" | A multi-answer prediction market that allows multiple correct answers
+"Forecast::PM::LMSR::BinaryMarket" | A prediction market with only one answer
+"Forecast::PM::LMSR::RollingMarket" | A rolling prediction market, with new answers appearing over time
