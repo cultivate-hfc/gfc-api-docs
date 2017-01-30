@@ -15,116 +15,116 @@ curl "https://yoursite.cultivateforecasts.com/aggregation/api/v1/questions" \
 
 ```json
 {
-  "questions"=>[
+  "questions": [
     {
-      "id"=>40,
-      "name"=>"question-name-1",
-      "answers"=>[
+      "id": 40,
+      "name": "question-name-1",
+      "answers": [
         {
-          "id"=>120,
-          "name"=>"answer-name-3",
-          "strategies"=>[
+          "id": 120,
+          "name": "answer-name-3",
+          "strategies": [
             {
-              "method"=>"Mean",
-              "value"=>"0.4"
+              "method": "Mean",
+              "value": "0.4"
             },
             {
-              "method"=>"WeightedMean",
-              "value"=>"0.4"
+              "method": "WeightedMean",
+              "value": "0.4"
             },
             {
-              "method"=>"Median",
-              "value"=>"0.2"
+              "method": "Median",
+              "value": "0.2"
             },
             {
-              "method"=>"WeightedMedian",
-              "value"=>"0.2"
+              "method": "WeightedMedian",
+              "value": "0.2"
             },
             {
-              "method"=>"Voting",
-              "value"=>"0.333333"
+              "method": "Voting",
+              "value": "0.333333"
             },
             {
-              "method"=>"WeightedVoting",
-              "value"=>0.333333
+              "method": "WeightedVoting",
+              "value": 0.333333
             },
             {
-              "method"=>"Logit",
-              "value"=>"1.040042"
+              "method": "Logit",
+              "value": "1.040042"
             },
             {
-              "method"=>"L2e",
-              "value"=>0.801018
+              "method": "L2e",
+              "value": 0.801018
             }
           ]
         },
         {
-          "id"=>119,
-          "name"=>"answer-name-2",
-          "strategies"=>[
+          "id": 119,
+          "name": "answer-name-2",
+          "strategies": [
             {
-              "method"=>"Mean",
-              "value"=>"0.333333"
+              "method": "Mean",
+              "value": "0.333333"
             },
             {
-              "method"=>"WeightedMean",
-              "value"=>"0.333333"
+              "method": "WeightedMean",
+              "value": "0.333333"
             },
             {
-              "method"=>"Median",
-              "value"=>"0.2"
+              "method": "Median",
+              "value": "0.2"
             },
             {
-              "method"=>"WeightedMedian",
-              "value"=>"0.2"
+              "method": "WeightedMedian",
+              "value": "0.2"
             },
             {
-              "method"=>"Voting",
-              "value"=>"0.333333"
+              "method": "Voting",
+              "value": "0.333333"
             },
             {
-              "method"=>"WeightedVoting",
-              "value"=>0.333333},
+              "method": "WeightedVoting",
+              "value": 0.333333},
             {
-              "method"=>"Logit",
-              "value"=>"0.956466"
+              "method": "Logit",
+              "value": "0.956466"
             },
             {
-              "method"=>"L2e",
-              "value"=>0.633632
+              "method": "L2e",
+              "value": 0.633632
             }
           ]
         },
         {
-          "id"=>118,
-          "name"=>"answer-name-1",
-          "strategies"=>[
+          "id": 118,
+          "name": "answer-name-1",
+          "strategies": [
             {
-              "method"=>"Mean",
-              "value"=>"0.366667"
+              "method": "Mean",
+              "value": "0.366667"
             },
             {
-              "method"=>"WeightedMean",
-              "value"=>"0.366667"
+              "method": "WeightedMean",
+              "value": "0.366667"
             },
             {
-              "method"=>"Median",
-              "value"=>"0.2"},
+              "method": "Median",
+              "value": "0.2"},
             {
-              "method"=>"WeightedMedian",
-              "value"=>"0.2"},
+              "method": "WeightedMedian",
+              "value": "0.2"},
             {
-              "method"=>"Voting",
-              "value"=>"0.333333"},
+              "method": "Voting",
+              "value": "0.333333"},
             {
-              "method"=>"WeightedVoting",
-              "value"=>0.333333},
+              "method": "WeightedVoting",
+              "value": 0.333333},
             {
-              "method"=>"Logit",
-              "value"=>"1.0"},
+              "method": "Logit",
+              "value": "1.0"},
             {
-              "method"=>"L2e",
-              "value"=>0.717251
+              "method": "L2e",
+              "value": 0.717251
             }
           ]
         }
