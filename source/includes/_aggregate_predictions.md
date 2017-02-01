@@ -1,6 +1,6 @@
 # Aggregate Predictions
 
-## Index
+## Aggregate Predictions List
 
 This endpoint provides a set of current consensus values for each question & potential answer. Includes a value calculated using each of the available aggregation methods.
 
