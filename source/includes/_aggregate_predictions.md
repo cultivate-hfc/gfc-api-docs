@@ -1,8 +1,10 @@
-# Question Aggregate Predictions
+# Aggregate Predictions
 
-## Questions Index
+## Index
 
-Provides predictions answers calculated using different aggregation methods
+This endpoint provides a set of current consensus values for each question & potential answer. Includes a value calculated using each of the available aggregation methods.
+
+Each aggregation method is a different formula/algorithm for taking a collection of individual forecast values and computing a consensus from them.
 
 > Request:
 
@@ -143,4 +145,3 @@ curl "https://yoursite.cultivateforecasts.com/aggregation/api/v1/questions" \
 Parameter | Default | Description
 --------- | ------- | -----------
 page | 0 | Pagination page number
-
