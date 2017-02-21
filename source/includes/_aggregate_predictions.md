@@ -28,23 +28,23 @@ curl "https://yoursite.cultivateforecasts.com/aggregation/api/v1/questions" \
           "strategies": [
             {
               "method": "Mean",
-              "value": "0.4"
+              "value": 0.4
             },
             {
               "method": "WeightedMean",
-              "value": "0.4"
+              "value": 0.4
             },
             {
               "method": "Median",
-              "value": "0.2"
+              "value": 0.2
             },
             {
               "method": "WeightedMedian",
-              "value": "0.2"
+              "value": 0.2
             },
             {
               "method": "Voting",
-              "value": "0.333333"
+              "value": 0.333333
             },
             {
               "method": "WeightedVoting",
@@ -52,7 +52,7 @@ curl "https://yoursite.cultivateforecasts.com/aggregation/api/v1/questions" \
             },
             {
               "method": "Logit",
-              "value": "1.040042"
+              "value": 1.040042
             },
             {
               "method": "L2e",
@@ -66,30 +66,30 @@ curl "https://yoursite.cultivateforecasts.com/aggregation/api/v1/questions" \
           "strategies": [
             {
               "method": "Mean",
-              "value": "0.333333"
+              "value": 0.333333
             },
             {
               "method": "WeightedMean",
-              "value": "0.333333"
+              "value": 0.333333
             },
             {
               "method": "Median",
-              "value": "0.2"
+              "value": 0.2
             },
             {
               "method": "WeightedMedian",
-              "value": "0.2"
+              "value": 0.2
             },
             {
               "method": "Voting",
-              "value": "0.333333"
+              "value": 0.333333
             },
             {
               "method": "WeightedVoting",
               "value": 0.333333},
             {
               "method": "Logit",
-              "value": "0.956466"
+              "value": 0.956466
             },
             {
               "method": "L2e",
@@ -103,27 +103,32 @@ curl "https://yoursite.cultivateforecasts.com/aggregation/api/v1/questions" \
           "strategies": [
             {
               "method": "Mean",
-              "value": "0.366667"
+              "value": 0.366667
             },
             {
               "method": "WeightedMean",
-              "value": "0.366667"
+              "value": 0.366667
             },
             {
               "method": "Median",
-              "value": "0.2"},
+              "value": 0.2
+            },
             {
               "method": "WeightedMedian",
-              "value": "0.2"},
+              "value": 0.2
+            },
             {
               "method": "Voting",
-              "value": "0.333333"},
+              "value": 0.333333
+            },
             {
               "method": "WeightedVoting",
-              "value": 0.333333},
+              "value": 0.333333
+            },
             {
               "method": "Logit",
-              "value": "1.0"},
+              "value": 1.0
+            },
             {
               "method": "L2e",
               "value": 0.717251
@@ -145,3 +150,15 @@ curl "https://yoursite.cultivateforecasts.com/aggregation/api/v1/questions" \
 Parameter | Default | Description
 --------- | ------- | -----------
 page | 0 | Pagination page number
+
+### Attributes
+
+Parameter | Type | Description
+--------- | ------- | -----------
+questions.id | integer | The id of the question these consensus values are associated with
+questions.name | string | The name of the question these consensus values are associated with
+questions.answers.id | integer | The id of the answer these consensus values are associated with
+questions.answers.name | string | The name of the answer these consensus values are associated with
+questions.answers.strategies | array | An array of method/value pairs for the various consensus values
+questions.answers.strategies.method | string | The name of the method used to compute this consensus value
+questions.answers.strategies.value | float | The current consensus value for this method

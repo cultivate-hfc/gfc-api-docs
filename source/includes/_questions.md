@@ -22,14 +22,12 @@ curl "https://yoursite.cultivateforecasts.com/api/v1/questions" \
       "site_id": 1,
       "membership_id": 1,
       "ends_at": "2015-09-15T00:21:35.906Z",
-      "image": "MyString",
       "description": "question-desc-5",
       "published_at": null,
       "starts_at": null,
       "resolved_at": null,
       "predictions_count": 0,
       "comments_count": 0,
-      "brier_score": "9.99",
       "created_at": "2015-08-04T00:21:35.910Z",
       "updated_at": "2015-08-04T00:21:35.910Z",
       "active?": true,
@@ -38,7 +36,6 @@ curl "https://yoursite.cultivateforecasts.com/api/v1/questions" \
       "answers": [
         {
           "created_at": "2015-08-04T00:21:35.918Z",
-          "description": "answer-desc-11",
           "ends_at": "2016-02-04T00:21:35.916Z",
           "id": 11,
           "membership_id": 1,
@@ -53,15 +50,12 @@ curl "https://yoursite.cultivateforecasts.com/api/v1/questions" \
           "refunded_by_id": null,
           "resolved_at": null,
           "resolved_by_id": null,
-          "resolved_in_past_at": null,
-          "status": null,
-          "symbol": "A11",
+          "correctness_known_at": null,
           "type": null,
           "updated_at": "2015-08-04T00:21:35.918Z"
         },
         {
           "created_at": "2015-08-04T00:21:35.927Z",
-          "description": "answer-desc-12",
           "ends_at": "2016-02-04T00:21:35.925Z",
           "id": 12,
           "membership_id": 1,
@@ -76,15 +70,12 @@ curl "https://yoursite.cultivateforecasts.com/api/v1/questions" \
           "refunded_by_id": null,
           "resolved_at": null,
           "resolved_by_id": null,
-          "resolved_in_past_at": null,
-          "status": null,
-          "symbol": "A12",
+          "correctness_known_at": null,
           "type": null,
           "updated_at": "2015-08-04T00:21:35.927Z"
         },
         {
           "created_at": "2015-08-04T00:21:35.933Z",
-          "description": "answer-desc-13",
           "ends_at": "2016-02-04T00:21:35.931Z",
           "id": 13,
           "membership_id": 1,
@@ -99,9 +90,7 @@ curl "https://yoursite.cultivateforecasts.com/api/v1/questions" \
           "refunded_by_id": null,
           "resolved_at": null,
           "resolved_by_id": null,
-          "resolved_in_past_at": null,
-          "status": null,
-          "symbol": "A13",
+          "correctness_known_at": null,
           "type": null,
           "updated_at": "2015-08-04T00:21:35.933Z"
         }
@@ -114,14 +103,12 @@ curl "https://yoursite.cultivateforecasts.com/api/v1/questions" \
       "site_id": 1,
       "membership_id": 1,
       "ends_at": "2015-09-15T00:21:35.945Z",
-      "image": "MyString",
       "description": "question-desc-6",
       "published_at": null,
       "starts_at": null,
       "resolved_at": null,
       "predictions_count": 0,
       "comments_count": 0,
-      "brier_score": "9.99",
       "created_at": "2015-08-04T00:21:35.953Z",
       "updated_at": "2015-08-04T00:21:35.953Z",
       "active?": true,
@@ -130,7 +117,6 @@ curl "https://yoursite.cultivateforecasts.com/api/v1/questions" \
       "answers": [
         {
           "created_at": "2015-08-04T00:21:35.965Z",
-          "description": "answer-desc-14",
           "ends_at": "2016-02-04T00:21:35.962Z",
           "id": 14,
           "membership_id": 1,
@@ -145,9 +131,7 @@ curl "https://yoursite.cultivateforecasts.com/api/v1/questions" \
           "refunded_by_id": null,
           "resolved_at": null,
           "resolved_by_id": null,
-          "resolved_in_past_at": null,
-          "status": null,
-          "symbol": "A14",
+          "correctness_known_at": null,
           "type": "Forecast::Binary::Answer",
           "updated_at": "2015-08-04T00:21:35.965Z"
         }
@@ -175,6 +159,51 @@ created_before | none | Returns only questions created before the passed date. D
 created_after | none | Returns only questions created after the passed date. Date should be in iso8601 format (e.g. 2015-08-23T15:43:11-05:00)
 include_tag_ids | false | Passing "true" for this value will include an array of tag ids for the question.
 include_challenge_ids | false | Passing "true" for this value will include an array of challenge ids for the question.
+
+### Question Attributes
+
+Parameter | Type | Description
+--------- | ------- | -----------
+id | integer |
+name | string | The question content
+type | string | The internal question type (e.g. prediction market, binary prediction market, opinion pool)
+site_id | integer | The id of the site that this question belongs to
+membership_id | integer | The id of the membership who created this question
+ends_at | datetime | The date & time that this question stops accepting forecasts
+description | string | The description & background information for the question
+published_at | datetime | The date & time that this question was published
+starts_at | datetime | The date & time that this question started accepting forecasts
+resolved_at | datetime | The date & time that this question was resolved
+predictions_count | integer | The number of predictions that have been made in this question
+comments_count | integer | The number of comments that have been made in this question  
+created_at | datetime | The date & time that this question was created
+updated_at | datetime | The date & time that this question was last updated
+active | boolean | Whether or not this question is currently active for forecasting
+resolved | boolean | Whether or not this question has been resolved
+use_ordinal_scoring | boolean | Whether or not this question uses ordinal scoring for calculating Brier scores
+
+### Answer Attributes
+
+Parameter | Type | Description
+--------- | ------- | -----------
+id | integer |
+created_at | datetime | The date & time that this answer was created
+updated_at | datetime | The date & time that this answer was last updated
+ends_at | datetime | The date & time that this answer stops accepting forecasts
+membership_id | integer | The id of the membership who created this answer
+name | string | The answer content
+outstanding | integer | If this question is a prediction market, this represents the number of outstanding shares in this stock
+positions_count | integer | The number of positions forecasters have taken in this answer
+predictions_count | integer | The number of predictions forecasters have made in this answer
+probability | float | The current consensus probability for this answer
+probability_formatted | string | The current consensus probability for this answer, formatted as a percentage
+question_id | integer | The id of the question that this answer belongs to
+refunded_at | datetime | If this question is a prediction market and this stock has been refunded, the date & time the refund occurred
+refunded_by_id | integer | The membership_id of the membership who refunded this stock
+resolved_at | datetime | The date & time that this answer was resolved
+resolved_by_id | integer | The memebership_id of the membership who resolved this answer
+correctness_known_at | datetime | The date & time that the correctness of this answer was known. If an administrator sets this value when resolving the answer, all forecasts made after it will be invalidated.
+type | string | The internal answer type (e.g. prediction market stock, opinion pool answer)
 
 ## Questions Creation and Updating
 
