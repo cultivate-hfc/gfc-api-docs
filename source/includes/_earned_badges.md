@@ -130,3 +130,11 @@ curl "https://yoursite.cultivateforecasts.com/api/v1/earned_badges" \
 Parameter | Default | Description
 --------- | ------- | -----------
 page | 0 | Pagination page number
+
+### Attributes
+
+Parameter | Type | Description
+--------- | ------- | -----------
+id | integer | The id of the earned badge
+badge_id | integer | The id of the badge that the user earned
+featured | boolean |

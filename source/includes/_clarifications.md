@@ -45,3 +45,11 @@ curl "https://yoursite.cultivateforecasts.com/api/v1/clarifications" \
 Parameter | Default | Description
 --------- | ------- | -----------
 page | 0 | Pagination page number
+
+### Attributes
+
+Parameter | Type | Description
+--------- | ------- | -----------
+id | integer | The id of the clarification
+question_id | integer | The id of the question that is being clarified
+content | string | The actual text of the clarification
