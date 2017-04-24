@@ -56,7 +56,7 @@ curl "https://yoursite.cultivateforecasts.com/api/v1/badges" \
 
 None.
 
-### Attributes
+### Attribute Descriptions
 
 Parameter | Type | Description
 --------- | ------- | -----------

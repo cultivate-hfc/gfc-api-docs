@@ -94,3 +94,28 @@ Parameter | Default | Description
 --------- | ------- | -----------
 page | 0 | Pagination page number
 include_profile_question_responses | false | Passing "true" for this value will include profile questions and responses for each membership.
+
+
+### Attribute Descriptions
+
+Parameter | Type | Description
+--------- | ------- | -----------
+id | integer | The id of the membership
+site_id | integer | The id of the site that this membership belongs to
+user_id | integer | The id of the user that this membership belongs to
+balance | float | The prediction market currency balance of the membership
+level | integer | The user's level. Only applicable in sites that use the user leveling system.
+avatar_url | string | A URL containing an avatar image for the user
+role | string | The role/privileges of the membership. Can be "user" or "admin"
+user.id | integer | The id of the user
+user.email | string | The email of the user
+user.username | string | The username of the user
+user.first_name | string | The first name of the user
+user.last_name | string | The last name of the user
+user.facebook_url | string | The url of the facebook profile of the user
+user.twitter_url | string | The url of the twitter profile of the user
+user.linkedin_url | string | The url of the linkedin profile of the user
+user.blog_url | string | The url of the blog of the user
+user.last_pageview_at | date | The timestamp of the user's last pageview
+user.last_prediction_at | date | The timestamp of the user's last forecast
+user.description | string | The user's self-inputted description

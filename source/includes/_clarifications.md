@@ -46,7 +46,7 @@ Parameter | Default | Description
 --------- | ------- | -----------
 page | 0 | Pagination page number
 
-### Attributes
+### Attribute Descriptions
 
 Parameter | Type | Description
 --------- | ------- | -----------
