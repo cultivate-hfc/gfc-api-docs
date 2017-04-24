@@ -164,7 +164,7 @@ include_challenge_ids | false | Passing "true" for this value will include an ar
 
 Parameter | Type | Description
 --------- | ------- | -----------
-id | integer |
+id | integer | The id of the question
 name | string | The question content
 type | string | The internal question type (e.g. prediction market, binary prediction market, opinion pool)
 site_id | integer | The id of the site that this question belongs to
@@ -186,7 +186,7 @@ use_ordinal_scoring | boolean | Whether or not this question uses ordinal scorin
 
 Parameter | Type | Description
 --------- | ------- | -----------
-id | integer |
+id | integer | The id of the answer
 created_at | datetime | The date & time that this answer was created
 updated_at | datetime | The date & time that this answer was last updated
 ends_at | datetime | The date & time that this answer stops accepting forecasts

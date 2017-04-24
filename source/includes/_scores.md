@@ -116,7 +116,27 @@ page | 0 | Pagination page number
 score_type | none | Returns scores of a specific type. Possible values: `answer`, `question`, `challenge`, `site`
 with_membership_id | none | If the value of this parameter is `true`, only scores with a membership_id set will be returned
 without_membership_id | none | If the value of this parameter is `true`, only scores without a membership_id set will be returned
-membership_id | none | Filters scores to include only scores for a single membership id
 scoreable_id | none | Filters scores to include only scores for a single scoreable. This can be the id of an `answer`, `question`, `challenge`, or `site` record. If a value is passed for this parameter, the `score_type` record must also be set. So if you wanted scores for just a single question, you would pass `score_type=question&scoreable_id=123`
 created_before | none | Returns only scores created before the passed date. Date should be in iso8601 format (e.g. 2015-08-23T15:43:11-05:00)
 created_after | none | Returns only scores created after the passed date. Date should be in iso8601 format (e.g. 2015-08-23T15:43:11-05:00)
+
+
+### Attribute Descriptions
+
+Parameter | Type | Description
+--------- | ------- | -----------
+id | integer | The id of the score
+type | string | The type of score
+value | float | The actual score value
+scoreable_id | integer | The id of the record receiving the score. A "scoreable" is something that can receive a score in the system. This can be a membership, answer, question, challenge, or site. Combine with `scoreable_type` to determine the record receiving the score.
+scoreable_type | string | The type of record receiving the score
+period_started_at | date | The start date of the time period being scored
+period_ended_at | date | The end date of the time period being scored
+ordinal_scoring_enabled | boolean | Ordinal scoring can be enabled for questions where certain answers are "closer" to being correct than others (e.g. when the answers are buckets of numbers). This flag indicates whether ordinal scoring was enabled for this score.
+use_price | boolean | A true value indicates that the stock price was used to generate this score (only applicable to prediction markets)
+scoring_strategy_id | integer | A scoring strategy defines a set of settings used for scoring forecasts. This indicates the id of the strategy used to generate this score
+relative_brier_score | float | The relative brier score
+median_brier_score_for_relative | float | The median brier score for all forecasters in this answer+period combination, which is used to compute a relative brier score
+participation_rate | float | The percentage of the days that the question ran in which the user was participating
+prediction_made_by_id | integer | The id of the record that submitted the forecast that generated this score. Typically a membership, but can also be a team or an external predictor
+prediction_made_by_type | type | The type of the record that submitted the forecast that generated this score.
