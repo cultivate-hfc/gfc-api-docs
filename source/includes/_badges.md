@@ -55,3 +55,13 @@ curl "https://yoursite.cultivateforecasts.com/api/v1/badges" \
 ### Query Parameters
 
 None.
+
+### Attribute Descriptions
+
+Parameter | Type | Description
+--------- | ------- | -----------
+id | integer | The id of the badge
+site_id | integer | The id of the site this badge belongs to
+name | string | The name of the badge
+description | string | The description of the badge
+image_url | string | URL for the image associated with this badge

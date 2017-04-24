@@ -12,7 +12,7 @@ Then visit `http://localhost:4567` in your browser.
 To deploy:
 * Commit changes to master
 * `git push origin master`
-* `rake publish`
+* `./deploy.sh`
 
 
 Pages URL: http://cultivatelabs.github.io/forecasts-api-docs/

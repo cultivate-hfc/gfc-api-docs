@@ -130,3 +130,11 @@ curl "https://yoursite.cultivateforecasts.com/api/v1/earned_badges" \
 Parameter | Default | Description
 --------- | ------- | -----------
 page | 0 | Pagination page number
+
+### Attribute Descriptions
+
+Parameter | Type | Description
+--------- | ------- | -----------
+id | integer | The id of the earned badge
+badge_id | integer | The id of the badge that the user earned
+featured | boolean | Users can opt to "feature" some of their badges on their profile. Featured badges are shown on the popover that is displayed when you hover over a user's username in the web interface.

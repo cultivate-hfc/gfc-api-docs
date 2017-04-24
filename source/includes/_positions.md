@@ -103,3 +103,24 @@ page | 0 | Pagination page number
 sort | none | The order in which to sort the positions. Valid values include `question_name` `answer_name`, `answer_current_price`, `quantity`, `total_investment`, `gain_loss`, `liquidation_value`, `answer_last_prediction`. By default, positions are sorted with most recently updated forecasts first.
 dir | "desc" | The sort direction to apply to the sort filter. Valid values include `asc` and `desc`
 filter | none | A filter to apply to the positions list. Valid values include `closed` (positions in closed/ended questions) and `resolved` (positions in resolved questions). If no filter is passed, only positions in active answers will be included.
+
+
+### Attribute Descriptions
+
+Parameter | Type | Description
+--------- | ------- | -----------
+id | integer | The id of the position
+answer_id | integer | The id of the answer associated with this position
+membership_id | integer | The id of the membership that holds the position
+question_id | integer | The id of the question associated with this position
+resolved_at | date | The timestamp when this position was resolved (ie. paid out for a prediction market position). Empty if it hasn't been resolved yet.
+last_prediction_at | date | The timestamp of the last prediction that contributed to this position
+answer_current_consensus | float | The current consensus probability of the answer that this position is in
+consensus_at_time_of_last_prediction | float | The consensus probability of the answer at the time of the user's last prediction in this answer
+gain_loss_cache | float | The most recently calculated value for the gain/loss of this position (only applicable to prediction market positions)
+latest_prediction_probability | float | The probability estimate of the user's most recent prediction in this answer
+liquidation_value_cache | float | The most recently calculated liquidation value for this position (only applicable to prediction market positions)
+long_investment | float | The number of clinkles the user has spent on long trades in this answer (only applicable to prediction market positions)
+long_quantity | float | The number of shares the user has accumulated from long trades in this answer (only applicable to prediction market positions)
+short_investment | float | The number of clinkles the user has spent on short trades in this answer (only applicable to prediction market positions)
+short_quantity | float | The number of shares the user has accumulated from short trades in this answer (only applicable to prediction market positions)
