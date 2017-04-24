@@ -127,6 +127,30 @@ created_before | none | Returns only prediction sets created before the passed d
 created_after | none | Returns only prediction sets created after the passed date. Date should be in iso8601 format (e.g. 2015-08-23T15:43:11-05:00)
 
 
+### Attribute Descriptions
+
+Parameter | Type | Description
+--------- | ------- | -----------
+id | integer | The id of the prediction set
+membership_id | integer | The id of the membership that submitted the prediction set
+question_id | integer | The id of the question that this prediction set belongs to
+rationale | string | The text of the rationale (if any) that the user submitted with the forecast
+predictions.id | integer | The id of the prediction
+predictions.answer_id | integer | The id of the answer this prediction belongs to
+predictions.membership_id | integer | The id of the membership that submitted the prediction
+predictions.filled_at | date | The timestamp of when the prediction was processed. This timestamp is used for scoring
+predictions.refunded_at | date | The timestamp of when the prediction was refunded, if it's a prediction market that has been refunded
+predictions.made_after_correctness_known | boolean | Whether or not the prediction was submitted after the "correctness" of the answer was already known
+predictions.spend | float | The amount of clinkles the user spent on the trade, if it's in a prediction market
+predictions.quantity | float | The number of shares the user received in the trade, if it's in a prediction market
+predictions.forecasted_probability | float | The probability estimate that the user submitted with the forecast
+predictions.starting_probability | float | The consensus probability of the answer prior to incorporating this forecast
+predictions.final_probability | float | The consensus probability of the answer prior to incorporating this forecast
+predictions.starting_price | float | The price of the answer prior to incorporating this forecast (only applicable to prediction markets)
+predictions.final_price | float | The price of the answer prior to incorporating this forecast (only applicable to prediction markets)
+
+
+
 ## Prediction Set Creation
 
 All predictions are part of a prediction set. In the case of a prediction market, the prediction set will have a single prediction (aka. a trade), while an opinion pool question will have multiple predictions as part of a single prediction set (one for each answer in the question).
@@ -221,26 +245,3 @@ Parameter | Required? | Description
 answer_id | Yes | The answer id on which the user is forecasting.
 forecasted_probability | Yes | The probability assigned to this answer by the user. Should be a float between 0 and 1.
 spend | Only if the question is a prediction market | The amount of clinkles to buy/sell as part of this prediction/trade. A positive value indicates a buy, while a negative value indicates a sell/short.
-
-
-### Attribute Descriptions
-
-Parameter | Type | Description
---------- | ------- | -----------
-id | integer | The id of the prediction set
-membership_id | integer | The id of the membership that submitted the prediction set
-question_id | integer | The id of the question that this prediction set belongs to
-rationale | string | The text of the rationale (if any) that the user submitted with the forecast
-predictions.id | integer | The id of the prediction
-predictions.answer_id | integer | The id of the answer this prediction belongs to
-predictions.membership_id | integer | The id of the membership that submitted the prediction
-predictions.filled_at | date | The timestamp of when the prediction was processed. This timestamp is used for scoring
-predictions.refunded_at | date | The timestamp of when the prediction was refunded, if it's a prediction market that has been refunded
-predictions.made_after_correctness_known | boolean | Whether or not the prediction was submitted after the "correctness" of the answer was already known
-predictions.spend | float | The amount of clinkles the user spent on the trade, if it's in a prediction market
-predictions.quantity | float | The number of shares the user received in the trade, if it's in a prediction market
-predictions.forecasted_probability | float | The probability estimate that the user submitted with the forecast
-predictions.starting_probability | float | The consensus probability of the answer prior to incorporating this forecast
-predictions.final_probability | float | The consensus probability of the answer prior to incorporating this forecast
-predictions.starting_price | float | The price of the answer prior to incorporating this forecast (only applicable to prediction markets)
-predictions.final_price | float | The price of the answer prior to incorporating this forecast (only applicable to prediction markets)
