@@ -35,8 +35,6 @@ curl -X "POST" "https://yoursite.cultivateforecasts.com/api/v1/external_predicti
 
 > Response:
 
-The response contains the newly created prediction.
-
 ```json
 {
   "id": 66,
