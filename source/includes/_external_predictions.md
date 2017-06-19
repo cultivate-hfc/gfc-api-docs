@@ -100,7 +100,7 @@ Parameter | Required? | Description
 --------- | --------- | -----------
 question_id | Yes | The question id associated with this forecast
 metadata | Yes | A JSON-formatted string containing metadata describing how this forecast was generated.
-external_predictor_attributes[method_name] | Yes | A string identifying the method you're using to generate this forecast. Can be any string.
+external_predictor_attributes.method_name | Yes | A string identifying the method you're using to generate this forecast. Can be any string.
 external_predictions_attributes | Yes | An array of external prediction objects that are part of this prediction set. Valid parameters for external predictions are listed below.
 
 
