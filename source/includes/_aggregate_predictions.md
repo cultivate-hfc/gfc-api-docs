@@ -2,9 +2,9 @@
 
 ## Aggregate Predictions List
 
-This endpoint provides a set of current consensus values for each question & potential answer. Includes a value calculated using each of the available aggregation methods.
+There are many different methods to combine a set of individual forecasts into a consensus forecast. Within Cultivate Forecasts, the consensus can be calculated using 5 different aggregation algorithms: mean, median, voting, logit, and l2e.  
 
-Each aggregation method is a different formula/algorithm for taking a collection of individual forecast values and computing a consensus from them.
+This endpoint provides a set of current consensus values for each question & potential answer using each of the 5 aggregation algorithms.
 
 > Request:
 
