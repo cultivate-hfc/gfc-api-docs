@@ -9,12 +9,12 @@ toc_footers:
 
 includes:
 - aggregate_predictions
-- external_predictions
 - clarifications
+- external_predictions
+- fundamental_activity_units
 - memberships
 - prediction_sets
 - questions
-- scores
 
 search: true
 ---

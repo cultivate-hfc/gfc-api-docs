@@ -3,7 +3,7 @@
 
 ## Memberships List
 
-Each user has one account & user_id, but a user can be a member of multiple sites. A membership record associates a user to a site.
+Each user in Cultivate Forecasts has a single user record & user_id. However, a user can be a member of multiple sites. A membership record associates a user to a site. This endpoint provides a list of membership records for a given site and embeds the user record within each membership.
 
 This endpoint is only accessible to site administrators.
 
