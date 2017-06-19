@@ -8,7 +8,7 @@ Shows a list of badges that exist on the site.
 > Request:
 
 ```shell
-curl "https://yoursite.cultivateforecasts.com/api/v1/badges" \
+curl "https://yoursite.hfc-staging.com/api/v1/badges" \
   -H "Authorization: Bearer b95b4f848cd226e55b7a42f6a8e8669350730270f5a91d64b6c70328b0156d75"
 ```
 
@@ -50,7 +50,7 @@ curl "https://yoursite.cultivateforecasts.com/api/v1/badges" \
 
 ### HTTP Request
 
-`GET https://yoursite.cultivateforecasts.com/api/v1/badges`
+`GET https://yoursite.hfc-staging.com/api/v1/badges`
 
 ### Query Parameters
 

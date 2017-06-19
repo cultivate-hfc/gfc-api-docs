@@ -16,7 +16,7 @@ Only administrators can access this API.
 > Request:
 
 ```shell
-curl -X "POST" "https://yoursite.cultivateforecasts.com/api/v1/external_prediction_sets" \
+curl -X "POST" "https://yoursite.hfc-staging.com/api/v1/external_prediction_sets" \
   -H "Authorization: Bearer b95b4f848cd226e55b7a42f6a8e8669350730270f5a91d64b6c70328b0156d75" \
   -H "Content-Type: application/json" \
   -H "Accept: application/json" \
@@ -91,7 +91,7 @@ curl -X "POST" "https://yoursite.cultivateforecasts.com/api/v1/external_predicti
 
 ### HTTP Request
 
-`POST https://yoursite.cultivateforecasts.com/api/v1/external_predictions`
+`POST https://yoursite.hfc-staging.com/api/v1/external_predictions`
 
 
 ### External Prediction Set Parameters

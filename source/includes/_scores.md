@@ -11,7 +11,7 @@ If a given record has a membership_id value, that indicates that it is a score f
 > Request:
 
 ```shell
-curl "https://yoursite.cultivateforecasts.com/api/v1/scores" \
+curl "https://yoursite.hfc-staging.com/api/v1/scores" \
   -H "Authorization: Bearer b95b4f848cd226e55b7a42f6a8e8669350730270f5a91d64b6c70328b0156d75"
 ```
 
@@ -106,7 +106,7 @@ curl "https://yoursite.cultivateforecasts.com/api/v1/scores" \
 
 ### HTTP Request
 
-`GET https://yoursite.cultivateforecasts.com/api/v1/scores`
+`GET https://yoursite.hfc-staging.com/api/v1/scores`
 
 ### Query Parameters
 

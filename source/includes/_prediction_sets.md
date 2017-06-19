@@ -8,7 +8,7 @@ A prediction set is the primary model for storing forecasts within Cultivate For
 > Request:
 
 ```shell
-curl "https://yoursite.cultivateforecasts.com/api/v1/prediction_sets" \
+curl "https://yoursite.hfc-staging.com/api/v1/prediction_sets" \
   -H "Authorization: Bearer b95b4f848cd226e55b7a42f6a8e8669350730270f5a91d64b6c70328b0156d75"
 ```
 
@@ -113,7 +113,7 @@ curl "https://yoursite.cultivateforecasts.com/api/v1/prediction_sets" \
 
 ### HTTP Request
 
-`GET https://yoursite.cultivateforecasts.com/api/v1/prediction_sets`
+`GET https://yoursite.hfc-staging.com/api/v1/prediction_sets`
 
 ### Query Parameters
 
@@ -161,7 +161,7 @@ This endpoint can be used to submit new prediction sets. All prediction sets req
 > Request:
 
 ```shell
-curl -X "POST" "https://yoursite.cultivateforecasts.com/api/v1/questions/1/prediction_sets" \
+curl -X "POST" "https://yoursite.hfc-staging.com/api/v1/questions/1/prediction_sets" \
   -H "Authorization: Bearer b95b4f848cd226e55b7a42f6a8e8669350730270f5a91d64b6c70328b0156d75" \
   -H "Content-Type: application/json" \
   -H "Accept: application/json" \
@@ -228,7 +228,7 @@ The response contains the newly created prediction set and associated prediction
 
 ### HTTP Request
 
-`POST https://yoursite.cultivateforecasts.com/api/v1/question/:question_id/prediction_sets`
+`POST https://yoursite.hfc-staging.com/api/v1/question/:question_id/prediction_sets`
 
 
 ### Prediction Set Parameters

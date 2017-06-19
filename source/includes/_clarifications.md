@@ -9,7 +9,7 @@ This API returns a list of question clarifications. These are used to officially
 > Request:
 
 ```shell
-curl "https://yoursite.cultivateforecasts.com/api/v1/clarifications" \
+curl "https://yoursite.hfc-staging.com/api/v1/clarifications" \
   -H "Authorization: Bearer b95b4f848cd226e55b7a42f6a8e8669350730270f5a91d64b6c70328b0156d75"
 ```
 
@@ -38,7 +38,7 @@ curl "https://yoursite.cultivateforecasts.com/api/v1/clarifications" \
 
 ### HTTP Request
 
-`GET https://yoursite.cultivateforecasts.com/api/v1/clarifications`
+`GET https://yoursite.hfc-staging.com/api/v1/clarifications`
 
 ### Query Parameters
 

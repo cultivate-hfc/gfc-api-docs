@@ -10,7 +10,7 @@ This endpoint is only accessible to site administrators.
 > Request:
 
 ```shell
-curl "https://yoursite.cultivateforecasts.com/api/v1/memberships" \
+curl "https://yoursite.hfc-staging.com/api/v1/memberships" \
   -H "Authorization: Bearer b95b4f848cd226e55b7a42f6a8e8669350730270f5a91d64b6c70328b0156d75"
 ```
 
@@ -86,7 +86,7 @@ created_after | none | Returns only memberships created after the passed time. T
 
 ### HTTP Request
 
-`GET https://yoursite.cultivateforecasts.com/api/v1/memberships`
+`GET https://yoursite.hfc-staging.com/api/v1/memberships`
 
 ### Query Parameters
 
