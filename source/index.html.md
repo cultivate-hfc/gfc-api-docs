@@ -8,8 +8,8 @@ toc_footers:
   - <a href='#'>Sign Up for a Developer Key</a>
 
 includes:
-- aggregate_predictions
 - push_apis
+- aggregate_predictions
 - clarifications
 - external_predictions
 - fundamental_activity_units
