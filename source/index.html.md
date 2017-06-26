@@ -23,7 +23,7 @@ search: true
 
 # Getting Started
 
-Each performer will be assigned a subdomain for use in HFC. Throughout the API documentation, you'll see URL's in the format of `https://yoursite.hfc-staging.com`. Once you have your subdomain, you should replace `yoursite` with your assigned subdomain. Contact Cultivate Labs at `techsupport@hybridforecasting.com` to obtain your assigned subdomain.
+Each performer will be assigned a subdomain for use in HFC. Throughout the API documentation, you'll see URL's in the format of `https://yoursite.hfc-staging.com`. Once you have your subdomain, you should replace `yoursite` with your assigned subdomain. Contact Cultivate Labs at [techsupport@hybridforecasting.com](mailto:techsupport@hybridforecasting.com) to obtain your assigned subdomain.
 
 # Environments
 
@@ -47,40 +47,11 @@ Phase 1b-4 | https://control.hybridforecasting.com
 
 # Authentication
 
-> Request:
+Authentication in the Cultivate Forecasts API is done via OAuth. To obtain an oauth token, contact [techsupport@hybridforecasting.com](mailto:techsupport@hybridforecasting.com).
+
+All requests to the various APIs should include your token as part of an authorization header. You can see an example curl request to the right.
 
 ```shell
-curl "https://yoursite.hfc-staging.com/oauth/token" \
-  -X POST \
-  -d grant_type=password \
-  -d email=user@example.com \
-  -d password=password
+curl "https://yoursite.hfc-staging.com/api/v1/me" \
+  -H "Authorization: Bearer b95b4f848cd226e55b7a42f6a8e8669350730270f5a91d64b6c70328b0156d75"
 ```
-
-> Response:
-
-```json
-{
-  "access_token": "b95b4f848cd226e55b7a42f6a8e8669350730270f5a91d64b6c70328b0156d75",
-  "token_type": "bearer",
-  "expires_in": 7200,
-  "created_at": 1438910165
-}
-```
-
-To access the Cultivate Forecasts API, you need an oauth token. You can generate one by making a POST request to `/oauth/token` with email, password, and grant_type parameters.
-
-### HTTP Request
-
-`POST https://yoursite.hfc-staging.com/oauth/token`
-
-### Query Parameters
-
-Parameter | Value
---------- | -----------
-grant_type | password
-email | Your email address
-password | Your password
-
-
-For subsequent requests, you must include your token as part of an authorization header.
