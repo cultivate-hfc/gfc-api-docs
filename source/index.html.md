@@ -9,6 +9,7 @@ toc_footers:
 
 includes:
 - aggregate_predictions
+- push_apis
 - clarifications
 - external_predictions
 - fundamental_activity_units
