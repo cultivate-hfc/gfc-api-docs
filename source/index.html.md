@@ -9,8 +9,8 @@ toc_footers:
 
 includes:
 - push_apis
-- aggregate_predictions
 - clarifications
+- consensus_history
 - external_predictions
 - fundamental_activity_units
 - memberships
