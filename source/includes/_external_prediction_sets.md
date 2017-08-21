@@ -1,7 +1,7 @@
 
-# External Predictions
+# External Prediction Sets
 
-## External Predictions Creation
+## External Prediction Sets Creation
 
 This API is for submitting forecasts generated outside of Cultivate Forecasts, which will then be scored when the question/answer resolves.
 
@@ -20,7 +20,8 @@ curl -X "POST" "https://yoursite.hfc-staging.com/api/v1/external_prediction_sets
   -H "Authorization: Bearer b95b4f848cd226e55b7a42f6a8e8669350730270f5a91d64b6c70328b0156d75" \
   -H "Content-Type: application/json" \
   -H "Accept: application/json" \
-	-d "{\"external_prediction_set\":{\"question_id\":123,\"metadata\":\"{'foo': 'bar', 'count': 2}\",\"external_predictor_attributes\":{\"method_name\":\"red\"},\"external_predictions_attributes\":[{\"value\":0.65,\"answer_id\":431},{\"value\":0.34,\"answer_id\":432}]}}"
+	-d "{\"external_prediction_set\":{\"question_id\":123,\"metadata\":{\"foo\": \"bar\", \"count\": 2},
+,\"external_predictor_attributes\":{\"method_name\":\"red\"},\"external_predictions_attributes\":[{\"value\":0.65,\"answer_id\":431},{\"value\":0.34,\"answer_id\":432}]}}"
 ```
 
 > Request body example:
@@ -29,7 +30,7 @@ curl -X "POST" "https://yoursite.hfc-staging.com/api/v1/external_prediction_sets
 {
   "external_prediction_set": {
     "question_id": 123,
-    "metadata": "{'foo': 'bar', 'count': 2}",
+    "metadata": {"foo": "bar", "count": 2},
     "external_predictor_attributes": {
       "method_name": "red"
     },
@@ -91,7 +92,7 @@ curl -X "POST" "https://yoursite.hfc-staging.com/api/v1/external_prediction_sets
 
 ### HTTP Request
 
-`POST https://yoursite.hfc-staging.com/api/v1/external_predictions`
+`POST https://yoursite.hfc-staging.com/api/v1/external_prediction_sets`
 
 
 ### External Prediction Set Parameters
