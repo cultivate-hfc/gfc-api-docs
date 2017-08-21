@@ -14,13 +14,6 @@ curl "https://yoursite.cultivateforecasts.com/api/v1/memberships" \
   -H "Authorization: Bearer b95b4f848cd226e55b7a42f6a8e8669350730270f5a91d64b6c70328b0156d75"
 ```
 
-> Query Parameters
-
-Parameter | Default | Description
---------- | ------- | -----------
-created_before | none | Returns only memberships created before the passed time. Time should be in iso8601 format (e.g. 2015-08-23T15:43:11-05:00)
-created_after | none | Returns only memberships created after the passed time. Time should be in iso8601 format (e.g. 2015-08-23T15:43:11-05:00)
-
 > Response:
 
 ```json
@@ -94,6 +87,8 @@ Parameter | Default | Description
 --------- | ------- | -----------
 page | 0 | Pagination page number
 include_profile_question_responses | false | Passing "true" for this value will include profile questions and responses for each membership.
+created_before | none | Returns only memberships created before the passed time. Time should be in iso8601 format (e.g. 2015-08-23T15:43:11-05:00)
+created_after | none | Returns only memberships created after the passed time. Time should be in iso8601 format (e.g. 2015-08-23T15:43:11-05:00)
 
 
 ### Attribute Descriptions
