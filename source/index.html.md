@@ -11,7 +11,7 @@ includes:
 - push_apis
 - clarifications
 - consensus_history
-- external_predictions
+- external_prediction_sets
 - fundamental_activity_units
 - memberships
 - prediction_sets
