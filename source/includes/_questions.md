@@ -17,6 +17,7 @@ curl "https://yoursite.cultivateforecasts.com/api/v1/questions" \
   "questions": [
     {
       "id": 5,
+      "discover_question_id": 123,
       "name": "question-2",
       "type": "Forecast::Question",
       "site_id": 1,
@@ -38,6 +39,7 @@ curl "https://yoursite.cultivateforecasts.com/api/v1/questions" \
           "created_at": "2015-08-04T00:21:35.918Z",
           "ends_at": "2016-02-04T00:21:35.916Z",
           "id": 11,
+          "discover_answer_id": 423,
           "membership_id": 1,
           "name": "answer-name-11",
           "outstanding": 0,
@@ -58,6 +60,7 @@ curl "https://yoursite.cultivateforecasts.com/api/v1/questions" \
           "created_at": "2015-08-04T00:21:35.927Z",
           "ends_at": "2016-02-04T00:21:35.925Z",
           "id": 12,
+          "discover_answer_id": 424,
           "membership_id": 1,
           "name": "answer-name-12",
           "outstanding": 0,
@@ -78,6 +81,7 @@ curl "https://yoursite.cultivateforecasts.com/api/v1/questions" \
           "created_at": "2015-08-04T00:21:35.933Z",
           "ends_at": "2016-02-04T00:21:35.931Z",
           "id": 13,
+          "discover_answer_id": 425,
           "membership_id": 1,
           "name": "answer-name-13",
           "outstanding": 0,
@@ -98,6 +102,7 @@ curl "https://yoursite.cultivateforecasts.com/api/v1/questions" \
     },
     {
       "id": 6,
+      "discover_question_id": 31,
       "name": "binary_question-2",
       "type": "Forecast::Binary::Question",
       "site_id": 1,
@@ -119,6 +124,7 @@ curl "https://yoursite.cultivateforecasts.com/api/v1/questions" \
           "created_at": "2015-08-04T00:21:35.965Z",
           "ends_at": "2016-02-04T00:21:35.962Z",
           "id": 14,
+          "discover_answer_id": 429,
           "membership_id": 1,
           "name": "answer-name-14",
           "outstanding": 0,
@@ -165,6 +171,7 @@ include_challenge_ids | false | Passing "true" for this value will include an ar
 Parameter | Type | Description
 --------- | ------- | -----------
 id | integer | The id of the question
+discover_question_id | integer | The id of the discover question used to generate/publish this question, if collaborative question generation (Discover) is being used
 name | string | The question content
 type | string | The internal question type (e.g. prediction market, binary prediction market, opinion pool)
 site_id | integer | The id of the site that this question belongs to
@@ -187,6 +194,7 @@ use_ordinal_scoring | boolean | Whether or not this question uses ordinal scorin
 Parameter | Type | Description
 --------- | ------- | -----------
 id | integer | The id of the answer
+discover_answer_id | integer | The id of the discover answer used to generate/publish this question, if collaborative question generation (Discover) is being used
 created_at | datetime | The date & time that this answer was created
 updated_at | datetime | The date & time that this answer was last updated
 ends_at | datetime | The date & time that this answer stops accepting forecasts
