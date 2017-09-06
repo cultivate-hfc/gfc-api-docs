@@ -23,10 +23,8 @@ curl "https://yoursite.hfc-staging.com/api/v1/memberships" \
       "id": 1,
       "site_id": 1,
       "user_id": 1,
-      "balance": "10000.0",
       "created_at": "2015-08-04T00:21:34.623Z",
       "updated_at": "2015-08-04T00:21:34.651Z",
-      "level": 1,
       "avatar": "ident/default_avatars/level-1-1.png",
       "role": "admin",
       "user": {
@@ -37,10 +35,6 @@ curl "https://yoursite.hfc-staging.com/api/v1/memberships" \
         "username": "superman",
         "first_name": "Clark",
         "last_name": "Kent",
-        "facebook_url": "www.facebook.com/superman",
-        "twitter_url": "www.twitter.com/superman",
-        "linkedin_url": "www.linkedin.com/superman",
-        "blog_url": "www.blog.com/superman",
         "last_pageview_at": "2015-08-07T00:33:33.967Z",
         "last_prediction_at": null,
         "description": "He's a superhero"
@@ -50,10 +44,8 @@ curl "https://yoursite.hfc-staging.com/api/v1/memberships" \
       "id": 2,
       "site_id": 1,
       "user_id": 2,
-      "balance": "5298.92",
       "created_at": "2015-08-04T00:21:34.948Z",
       "updated_at": "2015-08-04T00:21:37.438Z",
-      "level": 0,
       "avatar": "ident/default_avatars/level-0-1.png",
       "role": "user",
       "user": {
@@ -64,10 +56,6 @@ curl "https://yoursite.hfc-staging.com/api/v1/memberships" \
         "username": "superman2",
         "first_name": "Clark",
         "last_name": "Kent 2",
-        "facebook_url": "www.facebook.com/superman2",
-        "twitter_url": "www.twitter.com/superman2",
-        "linkedin_url": "www.linkedin.com/superman2",
-        "blog_url": "www.blog.com/superman2",
         "last_pageview_at": null,
         "last_prediction_at": null,
         "description": "He's a superhero2"
@@ -98,8 +86,6 @@ Parameter | Type | Description
 id | integer | The id of the membership
 site_id | integer | The id of the site that this membership belongs to
 user_id | integer | The id of the user that this membership belongs to
-balance | float | The prediction market currency balance of the membership
-level | integer | The user's level. Only applicable in sites that use the user leveling system.
 avatar_url | string | A URL containing an avatar image for the user
 role | string | The role/privileges of the membership. Can be "user" or "admin"
 user.id | integer | The id of the user
@@ -107,10 +93,6 @@ user.email | string | The email of the user
 user.username | string | The username of the user
 user.first_name | string | The first name of the user
 user.last_name | string | The last name of the user
-user.facebook_url | string | The url of the facebook profile of the user
-user.twitter_url | string | The url of the twitter profile of the user
-user.linkedin_url | string | The url of the linkedin profile of the user
-user.blog_url | string | The url of the blog of the user
 user.last_pageview_at | date | The timestamp of the user's last pageview
 user.last_prediction_at | date | The timestamp of the user's last forecast
 user.description | string | The user's self-inputted description
