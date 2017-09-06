@@ -42,14 +42,11 @@ curl "https://yoursite.hfc-staging.com/api/v1/questions" \
           "discover_answer_id": 423,
           "membership_id": 1,
           "name": "answer-name-11",
-          "outstanding": 0,
           "positions_count": null,
           "predictions_count": 0,
           "probability": "0.3333",
           "probability_formatted": "33.33%",
           "question_id": 5,
-          "refunded_at": null,
-          "refunded_by_id": null,
           "resolved_at": null,
           "resolved_by_id": null,
           "correctness_known_at": null,
@@ -63,14 +60,11 @@ curl "https://yoursite.hfc-staging.com/api/v1/questions" \
           "discover_answer_id": 424,
           "membership_id": 1,
           "name": "answer-name-12",
-          "outstanding": 0,
           "positions_count": null,
           "predictions_count": 0,
           "probability": "0.3333",
           "probability_formatted": "33.33%",
           "question_id": 5,
-          "refunded_at": null,
-          "refunded_by_id": null,
           "resolved_at": null,
           "resolved_by_id": null,
           "correctness_known_at": null,
@@ -84,14 +78,11 @@ curl "https://yoursite.hfc-staging.com/api/v1/questions" \
           "discover_answer_id": 425,
           "membership_id": 1,
           "name": "answer-name-13",
-          "outstanding": 0,
           "positions_count": null,
           "predictions_count": 0,
           "probability": "0.3333",
           "probability_formatted": "33.33%",
           "question_id": 5,
-          "refunded_at": null,
-          "refunded_by_id": null,
           "resolved_at": null,
           "resolved_by_id": null,
           "correctness_known_at": null,
@@ -127,14 +118,11 @@ curl "https://yoursite.hfc-staging.com/api/v1/questions" \
           "discover_answer_id": 429,
           "membership_id": 1,
           "name": "answer-name-14",
-          "outstanding": 0,
           "positions_count": null,
           "predictions_count": 0,
           "probability": "0.5",
           "probability_formatted": "50.00%",
           "question_id": 6,
-          "refunded_at": null,
-          "refunded_by_id": null,
           "resolved_at": null,
           "resolved_by_id": null,
           "correctness_known_at": null,
@@ -200,14 +188,11 @@ updated_at | datetime | The date & time that this answer was last updated
 ends_at | datetime | The date & time that this answer stops accepting forecasts
 membership_id | integer | The id of the membership who created this answer
 name | string | The answer content
-outstanding | integer | If this question is a prediction market, this represents the number of outstanding shares in this stock
 positions_count | integer | The number of positions forecasters have taken in this answer
 predictions_count | integer | The number of predictions forecasters have made in this answer
 probability | float | The current consensus probability for this answer
 probability_formatted | string | The current consensus probability for this answer, formatted as a percentage
 question_id | integer | The id of the question that this answer belongs to
-refunded_at | datetime | If this question is a prediction market and this stock has been refunded, the date & time the refund occurred
-refunded_by_id | integer | The membership_id of the membership who refunded this stock
 resolved_at | datetime | The date & time that this answer was resolved
 resolved_by_id | integer | The memebership_id of the membership who resolved this answer
 correctness_known_at | datetime | The date & time that the correctness of this answer was known. If an administrator sets this value when resolving the answer, all forecasts made after it will be invalidated.
