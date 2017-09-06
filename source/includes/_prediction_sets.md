@@ -1,7 +1,7 @@
 
 # Prediction Sets
 
-A prediction set is the primary model for storing forecasts within Cultivate Forecasts. A prediction set can contain a single prediction or multiple predictions, depending on the question type. In a prediction market, all prediction sets have a single prediction (a trade). In an opinion pool, prediction sets have one prediction for each answer in the question.
+A prediction set is the primary model for storing forecasts within Cultivate Forecasts. A prediction set will contain one prediction for each answer in the question.
 
 ## Prediction Sets List
 
@@ -17,34 +17,6 @@ curl "https://yoursite.hfc-staging.com/api/v1/prediction_sets" \
 ```json
 {
   "prediction_sets": [
-    {
-      "id": 1,
-      "membership_id": 2,
-      "question_id": 1,
-      "created_at": "2015-08-04T00:21:37.141Z",
-      "updated_at": "2015-08-04T00:21:37.141Z",
-      "comment_id": 123,
-      "rationale": "0 - http://www.flyoverworks.com I live in the American Gardens Building on W. 81st Street on the 11th floor. My name is Patrick Bateman. I'm 27 years old. I believe in taking care of myself and a balanced diet and rigorous exercise routine. In the morning if my face is a little puffy I'll put on an ice pack while doing stomach crunches.",
-      "predictions": [
-        {
-          "id": 1,
-          "type": "Forecast::PM::LMSR::Trade",
-          "answer_id": 1,
-          "membership_id": 2,
-          "paid": "2517.6",
-          "quantity": 69,
-          "forecasted_probability": "0.5",
-          "starting_probability": "0.3333",
-          "final_probability": "0.5",
-          "filled_at": null,
-          "refunded_at": null,
-          "created_at": "2015-08-04T00:21:36.913Z",
-          "updated_at": "2015-08-04T00:21:37.147Z",
-          "confidence_level": "confidence_medium",
-          "made_after_correctness_known": false
-        }
-      ]
-    },
     {
       "id": 50,
       "membership_id": 5,
@@ -65,7 +37,6 @@ curl "https://yoursite.hfc-staging.com/api/v1/prediction_sets" \
           "starting_probability": "0.3333",
           "final_probability": "0.3333",
           "filled_at": null,
-          "refunded_at": null,
           "created_at": "2015-08-04T00:21:40.733Z",
           "updated_at": "2015-08-04T00:21:40.733Z",
           "confidence_level": null,
@@ -82,7 +53,6 @@ curl "https://yoursite.hfc-staging.com/api/v1/prediction_sets" \
           "starting_probability": "0.3333",
           "final_probability": "0.3333",
           "filled_at": null,
-          "refunded_at": null,
           "created_at": "2015-08-04T00:21:40.741Z",
           "updated_at": "2015-08-04T00:21:40.741Z",
           "confidence_level": null,
@@ -99,7 +69,6 @@ curl "https://yoursite.hfc-staging.com/api/v1/prediction_sets" \
           "starting_probability": "0.3333",
           "final_probability": "0.3333",
           "filled_at": null,
-          "refunded_at": null,
           "created_at": "2015-08-04T00:21:40.754Z",
           "updated_at": "2015-08-04T00:21:40.754Z",
           "confidence_level": null,
@@ -139,12 +108,7 @@ predictions.id | integer | The id of the prediction
 predictions.answer_id | integer | The id of the answer this prediction belongs to
 predictions.membership_id | integer | The id of the membership that submitted the prediction
 predictions.filled_at | date | The timestamp of when the prediction was processed. This timestamp is used for scoring
-predictions.refunded_at | date | The timestamp of when the prediction was refunded, if it's a prediction market that has been refunded
 predictions.made_after_correctness_known | boolean | Whether or not the prediction was submitted after the "correctness" of the answer was already known
-predictions.spend | float | The amount of clinkles the user spent on the trade, if it's in a prediction market
-predictions.quantity | float | The number of shares the user received in the trade, if it's in a prediction market
 predictions.forecasted_probability | float | The probability estimate that the user submitted with the forecast
 predictions.starting_probability | float | The consensus probability of the answer prior to incorporating this forecast
 predictions.final_probability | float | The consensus probability of the answer prior to incorporating this forecast
-predictions.starting_price | float | The price of the answer prior to incorporating this forecast (only applicable to prediction markets)
-predictions.final_price | float | The price of the answer prior to incorporating this forecast (only applicable to prediction markets)
