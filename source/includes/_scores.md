@@ -119,6 +119,8 @@ without_membership_id | none | If the value of this parameter is `true`, only sc
 scoreable_id | none | Filters scores to include only scores for a single scoreable. This can be the id of an `answer`, `question`, `challenge`, or `site` record. If a value is passed for this parameter, the `score_type` record must also be set. So if you wanted scores for just a single question, you would pass `score_type=question&scoreable_id=123`
 created_before | none | Returns only scores created before the passed date. Date should be in iso8601 format (e.g. 2015-08-23T15:43:11-05:00)
 created_after | none | Returns only scores created after the passed date. Date should be in iso8601 format (e.g. 2015-08-23T15:43:11-05:00)
+updated_before | none | Returns only scores updated before the passed date. Date should be in iso8601 format (e.g. 2015-08-23T15:43:11-05:00)
+updated_after | none | Returns only scores updated after the passed date. Date should be in iso8601 format (e.g. 2015-08-23T15:43:11-05:00)
 
 
 ### Attribute Descriptions
