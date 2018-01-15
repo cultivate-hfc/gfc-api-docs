@@ -3,7 +3,7 @@
 
 ## Clarifications List
 
-This API returns a list of question clarifications. These are used to officially clarify questions about a question and its resolution criteria.
+This API returns a list of question clarifications. These are used to officially clarify questions about a question and its resolution criteria. Clarifications are also embedded directly in the question JSON in the [questions](#questions) API.
 
 
 > Request:
