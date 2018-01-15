@@ -89,7 +89,14 @@ curl "https://yoursite.hfc-staging.com/api/v1/questions" \
           "type": null,
           "updated_at": "2015-08-04T00:21:35.933Z"
         }
-      ]
+      ],
+      "clarifications":[{
+        "id":4,
+        "question_id":5,
+        "content":"clarification-content-1",
+        "created_at":"2018-01-15T21:45:32.495Z",
+        "updated_at":"2018-01-15T21:45:32.495Z"
+      }]
     },
     {
       "id": 6,
@@ -178,6 +185,7 @@ updated_at | datetime | The date & time that this question was last updated
 active | boolean | Whether or not this question is currently active for forecasting
 resolved | boolean | Whether or not this question has been resolved
 use_ordinal_scoring | boolean | Whether or not this question uses ordinal scoring for calculating Brier scores
+clarifications | array | An array of clarifications issued for the question. Used to clarify things like resolution criteria for the question.
 
 ### Answer Attributes
 
