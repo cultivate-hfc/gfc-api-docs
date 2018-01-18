@@ -99,8 +99,8 @@ Parameter | Type | Description
 --------- | ------- | -----------
 id | integer | The id of the consensus history record
 answer_id | integer | The answer that this record pertains to
-question_id | integer | The question that this record pertains to
-discover_question_id | integer | The discover question that this record pertains to
+question_id | integer | The [question id](#question-id-vs-discover-question-id) that this record pertains to
+discover_question_id | integer | The [discover question id](#question-id-vs-discover-question-id) that this record pertains to
 prediction_set_id | integer | The prediction set that caused the consensus change
 consensus_at | datetime | The time at which this was the consensus for the answer
 strategy | string | The aggregation algorithm used to calculate the value

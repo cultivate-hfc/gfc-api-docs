@@ -167,8 +167,8 @@ include_challenge_ids | false | Passing "true" for this value will include an ar
 
 Parameter | Type | Description
 --------- | ------- | -----------
-id | integer | The id of the question
-discover_question_id | integer | The id of the discover question used to generate/publish this question, if collaborative question generation (Discover) is being used
+id | integer | The [id of the question](#question-id-vs-discover-question-id)
+discover_question_id | integer | The [id of the discover question](#question-id-vs-discover-question-id)  used to generate/publish this question, if collaborative question generation (Discover) is being used
 name | string | The question content
 type | string | The internal question type (e.g. prediction market, binary prediction market, opinion pool)
 site_id | integer | The id of the site that this question belongs to

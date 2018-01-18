@@ -109,7 +109,7 @@ Parameter | Type | Description
 id | integer | The id of the prediction set
 membership_id | integer | The id of the membership that submitted the prediction set
 question_id | integer | The id of the question that this prediction set belongs to
-discover_question_id | integer | The discover question id of the question that this prediction set belongs to
+discover_question_id | integer | The [discover question id](#question-id-vs-discover-question-id) of the question that this prediction set belongs to
 rationale | string | The text of the rationale (if any) that the user submitted with the forecast
 predictions.id | integer | The id of the prediction
 predictions.answer_id | integer | The id of the answer this prediction belongs to
