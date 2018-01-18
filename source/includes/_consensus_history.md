@@ -2,15 +2,15 @@
 
 ## Consensus History List
 
-Each time a user submits a forecast, the consensus forecasts for that question's answers are recalculated. Within Cultivate Forecasts, the consensus can be calculated using 5 different aggregation algorithms: mean, median, voting, logit, and l2e. This endpoint provides a historical record of each consensus forecast change.
+Each time a user submits a forecast, the consensus forecasts for that question's answers are recalculated. Within GFC, the consensus is calculated using 5 different aggregation algorithms: mean, median, voting, logit, and l2e. This endpoint provides a historical record of each consensus forecast change. There are 25 variants of those algorithms being calculated, so each time a forecast is submitted, 25 new consensus history records are created.
 
 When using this API, you should always utilize the `created_after` parameter to pull only those records that have been created since you last accessed the API. **Do not pull** every record/page of the history.
 
 Each record contains a question id, an answer id, the consensus forecast, the time at which this was the consensus forecast (in the `consensus_at` field), and the aggregation algorithm used to calculate the consensus. The records contain two value fields: `value` and `normalized_value`. The `value` field is the raw output from the aggregation algorithm, while the `normalized_value` is the `value` field normalized to ensure the answer options in a question sum to 100%.
 
-Prior to question/answer resolution, the most recent (as determined by `consensus_at`) record can be considered the current consensus for that answer.
+A record may also contain parameters indicating decay and weighting settings that were used to calculate the consensus. Decay settings generally work by subsetting the individual-level forecasts that are fed to the aggregation algorithm. Weighting applies different weights to different forecasters when calculating the consensus (e.g. more accurate forecasters may have their opinions weighted more heavily).
 
-During the pre-RCT phase of HFC, you should use `https://www.gjopen.com` as the domain for this API. Once the RCT begins, this forecast stream will be provided on the domain `https://control.hfc-staging.com`.
+Prior to question/answer resolution, the most recent (as determined by `consensus_at`) record can be considered the current consensus for that answer.
 
 > Request:
 
@@ -28,6 +28,7 @@ curl "https://control.cultivateforecasts.com/aggregation/api/v1/consensus_histor
       "id": 56,
       "answer_id": 8,
       "question_id": 24,
+      "discover_question_id": 7,
       "prediction_set_id": 3,
       "consensus_at": "2017-08-09T14:38:00.770Z",
       "strategy": "Aggregation::Strategies::WeightedVoting",
@@ -44,6 +45,7 @@ curl "https://control.cultivateforecasts.com/aggregation/api/v1/consensus_histor
       "id": 55,
       "answer_id": 8,
       "question_id": 24,
+      "discover_question_id": 7,
       "prediction_set_id": 3,
       "consensus_at": "2017-08-09T14:38:00.770Z",
       "strategy": "Aggregation::Strategies::WeightedMedian",
@@ -60,6 +62,7 @@ curl "https://control.cultivateforecasts.com/aggregation/api/v1/consensus_histor
       "id": 54,
       "answer_id": 8,
       "question_id": 24,
+      "discover_question_id": 7,
       "prediction_set_id": 3,
       "consensus_at": "2017-08-09T14:38:00.770Z",
       "strategy": "Aggregation::Strategies::WeightedMean",
@@ -78,13 +81,7 @@ curl "https://control.cultivateforecasts.com/aggregation/api/v1/consensus_histor
 
 ### HTTP Request
 
-Pre-RCT:
-
-`GET https://control.cultivateforecasts.com/aggregation/api/v1/consensus_histories`
-
-Once RCT begins:
-
-`GET https://www.gjopen.com/aggregation/api/v1/consensus_histories`
+`GET https://yoursite.gfc-staging.com/aggregation/api/v1/control/consensus_histories`
 
 ### Query Parameters
 
@@ -102,7 +99,8 @@ Parameter | Type | Description
 --------- | ------- | -----------
 id | integer | The id of the consensus history record
 answer_id | integer | The answer that this record pertains to
-question_id | integer | The answer that this record pertains to
+question_id | integer | The question that this record pertains to
+discover_question_id | integer | The discover question that this record pertains to
 prediction_set_id | integer | The prediction set that caused the consensus change
 consensus_at | datetime | The time at which this was the consensus for the answer
 strategy | string | The aggregation algorithm used to calculate the value

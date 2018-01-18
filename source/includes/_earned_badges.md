@@ -10,7 +10,7 @@ Only administrators can access this API.
 > Request:
 
 ```shell
-curl -X "POST" "https://yoursite.hfc-staging.com/api/v1/earned_badges" \
+curl -X "POST" "https://yoursite.gfc-staging.com/api/v1/earned_badges" \
   -H "Authorization: Bearer b95b4f848cd226e55b7a42f6a8e8669350730270f5a91d64b6c70328b0156d75" \
   -H "Content-Type: application/json" \
   -H "Accept: application/json" \
@@ -46,7 +46,7 @@ The response contains the newly created earned badge.
 
 ### HTTP Request
 
-`POST https://yoursite.hfc-staging.com/api/v1/earned_badges`
+`POST https://yoursite.gfc-staging.com/api/v1/earned_badges`
 
 
 ### Earned Badge Parameters
@@ -69,14 +69,14 @@ Only administrators can access this API.
 > Request:
 
 ```shell
-curl -X "DELETE" "https://yoursite.hfc-staging.com/api/v1/earned_badges/32" \
+curl -X "DELETE" "https://yoursite.gfc-staging.com/api/v1/earned_badges/32" \
   -H "Authorization: Bearer b95b4f848cd226e55b7a42f6a8e8669350730270f5a91d64b6c70328b0156d75" \
   -H "Accept: application/json"
 ```
 
 ### HTTP Request
 
-`DELETE https://yoursite.hfc-staging.com/api/v1/earned_badges/:id`
+`DELETE https://yoursite.gfc-staging.com/api/v1/earned_badges/:id`
 
 
 ### Earned Badge Parameters
@@ -92,7 +92,7 @@ This endpoint is only accessible to administrators.
 > Request:
 
 ```shell
-curl "https://yoursite.hfc-staging.com/api/v1/earned_badges" \
+curl "https://yoursite.gfc-staging.com/api/v1/earned_badges" \
   -H "Authorization: Bearer b95b4f848cd226e55b7a42f6a8e8669350730270f5a91d64b6c70328b0156d75"
 ```
 
@@ -123,7 +123,7 @@ curl "https://yoursite.hfc-staging.com/api/v1/earned_badges" \
 
 ### HTTP Request
 
-`GET https://yoursite.hfc-staging.com/api/v1/earned_badges`
+`GET https://yoursite.gfc-staging.com/api/v1/earned_badges`
 
 ### Query Parameters
 

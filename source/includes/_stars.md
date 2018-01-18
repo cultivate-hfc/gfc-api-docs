@@ -8,7 +8,7 @@ If the user issuing a request to this endpoint is not an administrator, then a m
 > Request:
 
 ```shell
-curl "https://yoursite.hfc-staging.com/api/v1/stars" \
+curl "https://yoursite.gfc-staging.com/api/v1/stars" \
   -H "Authorization: Bearer b95b4f848cd226e55b7a42f6a8e8669350730270f5a91d64b6c70328b0156d75"
 ```
 
@@ -47,7 +47,7 @@ curl "https://yoursite.hfc-staging.com/api/v1/stars" \
 
 ### HTTP Request
 
-`GET https://yoursite.hfc-staging.com/api/v1/stars`
+`GET https://yoursite.gfc-staging.com/api/v1/stars`
 
 ### Query Parameters
 

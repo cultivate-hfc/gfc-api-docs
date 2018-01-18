@@ -3,14 +3,14 @@
 
 A prediction set is the primary model for storing forecasts within Cultivate Forecasts. A prediction set will contain one prediction for each answer in the question.
 
-During the pre-RCT phase of HFC, you should use `https://www.gjopen.com` as the domain for this API. Once the RCT begins, this forecast stream will be provided on the domain `https://control.hfc-staging.com`.
+This endpoint provides a stream of individual-level forecasts from the HFC benchmark condition.
 
 ## Prediction Sets List
 
 > Request:
 
 ```shell
-curl "https://control.hfc-staging.com/api/v1/prediction_sets" \
+curl "https://control.gfc-staging.com/api/v1/prediction_sets" \
   -H "Authorization: Bearer b95b4f848cd226e55b7a42f6a8e8669350730270f5a91d64b6c70328b0156d75"
 ```
 
@@ -23,6 +23,7 @@ curl "https://control.hfc-staging.com/api/v1/prediction_sets" \
       "id": 50,
       "membership_id": 5,
       "question_id": 2,
+      "discover_question_id": 20,
       "created_at": "2015-08-04T00:21:40.730Z",
       "updated_at": "2015-08-04T00:21:40.730Z",
       "comment_id": 123,
@@ -84,13 +85,8 @@ curl "https://control.hfc-staging.com/api/v1/prediction_sets" \
 
 ### HTTP Request
 
-Pre-RCT:
 
-`GET https://www.gjopen.com/api/v1/prediction_sets`
-
-Once RCT begins:
-
-`GET https://control.hfc-staging.com/api/v1/prediction_sets`
+`GET https://yoursite.gfc-staging.com/api/v1/control/prediction_sets`
 
 ### Query Parameters
 
@@ -113,6 +109,7 @@ Parameter | Type | Description
 id | integer | The id of the prediction set
 membership_id | integer | The id of the membership that submitted the prediction set
 question_id | integer | The id of the question that this prediction set belongs to
+discover_question_id | integer | The discover question id of the question that this prediction set belongs to
 rationale | string | The text of the rationale (if any) that the user submitted with the forecast
 predictions.id | integer | The id of the prediction
 predictions.answer_id | integer | The id of the answer this prediction belongs to

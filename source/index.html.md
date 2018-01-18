@@ -20,35 +20,38 @@ search: true
 
 # Getting Started
 
-Each performer will be assigned a subdomain for use in HFC. Throughout the API documentation, you'll see URL's in the format of `https://yoursite.hfc-staging.com`. Once you have your subdomain, you should replace `yoursite` with your assigned subdomain. Contact Cultivate Labs at [techsupport@hybridforecasting.com](mailto:techsupport@hybridforecasting.com) to obtain your assigned subdomain.
+You can register for your GFC API account at `https://www.iarpagfchallenge.com/users/sign_up`. Once you have registered, you can generate & view API tokens by going to `https://discover.iarpagfchallenge.com` and clicking on the "View API Token Management" button.
 
-# Environments
+Upon signup, you will be assigned a domain for using the GFC API. Throughout the API documentation, you'll see URL's in the format of `https://yoursite.gfc-staging.com` You should replace `yoursite` with your assigned subdomain for all API calls. You can see your subdomain at `https://discover.iarpagfchallenge.com`.
 
-## Primary Environments
+## Environments
 
-Cultivate Labs will be hosting two primary environments: a staging environment and a production environment. The staging environment should be used during development and testing of your system and the production environment should be used during live forecasting.
+Cultivate Labs will be hosting two environments: a staging environment and a production environment. The staging environment should be used during development and testing of your system and the production environment should be used during live forecasting.
 
 Environment | Domain
 --------- | -----------
-Staging | https://yoursite.hfc-staging.com
-Production | https://yoursite.hybridforecasting.com
+Staging | https://yoursite.gfc-staging.com
+Production | https://yoursite.iarpagfchallenge.com
 
-## T&E-furnished Data Stream Environments
+## Forecast Streams
 
-In addition to these two primary environments, the T&E team is providing a stream of [individual-level forecasts](#prediction-sets) and [aggregate "crowd" forecasts](#aggregate-predictions) that are derived from two additional environments. During phase 1a, the data streams will be derived from an “HFC Challenge” hosted on the Good Judgment Open (GJO) platform. During phase 1b-4, the same streams will be derived from the benchmark condition The domain used for accessing both of these API’s will be dependent on which source is currently furnishing the data (and is different from the Performer-specific subdomain used for other API’s). During Phase 1a, https://www.gjopen.com should be used as the domain. During Phase 1b-4, https://control.hybridforecasting.com should be used.
+The GFC team is providing a stream of [individual-level forecasts](#prediction-sets) and [aggregate "crowd" forecasts](#aggregate-predictions) that are derived from the HFC benchmark condition. The [individual-level forecast stream](#prediction-sets) contains  forecasts submitted by human participants, while the [aggregate forecast stream](#aggregate-predictions) contains a consensus forecast computed by aggregating those individual-level forecasts using to 5 different aggregation formulae: mean, median, voting, logit, and l2e.
 
-Phase | Domain
---------- | -----------
-Phase 1a | https://www.gjopen.com
-Phase 1b-4 | https://control.hybridforecasting.com
+## Question ID vs. Discover Question ID
 
-# Authentication
+Throughout the GFC API, you will encounter two types of ID's for questions: a question ID and a discover question ID.
 
-Authentication in the Cultivate Forecasts API is done via OAuth. To obtain an oauth token, contact [techsupport@hybridforecasting.com](mailto:techsupport@hybridforecasting.com).
+Each GFC participant gets a unique question ID for each question. This is known as the question ID and is used as the question ID for submitting forecasts and can be found in the `id` field in the questions API.
+
+Each question within GFC is also assigned a discover question ID. The purpose of this ID is to link questions across participants and forecast streams. For example, if you are looking at records from the Consensus History API, they will have a different question ID than your copy of the question, since they are generated in the benchmark condition. You can tie those records to questions by looking at the Consensus History record's discover question id and comparing it to the discover question id in the questions API.
+
+## Authentication
+
+Authentication is done via OAuth. To obtain an oauth token, you can visit `https://discover.iarpagfchallenge.com` and click on the "View API Token Management" button (make sure you are logged in first).
 
 All requests to the various APIs should include your token as part of an authorization header. You can see an example curl request to the right.
 
 ```shell
-curl "https://yoursite.hfc-staging.com/api/v1/me" \
+curl "https://yoursite.gfc-staging.com/api/v1/me" \
   -H "Authorization: Bearer b95b4f848cd226e55b7a42f6a8e8669350730270f5a91d64b6c70328b0156d75"
 ```
