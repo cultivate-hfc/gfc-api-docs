@@ -27,6 +27,7 @@ curl "https://yoursite.gfc-staging.com/api/v1/questions" \
       "published_at": null,
       "starts_at": null,
       "resolved_at": null,
+      "voided_at": null,
       "predictions_count": 0,
       "comments_count": 0,
       "created_at": "2015-08-04T00:21:35.910Z",
@@ -110,6 +111,7 @@ curl "https://yoursite.gfc-staging.com/api/v1/questions" \
       "published_at": null,
       "starts_at": null,
       "resolved_at": null,
+      "voided_at": null,
       "predictions_count": 0,
       "comments_count": 0,
       "created_at": "2015-08-04T00:21:35.953Z",
@@ -178,6 +180,7 @@ description | string | The description & background information for the question
 published_at | datetime | The date & time that this question was published
 starts_at | datetime | The date & time that this question started accepting forecasts
 resolved_at | datetime | The date & time that this question was resolved
+voided_at | datetime | The date & time that this question was voided. Blank if the question has not been voided. A voided question will not be resolved or scored.
 predictions_count | integer | The number of predictions that have been made in this question
 comments_count | integer | The number of comments that have been made in this question  
 created_at | datetime | The date & time that this question was created
