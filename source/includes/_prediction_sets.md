@@ -86,7 +86,7 @@ curl "https://control.gfc-staging.com/api/v1/prediction_sets" \
 ### HTTP Request
 
 
-`GET https://yoursite.gfc-staging.com/api/v1/control/prediction_sets`
+`GET https://api.gfc-staging.com/api/v1/control/prediction_sets`
 
 ### Query Parameters
 

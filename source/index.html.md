@@ -22,7 +22,7 @@ search: true
 
 You can register for your GFC API account at `https://www.iarpagfchallenge.com/users/sign_up`. Once you have registered, you can generate & view API tokens by going to `https://discover.iarpagfchallenge.com` and clicking on the "View API Token Management" button.
 
-Upon signup, you will be assigned a domain for using the GFC API. Throughout the API documentation, you'll see URL's in the format of `https://yoursite.gfc-staging.com` You should replace `yoursite` with your assigned subdomain for all API calls. You can see your subdomain at `https://discover.iarpagfchallenge.com`.
+Upon signup, you will be assigned a domain for using the GFC API. Throughout the API documentation, you'll see URL's in the format of `https://api.gfc-staging.com` You should replace `yoursite` with your assigned subdomain for all API calls. You can see your subdomain at `https://discover.iarpagfchallenge.com`.
 
 ## Environments
 
@@ -30,8 +30,8 @@ Cultivate Labs will be hosting two environments: a staging environment and a pro
 
 Environment | Domain
 --------- | -----------
-Staging | https://yoursite.gfc-staging.com
-Production | https://yoursite.iarpagfchallenge.com
+Staging | https://api.gfc-staging.com
+Production | https://api.iarpagfchallenge.com
 
 ## Forecast Streams
 
@@ -52,6 +52,6 @@ Authentication is done via OAuth. To obtain an oauth token, you can visit `https
 All requests to the various APIs should include your token as part of an authorization header. You can see an example curl request to the right.
 
 ```shell
-curl "https://yoursite.gfc-staging.com/api/v1/me" \
+curl "https://api.gfc-staging.com/api/v1/me" \
   -H "Authorization: Bearer b95b4f848cd226e55b7a42f6a8e8669350730270f5a91d64b6c70328b0156d75"
 ```

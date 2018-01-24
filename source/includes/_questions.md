@@ -6,7 +6,7 @@
 > Request:
 
 ```shell
-curl "https://yoursite.gfc-staging.com/api/v1/questions" \
+curl "https://api.gfc-staging.com/api/v1/questions" \
   -H "Authorization: Bearer b95b4f848cd226e55b7a42f6a8e8669350730270f5a91d64b6c70328b0156d75"
 ```
 
@@ -146,7 +146,7 @@ curl "https://yoursite.gfc-staging.com/api/v1/questions" \
 
 ### HTTP Request
 
-`GET https://yoursite.gfc-staging.com/api/v1/questions`
+`GET https://api.gfc-staging.com/api/v1/questions`
 
 ### Query Parameters
 

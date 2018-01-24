@@ -81,7 +81,7 @@ curl "https://control.cultivateforecasts.com/aggregation/api/v1/consensus_histor
 
 ### HTTP Request
 
-`GET https://yoursite.gfc-staging.com/aggregation/api/v1/control/consensus_histories`
+`GET https://api.gfc-staging.com/aggregation/api/v1/control/consensus_histories`
 
 ### Query Parameters
 
