@@ -227,13 +227,11 @@
       <div class="content">
         <h1 id="getting-started">Getting Started</h1>
 
-<p>You can register for your GFC API account at <code class="prettyprint">https://www.iarpagfchallenge.com/users/sign_up</code>. Once you have registered, you can generate &amp; view API tokens by going to <code class="prettyprint">https://discover.iarpagfchallenge.com</code> and clicking on the &ldquo;View API Token Management&rdquo; button.</p>
-
-<p>Upon signup, you will be assigned a domain for using the GFC API. Throughout the API documentation, you&rsquo;ll see URL&rsquo;s in the format of <code class="prettyprint">https://yoursite.gfc-staging.com</code> You should replace <code class="prettyprint">yoursite</code> with your assigned subdomain for all API calls. You can see your subdomain at <code class="prettyprint">https://discover.iarpagfchallenge.com</code>.</p>
-
 <h2 id="environments">Environments</h2>
 
-<p>Cultivate Labs will be hosting two environments: a staging environment and a production environment. The staging environment should be used during development and testing of your system and the production environment should be used during live forecasting.</p>
+<p><a href="https://www.cultivatelabs.com/">Cultivate Labs</a> will be hosting two environments for the GFC: a staging environment and a production environment. The staging environment should be used during development and testing of your system and the production environment should be used during live forecasting.</p>
+
+<p>Note that you will need to register for accounts and generate/use separate oauth tokens for each environment.</p>
 
 <table><thead>
 <tr>
@@ -243,55 +241,117 @@
 </thead><tbody>
 <tr>
 <td>Staging</td>
-<td>https://yoursite.gfc-staging.com</td>
+<td>https://api.gfc-staging.com</td>
 </tr>
 <tr>
 <td>Production</td>
-<td>https://yoursite.iarpagfchallenge.com</td>
+<td>https://api.iarpagfchallenge.com</td>
+</tr>
+</tbody></table>
+
+<h2 id="registration">Registration</h2>
+
+<p>You can register for your GFC API account at:</p>
+
+<table><thead>
+<tr>
+<th>Environment</th>
+<th>URL</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Staging</td>
+<td><a href="https://www.gfc-staging.com/users/sign_up">https://www.gfc-staging.com/users/sign_up</a></td>
+</tr>
+<tr>
+<td>Production</td>
+<td><a href="https://www.iarpagfchallenge.com/users/sign_up">https://www.iarpagfchallenge.com/users/sign_up</a></td>
+</tr>
+</tbody></table>
+
+<p>Once you have registered, you can generate &amp; view API tokens by going to:</p>
+
+<table><thead>
+<tr>
+<th>Environment</th>
+<th>URL</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Staging</td>
+<td><a href="https://api.gfc-staging.com/api_management/oauth_tokens">https://api.gfc-staging.com/api_management/oauth_tokens</a></td>
+</tr>
+<tr>
+<td>Production</td>
+<td><a href="https://api.iarpagfchallenge.com/api_management/oauth_tokens">https://api.iarpagfchallenge.com/api_management/oauth_tokens</a></td>
 </tr>
 </tbody></table>
 
 <h2 id="forecast-streams">Forecast Streams</h2>
 
-<p>The GFC team is providing a stream of <a href="#prediction-sets">individual-level forecasts</a> and <a href="#aggregate-predictions">aggregate &ldquo;crowd&rdquo; forecasts</a> that are derived from the HFC benchmark condition. The <a href="#prediction-sets">individual-level forecast stream</a> contains  forecasts submitted by human participants, while the <a href="#aggregate-predictions">aggregate forecast stream</a> contains a consensus forecast computed by aggregating those individual-level forecasts using to 5 different aggregation formulae: mean, median, voting, logit, and l2e.</p>
+<p>The GFC team is providing a stream of <a href="#prediction-sets">individual-level forecasts</a> and <a href="#consensus-history">aggregate &ldquo;crowd&rdquo; forecasts</a> that are derived from the HFC benchmark condition. The <a href="#prediction-sets">individual-level forecast stream</a> contains forecasts submitted by human participants, while the <a href="#consensus-history">aggregate forecast stream</a> contains a consensus forecast computed by aggregating those individual-level forecasts using to 5 different aggregation formulae: mean, median, voting, logit, and l2e.</p>
 
 <h2 id="question-id-vs-discover-question-id">Question ID vs. Discover Question ID</h2>
 
 <p>Throughout the GFC API, you will encounter two types of ID&rsquo;s for questions: a question ID and a discover question ID.</p>
 
-<p>Each GFC participant gets a unique question ID for each question. This is known as the question ID and is used as the question ID for submitting forecasts and can be found in the <code class="prettyprint">id</code> field in the questions API.</p>
+<p>The discover question ID is consistent across HFC and GFC and can therefore be used to tie HFC-derived data to GFC questions. For example, if you are looking at records from the <a href="#consensus-history">Consensus History API</a>, you will see both <code class="prettyprint">question_id</code> and <code class="prettyprint">discover_question_id</code>. The <code class="prettyprint">question_id</code> is unique to the HFC benchmark condition where the Consensus History records are generated, but the <code class="prettyprint">discover_question_id</code> for the Consensus History record will match the <code class="prettyprint">discover_question_id</code> that you see in the <a href="#questions">Questions API</a>.</p>
 
-<p>Each question within GFC is also assigned a discover question ID. The purpose of this ID is to link questions across participants and forecast streams. For example, if you are looking at records from the Consensus History API, they will have a different question ID than your copy of the question, since they are generated in the benchmark condition. You can tie those records to questions by looking at the Consensus History record&rsquo;s discover question id and comparing it to the discover question id in the questions API.</p>
+<p>When submitting questions via the <a href="#external-prediction-sets">External Prediction Sets API</a>, you <strong>will not</strong> use the <code class="prettyprint">discover_question_id</code>. Instead, take the <code class="prettyprint">id</code> field found in the Questions API and include that as the <code class="prettyprint">question_id</code> in your External Prediction Set submission.</p>
+
+<p>This same concept holds for answer ID&rsquo;s and discover answer ID&rsquo;s.</p>
 
 <h2 id="authentication">Authentication</h2>
 
-<p>Authentication is done via OAuth. To obtain an oauth token, you can visit <code class="prettyprint">https://discover.iarpagfchallenge.com</code> and click on the &ldquo;View API Token Management&rdquo; button (make sure you are logged in first).</p>
+<p>Authentication is done via OAuth. To obtain an oauth token, you can visit <a href="https://api.iarpagfchallenge.com/api_management/oauth_tokens">https://api.iarpagfchallenge.com/api_management/oauth_tokens</a> (make sure you are logged in first).</p>
 
-<p>All requests to the various APIs should include your token as part of an authorization header. You can see an example curl request to the right.</p>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://yoursite.gfc-staging.com/api/v1/me"</span> <span class="se">\</span>
+<p>All requests to the various APIs should include your token as part of an authorization header. You can see an example curl request to the right (<strong>you will need to replace the oauth token with your token</strong>).</p>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.gfc-staging.com/api/v1/questions"</span> <span class="se">\</span>
   -H <span class="s2">"Authorization: Bearer b95b4f848cd226e55b7a42f6a8e8669350730270f5a91d64b6c70328b0156d75"</span>
 </code></pre>
           <h2 id="push-apis">Push APIs</h2>
 
-<p>Cultivate Forecasts provides push-based APIs for <a href="#questions">question</a> creation, update, resolution, and <a href="#clarifications">clarification</a>.</p>
+<p>The challenge platform provides push-based APIs for <a href="#questions">question</a> creation, update, resolution, and <a href="#clarifications">clarification</a>.</p>
 
-<p>For each of these APIs, Cultivate Forecasts will make an HTTP POST request to a URL that you specify. The body of the request will contain JSON matching that from the API documentation for each of those models (e.g. a question creation post-hook will contain the question JSON shown <a href="#questions">here</a>).</p>
+<p>For each of these APIs, the platform will make an HTTP POST request to a URL that you specify. The body of the request will contain JSON matching that from the API documentation for each of those models (e.g. a question creation post-hook will contain the question JSON shown <a href="#questions">here</a>).</p>
 
-<p>To set up a post-hook for any of these APIs, visit <code class="prettyprint">https://discover.iarpagfchallenge.com</code> and click on &ldquo;View API Management.&rdquo; From there, select the API Post Hooks tab.</p>
+<p>To set up a post-hook for any of these APIs, visit:</p>
+
+<table><thead>
+<tr>
+<th>Environment</th>
+<th>URL</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Staging</td>
+<td><a href="https://api.gfc-staging.com/api_management/api_post_hooks">https://api.gfc-staging.com/api_management/api_post_hooks</a></td>
+</tr>
+<tr>
+<td>Production</td>
+<td><a href="https://api.iarpagfchallenge.com/api_management/api_post_hooks">https://api.iarpagfchallenge.com/api_management/api_post_hooks</a></td>
+</tr>
+</tbody></table>
 
           <h1 id="consensus-history">Consensus History</h1>
 
 <h2 id="consensus-history-list">Consensus History List</h2>
 
-<p>Each time a user submits a forecast, the consensus forecasts for that question&rsquo;s answers are recalculated. Within GFC, the consensus is calculated using 5 different aggregation algorithms: mean, median, voting, logit, and l2e. This endpoint provides a historical record of each consensus forecast change. There are 25 variants of those algorithms being calculated, so each time a forecast is submitted, 25 new consensus history records are created.</p>
+<p>The Consensus History API provides a stream of aggregate forecasts derived from forecasts submitted in the HFC benchmark condition. Each time a user submits a forecast in the benchmark condition, the consensus forecasts for that question&rsquo;s answers are recalculated. This endpoint provides a historical record of each consensus forecast change.</p>
 
-<p>When using this API, you should always utilize the <code class="prettyprint">created_after</code> parameter to pull only those records that have been created since you last accessed the API. <strong>Do not pull</strong> every record/page of the history.</p>
+<p>Within HFC, the consensus is calculated using 5 different aggregation algorithms: mean, median, voting, logit, and l2e. There are 25 variants of those 5 algorithms being calculated, so each time a forecast is submitted, 25 new consensus history records are created.</p>
 
-<p>Each record contains a question id, an answer id, the consensus forecast, the time at which this was the consensus forecast (in the <code class="prettyprint">consensus_at</code> field), and the aggregation algorithm used to calculate the consensus. The records contain two value fields: <code class="prettyprint">value</code> and <code class="prettyprint">normalized_value</code>. The <code class="prettyprint">value</code> field is the raw output from the aggregation algorithm, while the <code class="prettyprint">normalized_value</code> is the <code class="prettyprint">value</code> field normalized to ensure the answer options in a question sum to 100%.</p>
-
-<p>A record may also contain parameters indicating decay and weighting settings that were used to calculate the consensus. Decay settings generally work by subsetting the individual-level forecasts that are fed to the aggregation algorithm. Weighting applies different weights to different forecasters when calculating the consensus (e.g. more accurate forecasters may have their opinions weighted more heavily).</p>
+<p>When using this API, you should always utilize the <code class="prettyprint">created_after</code> parameter to pull only those records that have been created since you last accessed the API. <strong>Do not attempt to pull</strong> every record/page of the history.</p>
 
 <p>Prior to question/answer resolution, the most recent (as determined by <code class="prettyprint">consensus_at</code>) record can be considered the current consensus for that answer.</p>
+
+<h3 id="value-vs-normalized-value">Value vs. Normalized Value</h3>
+
+<p>Each record contains two value fields: <code class="prettyprint">value</code> and <code class="prettyprint">normalized_value</code>. The <code class="prettyprint">value</code> field is the raw output from the aggregation algorithm, while the <code class="prettyprint">normalized_value</code> is the <code class="prettyprint">value</code> field normalized to ensure the answer options in a question sum to 100%.</p>
+
+<h3 id="decay-weighting">Decay &amp; Weighting</h3>
+
+<p>A record may also contain parameters indicating decay and weighting settings that were used to calculate the consensus. Decay settings generally work by subsetting the individual-level forecasts that are fed to the aggregation algorithm. Weighting applies different weights to different forecasters when calculating the consensus (e.g. more accurate forecasters may have their opinions weighted more heavily).</p>
 
 <blockquote>
 <p>Request:</p>
@@ -309,6 +369,7 @@
       </span><span class="s2">"answer_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
       </span><span class="s2">"question_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">24</span><span class="p">,</span><span class="w">
       </span><span class="s2">"discover_question_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"discover_answer_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">72</span><span class="p">,</span><span class="w">
       </span><span class="s2">"prediction_set_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
       </span><span class="s2">"consensus_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-08-09T14:38:00.770Z"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"strategy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Aggregation::Strategies::WeightedVoting"</span><span class="p">,</span><span class="w">
@@ -326,6 +387,7 @@
       </span><span class="s2">"answer_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
       </span><span class="s2">"question_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">24</span><span class="p">,</span><span class="w">
       </span><span class="s2">"discover_question_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"discover_answer_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">72</span><span class="p">,</span><span class="w">
       </span><span class="s2">"prediction_set_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
       </span><span class="s2">"consensus_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-08-09T14:38:00.770Z"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"strategy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Aggregation::Strategies::WeightedMedian"</span><span class="p">,</span><span class="w">
@@ -343,6 +405,7 @@
       </span><span class="s2">"answer_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
       </span><span class="s2">"question_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">24</span><span class="p">,</span><span class="w">
       </span><span class="s2">"discover_question_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"discover_answer_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">72</span><span class="p">,</span><span class="w">
       </span><span class="s2">"prediction_set_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
       </span><span class="s2">"consensus_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-08-09T14:38:00.770Z"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"strategy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Aggregation::Strategies::WeightedMean"</span><span class="p">,</span><span class="w">
@@ -360,7 +423,7 @@
 </span></code></pre>
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET https://yoursite.gfc-staging.com/aggregation/api/v1/control/consensus_histories</code></p>
+<p><code class="prettyprint">GET https://api.gfc-staging.com/aggregation/api/v1/control/consensus_histories</code></p>
 
 <h3 id="query-parameters">Query Parameters</h3>
 
@@ -428,6 +491,11 @@
 <td>The <a href="#question-id-vs-discover-question-id">discover question id</a> that this record pertains to</td>
 </tr>
 <tr>
+<td>discover_answer_id</td>
+<td>integer</td>
+<td>The <a href="#question-id-vs-discover-question-id">discover answer id</a> that this record pertains to</td>
+</tr>
+<tr>
 <td>prediction_set_id</td>
 <td>integer</td>
 <td>The prediction set that caused the consensus change</td>
@@ -480,16 +548,18 @@
 
 <p>This API is for submitting forecasts, which will then be scored when the question/answer resolves.</p>
 
-<p>Each submission is known as an <code class="prettyprint">ExternalPredictionSet</code> and each prediction set contains 1 or more predictions. If a question has 3 possible answers, then a prediction set for that question should contain 3 predictions. If a question is a binary question (ie. a Yes/No question), then the prediction set should have a single prediction (and the opposing value is automatically calculated). Other than binary questions, all predictions in a prediction set should sum to 1.0 (ie. in a 3-option question, answer a: 0.2, answer b: 0.3, answer c: 0.5).</p>
+<p>Each submission is known as an <code class="prettyprint">ExternalPredictionSet</code> and each prediction set contains 1 or more predictions. If a question has 3 possible answers, then a prediction set for that question should contain 3 predictions &ndash; one for each answer. If a question is a binary question (i.e. a Yes/No question), then the prediction set should have a single prediction (and the opposing value is automatically calculated). Other than binary questions, all predictions in a prediction set should sum to 1.0 (e.g. in a 3-option question, answer a: 0.2, answer b: 0.3, answer c: 0.5).</p>
 
-<p>Each prediction set should also contain information about the method used to generate it. Each method is tracked by the platform with a model known as an <code class="prettyprint">ExternalPredictor</code>. You must embed the name of your external predictor within the forecast submission, via the <code class="prettyprint">external_predictor_attributes.method_name</code> attribute.</p>
+<p>When submitting a prediction set, you will need to include <code class="prettyprint">question_id</code> and <code class="prettyprint">answer_id</code> values, as illustrated in the request body example to the right. These values can be found in the Questions API in the <code class="prettyprint">id</code> fields. These <strong>should not</strong> be <code class="prettyprint">discover_question_id</code>/<code class="prettyprint">discover_answer_id</code> values.</p>
+
+<p>Each prediction set should also contain information about the method used to generate it. Each method is tracked by the platform with a model known as an <code class="prettyprint">ExternalPredictor</code>. You must embed the name of your forecasting method within the forecast submission, via the <code class="prettyprint">external_predictor_attributes.method_name</code> attribute.</p>
 
 <p>Submissions should also contain a <code class="prettyprint">metadata</code> field. This string should contain JSON-formatted information about how the forecast was generated and any associated parameters that were used to generate it.</p>
 
 <blockquote>
 <p>Request:</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl -X <span class="s2">"POST"</span> <span class="s2">"https://yoursite.gfc-staging.com/api/v1/external_prediction_sets"</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl -X <span class="s2">"POST"</span> <span class="s2">"https://api.gfc-staging.com/api/v1/external_prediction_sets"</span> <span class="se">\</span>
   -H <span class="s2">"Authorization: Bearer b95b4f848cd226e55b7a42f6a8e8669350730270f5a91d64b6c70328b0156d75"</span> <span class="se">\</span>
   -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   -H <span class="s2">"Accept: application/json"</span> <span class="se">\</span>
@@ -561,7 +631,7 @@
 </span></code></pre>
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">POST https://yoursite.gfc-staging.com/api/v1/external_prediction_sets</code></p>
+<p><code class="prettyprint">POST https://api.gfc-staging.com/api/v1/external_prediction_sets</code></p>
 
 <h3 id="external-prediction-set-parameters">External Prediction Set Parameters</h3>
 
@@ -719,9 +789,7 @@
 
           <h1 id="prediction-sets">Prediction Sets</h1>
 
-<p>A prediction set is the primary model for storing forecasts within Cultivate Forecasts. A prediction set will contain one prediction for each answer in the question.</p>
-
-<p>This endpoint provides a stream of individual-level forecasts from the HFC benchmark condition.</p>
+<p>The Prediction Sets API provides a stream of individual-level forecasts submitted by users in the HFC benchmark condition. Each prediction set will contain one prediction for each answer in the question.</p>
 
 <h2 id="prediction-sets-list">Prediction Sets List</h2>
 
@@ -801,7 +869,7 @@
 </span></code></pre>
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET https://yoursite.gfc-staging.com/api/v1/control/prediction_sets</code></p>
+<p><code class="prettyprint">GET https://api.gfc-staging.com/api/v1/control/prediction_sets</code></p>
 
 <h3 id="query-parameters">Query Parameters</h3>
 
@@ -818,19 +886,9 @@
 <td>Pagination page number</td>
 </tr>
 <tr>
-<td>membership_id</td>
-<td>none</td>
-<td>Returns predictions for a single membership</td>
-</tr>
-<tr>
 <td>question_id</td>
 <td>none</td>
 <td>Returns predictions for a single question</td>
-</tr>
-<tr>
-<td>filter</td>
-<td>none</td>
-<td>Filters the question list. Possible values: <code class="prettyprint">comments_with_links</code>, <code class="prettyprint">comments_following</code></td>
 </tr>
 <tr>
 <td>created_before</td>
@@ -937,7 +995,7 @@
 <blockquote>
 <p>Request:</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://yoursite.gfc-staging.com/api/v1/questions"</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.gfc-staging.com/api/v1/questions"</span> <span class="se">\</span>
   -H <span class="s2">"Authorization: Bearer b95b4f848cd226e55b7a42f6a8e8669350730270f5a91d64b6c70328b0156d75"</span>
 </code></pre>
 <blockquote>
@@ -1075,7 +1133,7 @@
 </span></code></pre>
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET https://yoursite.gfc-staging.com/api/v1/questions</code></p>
+<p><code class="prettyprint">GET https://api.gfc-staging.com/api/v1/questions</code></p>
 
 <h3 id="query-parameters">Query Parameters</h3>
 
@@ -1090,21 +1148,6 @@
 <td>page</td>
 <td>0</td>
 <td>Pagination page number</td>
-</tr>
-<tr>
-<td>tags</td>
-<td>none</td>
-<td>A comma separated list of tags to filter by (e.g. &ldquo;sports,politics,tech&rdquo;)</td>
-</tr>
-<tr>
-<td>challenges</td>
-<td>none</td>
-<td>A comma separated list of challenge ids to filter by (e.g. &ldquo;1,5,8&rdquo;). Will return only questions in those challenges. Operates as a logical AND (ie. if you pass &ldquo;1,5&rdquo;, it will return only questions that are in both challenges)</td>
-</tr>
-<tr>
-<td>filter</td>
-<td>none</td>
-<td>A filter to apply to the question list. Possible values: <code class="prettyprint">starred</code>, <code class="prettyprint">featured</code>. By default, no filter is applied.</td>
 </tr>
 <tr>
 <td>status</td>
@@ -1135,16 +1178,6 @@
 <td>updated_after</td>
 <td>none</td>
 <td>Returns only questions updated after the passed date. Date should be in iso8601 format (e.g. 2015-08-23T15:43:11-05:00)</td>
-</tr>
-<tr>
-<td>include_tag_ids</td>
-<td>false</td>
-<td>Passing &ldquo;true&rdquo; for this value will include an array of tag ids for the question.</td>
-</tr>
-<tr>
-<td>include_challenge_ids</td>
-<td>false</td>
-<td>Passing &ldquo;true&rdquo; for this value will include an array of challenge ids for the question.</td>
 </tr>
 </tbody></table>
 
