@@ -5,9 +5,11 @@
 
 This API is for submitting forecasts, which will then be scored when the question/answer resolves.
 
-Each submission is known as an `ExternalPredictionSet` and each prediction set contains 1 or more predictions. If a question has 3 possible answers, then a prediction set for that question should contain 3 predictions. If a question is a binary question (ie. a Yes/No question), then the prediction set should have a single prediction (and the opposing value is automatically calculated). Other than binary questions, all predictions in a prediction set should sum to 1.0 (ie. in a 3-option question, answer a: 0.2, answer b: 0.3, answer c: 0.5).
+Each submission is known as an `ExternalPredictionSet` and each prediction set contains 1 or more predictions. If a question has 3 possible answers, then a prediction set for that question should contain 3 predictions -- one for each answer. If a question is a binary question (i.e. a Yes/No question), then the prediction set should have a single prediction (and the opposing value is automatically calculated). Other than binary questions, all predictions in a prediction set should sum to 1.0 (e.g. in a 3-option question, answer a: 0.2, answer b: 0.3, answer c: 0.5).
 
-Each prediction set should also contain information about the method used to generate it. Each method is tracked by the platform with a model known as an `ExternalPredictor`. You must embed the name of your external predictor within the forecast submission, via the `external_predictor_attributes.method_name` attribute.
+When submitting a prediction set, you will need to include `question_id` and `answer_id` values, as illustrated in the request body example to the right. These values can be found in the Questions API in the `id` fields. These **should not** be `discover_question_id`/`discover_answer_id` values.
+
+Each prediction set should also contain information about the method used to generate it. Each method is tracked by the platform with a model known as an `ExternalPredictor`. You must embed the name of your forecasting method within the forecast submission, via the `external_predictor_attributes.method_name` attribute.
 
 Submissions should also contain a `metadata` field. This string should contain JSON-formatted information about how the forecast was generated and any associated parameters that were used to generate it.
 

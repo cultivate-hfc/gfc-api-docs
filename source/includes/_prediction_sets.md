@@ -1,9 +1,7 @@
 
 # Prediction Sets
 
-A prediction set is the primary model for storing forecasts within Cultivate Forecasts. A prediction set will contain one prediction for each answer in the question.
-
-This endpoint provides a stream of individual-level forecasts from the HFC benchmark condition.
+The Prediction Sets API provides a stream of individual-level forecasts submitted by users in the HFC benchmark condition. Each prediction set will contain one prediction for each answer in the question.
 
 ## Prediction Sets List
 
@@ -93,9 +91,7 @@ curl "https://control.gfc-staging.com/api/v1/prediction_sets" \
 Parameter | Default | Description
 --------- | ------- | -----------
 page | 0 | Pagination page number
-membership_id | none | Returns predictions for a single membership
 question_id | none | Returns predictions for a single question
-filter | none | Filters the question list. Possible values: `comments_with_links`, `comments_following`
 created_before | none | Returns only prediction sets created before the passed date. Date should be in iso8601 format (e.g. 2015-08-23T15:43:11-05:00)
 created_after | none | Returns only prediction sets created after the passed date. Date should be in iso8601 format (e.g. 2015-08-23T15:43:11-05:00)
 updated_before | none | Returns only prediction sets updated before the passed date. Date should be in iso8601 format (e.g. 2015-08-23T15:43:11-05:00)

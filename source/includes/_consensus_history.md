@@ -2,15 +2,22 @@
 
 ## Consensus History List
 
-Each time a user submits a forecast, the consensus forecasts for that question's answers are recalculated. Within GFC, the consensus is calculated using 5 different aggregation algorithms: mean, median, voting, logit, and l2e. This endpoint provides a historical record of each consensus forecast change. There are 25 variants of those algorithms being calculated, so each time a forecast is submitted, 25 new consensus history records are created.
+The Consensus History API provides a stream of aggregate forecasts derived from forecasts submitted in the HFC benchmark condition. Each time a user submits a forecast in the benchmark condition, the consensus forecasts for that question's answers are recalculated. This endpoint provides a historical record of each consensus forecast change.
 
-When using this API, you should always utilize the `created_after` parameter to pull only those records that have been created since you last accessed the API. **Do not pull** every record/page of the history.
+Within HFC, the consensus is calculated using 5 different aggregation algorithms: mean, median, voting, logit, and l2e. There are 25 variants of those 5 algorithms being calculated, so each time a forecast is submitted, 25 new consensus history records are created.
 
-Each record contains a question id, an answer id, the consensus forecast, the time at which this was the consensus forecast (in the `consensus_at` field), and the aggregation algorithm used to calculate the consensus. The records contain two value fields: `value` and `normalized_value`. The `value` field is the raw output from the aggregation algorithm, while the `normalized_value` is the `value` field normalized to ensure the answer options in a question sum to 100%.
+When using this API, you should always utilize the `created_after` parameter to pull only those records that have been created since you last accessed the API. **Do not attempt to pull** every record/page of the history.
+
+Prior to question/answer resolution, the most recent (as determined by `consensus_at`) record can be considered the current consensus for that answer.
+
+### Value vs. Normalized Value
+
+Each record contains two value fields: `value` and `normalized_value`. The `value` field is the raw output from the aggregation algorithm, while the `normalized_value` is the `value` field normalized to ensure the answer options in a question sum to 100%.
+
+### Decay & Weighting
 
 A record may also contain parameters indicating decay and weighting settings that were used to calculate the consensus. Decay settings generally work by subsetting the individual-level forecasts that are fed to the aggregation algorithm. Weighting applies different weights to different forecasters when calculating the consensus (e.g. more accurate forecasters may have their opinions weighted more heavily).
 
-Prior to question/answer resolution, the most recent (as determined by `consensus_at`) record can be considered the current consensus for that answer.
 
 > Request:
 
@@ -29,6 +36,7 @@ curl "https://control.cultivateforecasts.com/aggregation/api/v1/consensus_histor
       "answer_id": 8,
       "question_id": 24,
       "discover_question_id": 7,
+      "discover_answer_id": 72,
       "prediction_set_id": 3,
       "consensus_at": "2017-08-09T14:38:00.770Z",
       "strategy": "Aggregation::Strategies::WeightedVoting",
@@ -46,6 +54,7 @@ curl "https://control.cultivateforecasts.com/aggregation/api/v1/consensus_histor
       "answer_id": 8,
       "question_id": 24,
       "discover_question_id": 7,
+      "discover_answer_id": 72,
       "prediction_set_id": 3,
       "consensus_at": "2017-08-09T14:38:00.770Z",
       "strategy": "Aggregation::Strategies::WeightedMedian",
@@ -63,6 +72,7 @@ curl "https://control.cultivateforecasts.com/aggregation/api/v1/consensus_histor
       "answer_id": 8,
       "question_id": 24,
       "discover_question_id": 7,
+      "discover_answer_id": 72,
       "prediction_set_id": 3,
       "consensus_at": "2017-08-09T14:38:00.770Z",
       "strategy": "Aggregation::Strategies::WeightedMean",
@@ -101,6 +111,7 @@ id | integer | The id of the consensus history record
 answer_id | integer | The answer that this record pertains to
 question_id | integer | The [question id](#question-id-vs-discover-question-id) that this record pertains to
 discover_question_id | integer | The [discover question id](#question-id-vs-discover-question-id) that this record pertains to
+discover_answer_id | integer | The [discover answer id](#question-id-vs-discover-question-id) that this record pertains to
 prediction_set_id | integer | The prediction set that caused the consensus change
 consensus_at | datetime | The time at which this was the consensus for the answer
 strategy | string | The aggregation algorithm used to calculate the value
