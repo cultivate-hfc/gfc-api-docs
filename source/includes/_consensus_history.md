@@ -28,6 +28,8 @@ curl "https://control.cultivateforecasts.com/aggregation/api/v1/consensus_histor
       "id": 56,
       "answer_id": 8,
       "question_id": 24,
+      "discover_question_id": 7,
+      "discover_answer_id": 72,
       "prediction_set_id": 3,
       "consensus_at": "2017-08-09T14:38:00.770Z",
       "strategy": "Aggregation::Strategies::WeightedVoting",
@@ -44,6 +46,8 @@ curl "https://control.cultivateforecasts.com/aggregation/api/v1/consensus_histor
       "id": 55,
       "answer_id": 8,
       "question_id": 24,
+      "discover_question_id": 7,
+      "discover_answer_id": 72,
       "prediction_set_id": 3,
       "consensus_at": "2017-08-09T14:38:00.770Z",
       "strategy": "Aggregation::Strategies::WeightedMedian",
@@ -60,6 +64,8 @@ curl "https://control.cultivateforecasts.com/aggregation/api/v1/consensus_histor
       "id": 54,
       "answer_id": 8,
       "question_id": 24,
+      "discover_question_id": 7,
+      "discover_answer_id": 72,
       "prediction_set_id": 3,
       "consensus_at": "2017-08-09T14:38:00.770Z",
       "strategy": "Aggregation::Strategies::WeightedMean",
@@ -103,6 +109,8 @@ Parameter | Type | Description
 id | integer | The id of the consensus history record
 answer_id | integer | The answer that this record pertains to
 question_id | integer | The answer that this record pertains to
+discover_question_id | integer | The discover question id that this record pertains to
+discover_answer_id | integer | The discover answer id that this record pertains to
 prediction_set_id | integer | The prediction set that caused the consensus change
 consensus_at | datetime | The time at which this was the consensus for the answer
 strategy | string | The aggregation algorithm used to calculate the value
