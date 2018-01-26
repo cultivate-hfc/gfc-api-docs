@@ -356,7 +356,7 @@
 <blockquote>
 <p>Request:</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://control.cultivateforecasts.com/aggregation/api/v1/consensus_histories"</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.gfc-staging.com/aggregation/api/v1/control/consensus_histories"</span> <span class="se">\</span>
   -H <span class="s2">"Authorization: Bearer b95b4f848cd226e55b7a42f6a8e8669350730270f5a91d64b6c70328b0156d75"</span>
 </code></pre>
 <blockquote>
@@ -365,59 +365,53 @@
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"consensus_histories"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">56</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"answer_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"question_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">24</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"discover_question_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"discover_answer_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">72</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"prediction_set_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"consensus_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-08-09T14:38:00.770Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">209</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"answer_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">120</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"discover_answer_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">66</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"question_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"discover_question_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">31</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"prediction_set_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">265</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"consensus_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-26T01:34:39.261Z"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"strategy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Aggregation::Strategies::WeightedVoting"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"decay_method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Aggregation::Decay::PercentRecent"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"decay_method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Aggregation::Decay::NRecent"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"decay_args"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"percent"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.32</span><span class="w">
+        </span><span class="s2">"number"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
       </span><span class="p">},</span><span class="w">
-      </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-08-11T14:38:01.370Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-08-11T14:38:01.370Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.3333</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"normalized_value"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.1111037</span><span class="w">
+      </span><span class="s2">"method_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"21-WeightedVoting-NRecent"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"weighting_settings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"count_of_closed_questions_answered_requirement"</span><span class="p">:</span><span class="w"> </span><span class="mi">35</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"percentage_of_closed_questions_answered_requirement"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.5</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"minimum_closed_questions_to_enable_accuracy_weighting"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-26T01:34:44.100Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-26T01:34:44.100Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"normalized_value"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">55</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"answer_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"question_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">24</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"discover_question_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"discover_answer_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">72</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"prediction_set_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"consensus_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-08-09T14:38:00.770Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"strategy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Aggregation::Strategies::WeightedMedian"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"decay_method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Aggregation::Decay::PercentRecent"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">208</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"answer_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">120</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"discover_answer_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">66</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"question_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"discover_question_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">31</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"prediction_set_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">265</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"consensus_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-26T01:34:39.261Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"strategy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Aggregation::Strategies::L2e"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"decay_method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Aggregation::Decay::NRecent"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"decay_args"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"percent"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.684</span><span class="w">
+        </span><span class="s2">"number"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
       </span><span class="p">},</span><span class="w">
-      </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-08-11T14:38:01.367Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-08-11T14:38:01.367Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.3333</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"normalized_value"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.1111037</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">54</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"answer_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"question_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">24</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"discover_question_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"discover_answer_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">72</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"prediction_set_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"consensus_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-08-09T14:38:00.770Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"strategy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Aggregation::Strategies::WeightedMean"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"decay_method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Aggregation::Decay::PercentRecent"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"decay_args"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"percent"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.684</span><span class="w">
+      </span><span class="s2">"method_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20-L2E"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"weighting_settings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"count_of_closed_questions_answered_requirement"</span><span class="p">:</span><span class="w"> </span><span class="mi">35</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"percentage_of_closed_questions_answered_requirement"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.5</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"minimum_closed_questions_to_enable_accuracy_weighting"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
       </span><span class="p">},</span><span class="w">
-      </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-08-11T14:38:01.364Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-08-11T14:38:01.364Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.3333</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"normalized_value"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.1111037</span><span class="w">
-    </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-26T01:34:44.044Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-26T01:34:44.044Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.35</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"normalized_value"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.35</span><span class="w">
+    </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -791,12 +785,14 @@
 
 <p>The Prediction Sets API provides a stream of individual-level forecasts submitted by users in the HFC benchmark condition. Each prediction set will contain one prediction for each answer in the question.</p>
 
+<p>If you want to connect all forecasts made by a given forecaster, you can do so using the <code class="prettyprint">membership_guid</code>. This field is a masked ID that uniquely identifies a given forecaster. For example, if John Doe has a <code class="prettyprint">membership_guid=cc4c30df5539f534690f0a36209738ce78a04180</code>, then all of John Doe&rsquo;s forecasts will contain that same value.</p>
+
 <h2 id="prediction-sets-list">Prediction Sets List</h2>
 
 <blockquote>
 <p>Request:</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://control.gfc-staging.com/api/v1/prediction_sets"</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.gfc-staging.com/api/v1/control/prediction_sets"</span> <span class="se">\</span>
   -H <span class="s2">"Authorization: Bearer b95b4f848cd226e55b7a42f6a8e8669350730270f5a91d64b6c70328b0156d75"</span>
 </code></pre>
 <blockquote>
@@ -805,62 +801,98 @@
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"prediction_sets"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"membership_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"question_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"discover_question_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-04T00:21:40.730Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-04T00:21:40.730Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"comment_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"rationale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7 -  Well, we have to end apartheid for one. And slow down the nuclear arms race, stop terrorism and world hunger. We have to provide food and shelter for the homeless, and oppose racial discrimination and promote civil rights, while also promoting equal rights for women."</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">264</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Forecast::OpinionPoolPredictionSet"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"question_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-26T01:34:25.519Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-26T01:34:25.519Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"membership_guid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cc4c30df5539f534690f0a36209738ce78a04180"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"question_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Will Kim Jong Un, Supreme Leader of North Korea, receive a haircut on 27 January 2018?"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"discover_question_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"rationale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"no way"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"comment_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
       </span><span class="s2">"predictions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">64</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"answer_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"membership_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"paid"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"forecasted_probability"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.3333"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"starting_probability"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.3333"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"final_probability"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.3333"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"filled_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-04T00:21:40.733Z"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-04T00:21:40.733Z"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">586</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Forecast::Prediction"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"answer_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"discover_answer_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">65</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"membership_guid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cc4c30df5539f534690f0a36209738ce78a04180"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"filled_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-26T01:34:25.530Z"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"refunded_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-26T01:34:25.530Z"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-26T01:34:25.530Z"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"confidence_level"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"made_after_correctness_known"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+          </span><span class="s2">"made_after_correctness_known"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"forecasted_probability"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.05</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"starting_probability"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.5</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"final_probability"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.05</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"answer_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Yes"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">263</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Forecast::OpinionPoolPredictionSet"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"question_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-26T01:33:56.946Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-26T01:33:56.946Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"membership_guid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6fb38cdbc0340cc7dba954afaefc70b0869f91bb"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"question_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"How many total civilian deaths for January 2018 will the Syrian Network for Human Rights (SNHR) report?"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"discover_question_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">29</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"rationale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sounds right"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"comment_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"predictions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">583</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Forecast::Prediction"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"answer_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">35</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"discover_answer_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">62</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"membership_guid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6fb38cdbc0340cc7dba954afaefc70b0869f91bb"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"filled_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-26T01:33:56.957Z"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"refunded_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-26T01:33:56.957Z"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-26T01:33:56.957Z"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"confidence_level"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"made_after_correctness_known"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"forecasted_probability"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.25</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"starting_probability"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.3333</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"final_probability"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.25</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"answer_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Less than 10"</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">65</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"answer_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"membership_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"paid"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"forecasted_probability"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.3333"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"starting_probability"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.3333"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"final_probability"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.3333"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"filled_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-04T00:21:40.741Z"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-04T00:21:40.741Z"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">584</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Forecast::Prediction"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"answer_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">34</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"discover_answer_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">63</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"membership_guid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6fb38cdbc0340cc7dba954afaefc70b0869f91bb"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"filled_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-26T01:33:56.962Z"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"refunded_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-26T01:33:56.962Z"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-26T01:33:56.962Z"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"confidence_level"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"made_after_correctness_known"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+          </span><span class="s2">"made_after_correctness_known"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"forecasted_probability"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.45</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"starting_probability"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.3333</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"final_probability"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.45</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"answer_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Between 10 and 20, inclusive"</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">66</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"answer_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"membership_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"paid"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"forecasted_probability"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.3333"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"starting_probability"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.3333"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"final_probability"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.3333"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"filled_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-04T00:21:40.754Z"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-04T00:21:40.754Z"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">585</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Forecast::Prediction"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"answer_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">33</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"discover_answer_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">64</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"membership_guid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6fb38cdbc0340cc7dba954afaefc70b0869f91bb"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"filled_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-26T01:33:56.967Z"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"refunded_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-26T01:33:56.967Z"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-26T01:33:56.967Z"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"confidence_level"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"made_after_correctness_known"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+          </span><span class="s2">"made_after_correctness_known"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"forecasted_probability"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.3</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"starting_probability"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.3333</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"final_probability"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.3</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"answer_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"More than 20"</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">]</span><span class="w">
     </span><span class="p">}</span><span class="w">
@@ -927,9 +959,9 @@
 <td>The id of the prediction set</td>
 </tr>
 <tr>
-<td>membership_id</td>
-<td>integer</td>
-<td>The id of the membership that submitted the prediction set</td>
+<td>membership_guid</td>
+<td>string</td>
+<td>A masked ID that uniquely identifies the user who made the forecast</td>
 </tr>
 <tr>
 <td>question_id</td>
@@ -955,11 +987,6 @@
 <td>predictions.answer_id</td>
 <td>integer</td>
 <td>The id of the answer this prediction belongs to</td>
-</tr>
-<tr>
-<td>predictions.membership_id</td>
-<td>integer</td>
-<td>The id of the membership that submitted the prediction</td>
 </tr>
 <tr>
 <td>predictions.filled_at</td>
