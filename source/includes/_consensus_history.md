@@ -22,7 +22,7 @@ A record may also contain parameters indicating decay and weighting settings tha
 > Request:
 
 ```shell
-curl "https://control.cultivateforecasts.com/aggregation/api/v1/consensus_histories" \
+curl "https://api.gfc-staging.com/aggregation/api/v1/control/consensus_histories" \
   -H "Authorization: Bearer b95b4f848cd226e55b7a42f6a8e8669350730270f5a91d64b6c70328b0156d75"
 ```
 
@@ -32,59 +32,53 @@ curl "https://control.cultivateforecasts.com/aggregation/api/v1/consensus_histor
 {
   "consensus_histories": [
     {
-      "id": 56,
-      "answer_id": 8,
-      "question_id": 24,
-      "discover_question_id": 7,
-      "discover_answer_id": 72,
-      "prediction_set_id": 3,
-      "consensus_at": "2017-08-09T14:38:00.770Z",
+      "id": 209,
+      "answer_id": 120,
+      "discover_answer_id": 66,
+      "question_id": 50,
+      "discover_question_id": 31,
+      "prediction_set_id": 265,
+      "consensus_at": "2018-01-26T01:34:39.261Z",
       "strategy": "Aggregation::Strategies::WeightedVoting",
-      "decay_method": "Aggregation::Decay::PercentRecent",
+      "decay_method": "Aggregation::Decay::NRecent",
       "decay_args": {
-        "percent": 0.32
+        "number": 10
       },
-      "created_at": "2017-08-11T14:38:01.370Z",
-      "updated_at": "2017-08-11T14:38:01.370Z",
-      "value": 0.3333,
-      "normalized_value": 0.1111037
+      "method_name": "21-WeightedVoting-NRecent",
+      "weighting_settings": {
+        "count_of_closed_questions_answered_requirement": 35,
+        "percentage_of_closed_questions_answered_requirement": 0.5,
+        "minimum_closed_questions_to_enable_accuracy_weighting": 10
+      },
+      "created_at": "2018-01-26T01:34:44.100Z",
+      "updated_at": "2018-01-26T01:34:44.100Z",
+      "value": 0.0,
+      "normalized_value": 0.0
     },
     {
-      "id": 55,
-      "answer_id": 8,
-      "question_id": 24,
-      "discover_question_id": 7,
-      "discover_answer_id": 72,
-      "prediction_set_id": 3,
-      "consensus_at": "2017-08-09T14:38:00.770Z",
-      "strategy": "Aggregation::Strategies::WeightedMedian",
-      "decay_method": "Aggregation::Decay::PercentRecent",
+      "id": 208,
+      "answer_id": 120,
+      "discover_answer_id": 66,
+      "question_id": 50,
+      "discover_question_id": 31,
+      "prediction_set_id": 265,
+      "consensus_at": "2018-01-26T01:34:39.261Z",
+      "strategy": "Aggregation::Strategies::L2e",
+      "decay_method": "Aggregation::Decay::NRecent",
       "decay_args": {
-        "percent": 0.684
+        "number": 10
       },
-      "created_at": "2017-08-11T14:38:01.367Z",
-      "updated_at": "2017-08-11T14:38:01.367Z",
-      "value": 0.3333,
-      "normalized_value": 0.1111037
-    },
-    {
-      "id": 54,
-      "answer_id": 8,
-      "question_id": 24,
-      "discover_question_id": 7,
-      "discover_answer_id": 72,
-      "prediction_set_id": 3,
-      "consensus_at": "2017-08-09T14:38:00.770Z",
-      "strategy": "Aggregation::Strategies::WeightedMean",
-      "decay_method": "Aggregation::Decay::PercentRecent",
-      "decay_args": {
-        "percent": 0.684
+      "method_name": "20-L2E",
+      "weighting_settings": {
+        "count_of_closed_questions_answered_requirement": 35,
+        "percentage_of_closed_questions_answered_requirement": 0.5,
+        "minimum_closed_questions_to_enable_accuracy_weighting": 10
       },
-      "created_at": "2017-08-11T14:38:01.364Z",
-      "updated_at": "2017-08-11T14:38:01.364Z",
-      "value": 0.3333,
-      "normalized_value": 0.1111037
-    },
+      "created_at": "2018-01-26T01:34:44.044Z",
+      "updated_at": "2018-01-26T01:34:44.044Z",
+      "value": 0.35,
+      "normalized_value": 0.35
+    }
   ]
 }
 ```
