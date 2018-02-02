@@ -37,11 +37,8 @@ curl "https://api.gfc-staging.com/api/v1/control/prediction_sets" \
           "answer_id": 20,
           "discover_answer_id": 65,
           "membership_guid": "cc4c30df5539f534690f0a36209738ce78a04180",
-          "filled_at": "2018-01-26T01:34:25.530Z",
-          "refunded_at": null,
           "created_at": "2018-01-26T01:34:25.530Z",
           "updated_at": "2018-01-26T01:34:25.530Z",
-          "confidence_level": null,
           "made_after_correctness_known": false,
           "forecasted_probability": 0.05,
           "starting_probability": 0.5,
@@ -68,11 +65,8 @@ curl "https://api.gfc-staging.com/api/v1/control/prediction_sets" \
           "answer_id": 35,
           "discover_answer_id": 62,
           "membership_guid": "6fb38cdbc0340cc7dba954afaefc70b0869f91bb",
-          "filled_at": "2018-01-26T01:33:56.957Z",
-          "refunded_at": null,
           "created_at": "2018-01-26T01:33:56.957Z",
           "updated_at": "2018-01-26T01:33:56.957Z",
-          "confidence_level": null,
           "made_after_correctness_known": false,
           "forecasted_probability": 0.25,
           "starting_probability": 0.3333,
@@ -85,11 +79,8 @@ curl "https://api.gfc-staging.com/api/v1/control/prediction_sets" \
           "answer_id": 34,
           "discover_answer_id": 63,
           "membership_guid": "6fb38cdbc0340cc7dba954afaefc70b0869f91bb",
-          "filled_at": "2018-01-26T01:33:56.962Z",
-          "refunded_at": null,
           "created_at": "2018-01-26T01:33:56.962Z",
           "updated_at": "2018-01-26T01:33:56.962Z",
-          "confidence_level": null,
           "made_after_correctness_known": false,
           "forecasted_probability": 0.45,
           "starting_probability": 0.3333,
@@ -102,11 +93,8 @@ curl "https://api.gfc-staging.com/api/v1/control/prediction_sets" \
           "answer_id": 33,
           "discover_answer_id": 64,
           "membership_guid": "6fb38cdbc0340cc7dba954afaefc70b0869f91bb",
-          "filled_at": "2018-01-26T01:33:56.967Z",
-          "refunded_at": null,
           "created_at": "2018-01-26T01:33:56.967Z",
           "updated_at": "2018-01-26T01:33:56.967Z",
-          "confidence_level": null,
           "made_after_correctness_known": false,
           "forecasted_probability": 0.3,
           "starting_probability": 0.3333,
@@ -147,7 +135,6 @@ discover_question_id | integer | The [discover question id](#question-id-vs-disc
 rationale | string | The text of the rationale (if any) that the user submitted with the forecast
 predictions.id | integer | The id of the prediction
 predictions.answer_id | integer | The id of the answer this prediction belongs to
-predictions.filled_at | date | The timestamp of when the prediction was processed. This timestamp is used for scoring
 predictions.made_after_correctness_known | boolean | Whether or not the prediction was submitted after the "correctness" of the answer was already known
 predictions.forecasted_probability | float | The probability estimate that the user submitted with the forecast
 predictions.starting_probability | float | The consensus probability of the answer prior to incorporating this forecast
