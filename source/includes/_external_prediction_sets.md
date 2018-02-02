@@ -11,8 +11,6 @@ When submitting a prediction set, you will need to include `question_id` and `an
 
 Each prediction set should also contain information about the method used to generate it. Each method is tracked by the platform with a model known as an `ExternalPredictor`. You must embed the name of your forecasting method within the forecast submission, via the `external_predictor_attributes.method_name` attribute.
 
-Submissions should also contain a `metadata` field. This string should contain JSON-formatted information about how the forecast was generated and any associated parameters that were used to generate it.
-
 
 > Request:
 
@@ -21,8 +19,7 @@ curl -X "POST" "https://api.gfc-staging.com/api/v1/external_prediction_sets" \
   -H "Authorization: Bearer b95b4f848cd226e55b7a42f6a8e8669350730270f5a91d64b6c70328b0156d75" \
   -H "Content-Type: application/json" \
   -H "Accept: application/json" \
-	-d "{\"external_prediction_set\":{\"question_id\":123,\"metadata\":{\"foo\": \"bar\", \"count\": 2},
-,\"external_predictor_attributes\":{\"method_name\":\"red\"},\"external_predictions_attributes\":[{\"value\":0.65,\"answer_id\":431},{\"value\":0.34,\"answer_id\":432}]}}"
+	-d "{\"external_prediction_set\":{\"question_id\":123,\"external_predictor_attributes\":{\"method_name\":\"red\"},\"external_predictions_attributes\":[{\"value\":0.65,\"answer_id\":431},{\"value\":0.34,\"answer_id\":432}]}}"
 ```
 
 > Request body example:
@@ -31,18 +28,21 @@ curl -X "POST" "https://api.gfc-staging.com/api/v1/external_prediction_sets" \
 {
   "external_prediction_set": {
     "question_id": 123,
-    "metadata": {"foo": "bar", "count": 2},
     "external_predictor_attributes": {
       "method_name": "red"
     },
     "external_predictions_attributes": [
       {
-        "value": 0.65,
+        "value": 0.6,
         "answer_id": 431
       },
       {
         "value": 0.35,
         "answer_id": 432
+      },
+      {
+        "value": 0.05,
+        "answer_id": 433
       }
     ]
   }
@@ -56,8 +56,6 @@ curl -X "POST" "https://api.gfc-staging.com/api/v1/external_prediction_sets" \
 {
   "id": 1,
   "question_id": 123,
-  "site_id": 2,
-  "membership_id": 3,
   "method_name": "red",
   "created_at": "2017-06-15T21:07:04.092Z",
   "updated_at": "2017-06-15T21:07:04.092Z",
@@ -67,8 +65,6 @@ curl -X "POST" "https://api.gfc-staging.com/api/v1/external_prediction_sets" \
       "id": 1,
       "question_id": 1,
       "answer_id": 431,
-      "site_id": 2,
-      "membership_id": 3,
       "method_name": "red",
       "created_at": "2017-06-15T21:07:04.113Z",
       "updated_at": "2017-06-15T21:07:04.113Z",
@@ -79,8 +75,6 @@ curl -X "POST" "https://api.gfc-staging.com/api/v1/external_prediction_sets" \
       "id": 2,
       "question_id": 1,
       "answer_id": 432,
-      "site_id": 2,
-      "membership_id": 3,
       "method_name": "red",
       "created_at": "2017-06-15T21:07:04.126Z",
       "updated_at": "2017-06-15T21:07:04.126Z",
@@ -101,8 +95,7 @@ curl -X "POST" "https://api.gfc-staging.com/api/v1/external_prediction_sets" \
 Parameter | Required? | Description
 --------- | --------- | -----------
 question_id | Yes | The [question id](#question-id-vs-discover-question-id) associated with this forecast. This should be a question id, not a discover question id.
-metadata | Yes | A JSON-formatted string containing metadata describing how this forecast was generated.
-external_predictor_attributes.method_name | Yes | A string identifying the method you're using to generate this forecast. Can be any string.
+external_predictor_attributes.method_name | Yes | A string identifying the method you're using to generate this forecast. Can be up to 50 characters.
 external_predictions_attributes | Yes | An array of external prediction objects that are part of this prediction set. Valid parameters for external predictions are listed below.
 
 
@@ -111,7 +104,7 @@ external_predictions_attributes | Yes | An array of external prediction objects 
 Parameter | Required? | Description
 --------- | --------- | -----------
 answer_id | Yes | The answer id associated with this forecast
-external_predictions_attributes.value | Yes | Contains the value of the forecast. Must be a number between 1 and 0.
+value | Yes | Contains the value of the forecast. Must be a number between 0 and 1.
 
 
 ### External Prediction Set Response Attribute Descriptions
@@ -122,9 +115,7 @@ id | integer | The id of the external prediction
 question_id | integer | The question id associated with this forecast
 answer_id | integer | The answer id associated with this forecast
 method_name | string | The name of the `External Predictor` method used to generate the forecast
-forecast_at | date | The auto-generated timestamp of when this forecast was submitted. This timestamp is used for scoring forecasts.
-site_id | string | The site id associated with this forecast
-membership_id | string | The id of the membership that submitted this forecast
+forecast_at | date | The auto-generated timestamp of when this forecast was submitted.
 external_predictions | array | An array of external prediction objects, which are described below
 
 
@@ -137,6 +128,4 @@ question_id | integer | The question id associated with this forecast
 answer_id | integer | The answer id associated with this forecast
 method_name | string | The name of the `External Predictor` method used to generate the forecast
 forecast_at | date | The auto-generated timestamp of when this forecast was submitted. This timestamp is used for scoring forecasts.
-site_id | string | The site id associated with this forecast
-membership_id | string | The id of the membership that submitted this forecast
 value | float | Contains the forecasted probability

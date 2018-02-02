@@ -4,7 +4,7 @@
 
 The Consensus History API provides a stream of aggregate forecasts derived from forecasts submitted in the HFC benchmark condition. Each time a user submits a forecast in the benchmark condition, the consensus forecasts for that question's answers are recalculated. This endpoint provides a historical record of each consensus forecast change.
 
-Within HFC, the consensus is calculated using 5 different aggregation algorithms: mean, median, voting, logit, and l2e. There are 25 variants of those 5 algorithms being calculated, so each time a forecast is submitted, 25 new consensus history records are created.
+Within HFC, the consensus is calculated using an aggregation algorithm called logit. The logit aggregation method is an extremizing method that uses a weighted geometric mean to aggregate forecasts. Forecaster weights are calculated based on 3 factors: historical accuracy, the frequency with which the forecaster updates his or her forecasts, and whether the forecaster completed a training course.
 
 When using this API, you should always utilize the `created_after` parameter to pull only those records that have been created since you last accessed the API. **Do not attempt to pull** every record/page of the history.
 
@@ -16,7 +16,7 @@ Each record contains two value fields: `value` and `normalized_value`. The `valu
 
 ### Decay & Weighting
 
-A record may also contain parameters indicating decay and weighting settings that were used to calculate the consensus. Decay settings generally work by subsetting the individual-level forecasts that are fed to the aggregation algorithm. Weighting applies different weights to different forecasters when calculating the consensus (e.g. more accurate forecasters may have their opinions weighted more heavily).
+Records contain parameters indicating decay and weighting settings that were used to calculate the consensus. Decay settings generally work by subsetting the individual-level forecasts that are fed to the aggregation algorithm. Weighting applies different weights to different forecasters when calculating the consensus (e.g. more accurate forecasters may have their opinions weighted more heavily).
 
 
 > Request:
@@ -97,7 +97,7 @@ created_after | none | Returns only history records created after the passed dat
 updated_before | none | Returns only history records updated before the passed date. Date should be in iso8601 format (e.g. 2015-08-23T15:43:11-05:00)
 updated_after | none | Returns only history records updated after the passed date. Date should be in iso8601 format (e.g. 2015-08-23T15:43:11-05:00)
 
-### Attribute Descriptions
+### Response Attribute Descriptions
 
 Parameter | Type | Description
 --------- | ------- | -----------

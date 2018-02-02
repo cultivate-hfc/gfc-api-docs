@@ -52,7 +52,7 @@ Production | [https://api.iarpagfchallenge.com/api_management/oauth_tokens](http
 
 ## Forecast Streams
 
-The GFC team is providing a stream of [individual-level forecasts](#prediction-sets) and [aggregate "crowd" forecasts](#consensus-history) that are derived from the HFC benchmark condition. The [individual-level forecast stream](#prediction-sets) contains forecasts submitted by human participants, while the [aggregate forecast stream](#consensus-history) contains a consensus forecast computed by aggregating those individual-level forecasts using to 5 different aggregation formulae: mean, median, voting, logit, and l2e.
+The GFC team is providing a stream of [individual-level forecasts](#prediction-sets) and [aggregate "crowd" forecasts](#consensus-history) that are derived from the HFC benchmark condition. The [individual-level forecast stream](#prediction-sets) contains forecasts submitted by human participants, while the [aggregate forecast stream](#consensus-history) contains a consensus forecast computed by aggregating those individual-level forecasts.
 
 ## Question ID vs. Discover Question ID
 
