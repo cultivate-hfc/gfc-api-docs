@@ -289,7 +289,7 @@
 
 <h2 id="forecast-streams">Forecast Streams</h2>
 
-<p>The GFC team is providing a stream of <a href="#prediction-sets">individual-level forecasts</a> and <a href="#consensus-history">aggregate &ldquo;crowd&rdquo; forecasts</a> that are derived from the HFC benchmark condition. The <a href="#prediction-sets">individual-level forecast stream</a> contains forecasts submitted by human participants, while the <a href="#consensus-history">aggregate forecast stream</a> contains a consensus forecast computed by aggregating those individual-level forecasts using to 5 different aggregation formulae: mean, median, voting, logit, and l2e.</p>
+<p>The GFC team is providing a stream of <a href="#prediction-sets">individual-level forecasts</a> and <a href="#consensus-history">aggregate &ldquo;crowd&rdquo; forecasts</a> that are derived from the HFC benchmark condition. The <a href="#prediction-sets">individual-level forecast stream</a> contains forecasts submitted by human participants, while the <a href="#consensus-history">aggregate forecast stream</a> contains a consensus forecast computed by aggregating those individual-level forecasts.</p>
 
 <h2 id="question-id-vs-discover-question-id">Question ID vs. Discover Question ID</h2>
 
@@ -309,6 +309,12 @@
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.gfc-staging.com/api/v1/questions"</span> <span class="se">\</span>
   -H <span class="s2">"Authorization: Bearer b95b4f848cd226e55b7a42f6a8e8669350730270f5a91d64b6c70328b0156d75"</span>
 </code></pre>
+          <h2 id="pagination">Pagination</h2>
+
+<p>All list-based endpoints utilize pagination and return only the first page by default. To retrieve subsequent pages, you can append a <code class="prettyprint">page</code> parameter to your request (e.g. <code class="prettyprint">/api/v1/questions?page=2</code>).</p>
+
+<p>All paginated endpoints will also include 2 pagination-related response headers: <code class="prettyprint">X-Total-Page-Count</code> and <code class="prettyprint">X-Total-Record-Count</code>. <code class="prettyprint">X-Total-Page-Count</code> contains the total number of pages available for your request, while <code class="prettyprint">X-Total-Record-Count</code> contains the total number of records that will be included across all of those pages.</p>
+
           <h2 id="push-apis">Push APIs</h2>
 
 <p>The challenge platform provides push-based APIs for <a href="#questions">question</a> creation, update, resolution, and <a href="#clarifications">clarification</a>.</p>
@@ -339,7 +345,7 @@
 
 <p>The Consensus History API provides a stream of aggregate forecasts derived from forecasts submitted in the HFC benchmark condition. Each time a user submits a forecast in the benchmark condition, the consensus forecasts for that question&rsquo;s answers are recalculated. This endpoint provides a historical record of each consensus forecast change.</p>
 
-<p>Within HFC, the consensus is calculated using 5 different aggregation algorithms: mean, median, voting, logit, and l2e. There are 25 variants of those 5 algorithms being calculated, so each time a forecast is submitted, 25 new consensus history records are created.</p>
+<p>Within HFC, the consensus is calculated using an aggregation algorithm called logit. The logit aggregation method is an extremizing method that uses a weighted geometric mean to aggregate forecasts. Forecaster weights are calculated based on 3 factors: historical accuracy, the frequency with which the forecaster updates his or her forecasts, and whether the forecaster completed a training course.</p>
 
 <p>When using this API, you should always utilize the <code class="prettyprint">created_after</code> parameter to pull only those records that have been created since you last accessed the API. <strong>Do not attempt to pull</strong> every record/page of the history.</p>
 
@@ -351,7 +357,7 @@
 
 <h3 id="decay-weighting">Decay &amp; Weighting</h3>
 
-<p>A record may also contain parameters indicating decay and weighting settings that were used to calculate the consensus. Decay settings generally work by subsetting the individual-level forecasts that are fed to the aggregation algorithm. Weighting applies different weights to different forecasters when calculating the consensus (e.g. more accurate forecasters may have their opinions weighted more heavily).</p>
+<p>Records contain parameters indicating decay and weighting settings that were used to calculate the consensus. Decay settings generally work by subsetting the individual-level forecasts that are fed to the aggregation algorithm. Weighting applies different weights to different forecasters when calculating the consensus (e.g. more accurate forecasters may have their opinions weighted more heavily).</p>
 
 <blockquote>
 <p>Request:</p>
@@ -455,7 +461,7 @@
 </tr>
 </tbody></table>
 
-<h3 id="attribute-descriptions">Attribute Descriptions</h3>
+<h3 id="response-attribute-descriptions">Response Attribute Descriptions</h3>
 
 <table><thead>
 <tr>
@@ -548,8 +554,6 @@
 
 <p>Each prediction set should also contain information about the method used to generate it. Each method is tracked by the platform with a model known as an <code class="prettyprint">ExternalPredictor</code>. You must embed the name of your forecasting method within the forecast submission, via the <code class="prettyprint">external_predictor_attributes.method_name</code> attribute.</p>
 
-<p>Submissions should also contain a <code class="prettyprint">metadata</code> field. This string should contain JSON-formatted information about how the forecast was generated and any associated parameters that were used to generate it.</p>
-
 <blockquote>
 <p>Request:</p>
 </blockquote>
@@ -557,8 +561,7 @@
   -H <span class="s2">"Authorization: Bearer b95b4f848cd226e55b7a42f6a8e8669350730270f5a91d64b6c70328b0156d75"</span> <span class="se">\</span>
   -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   -H <span class="s2">"Accept: application/json"</span> <span class="se">\</span>
-    -d <span class="s2">"{</span><span class="se">\"</span><span class="s2">external_prediction_set</span><span class="se">\"</span><span class="s2">:{</span><span class="se">\"</span><span class="s2">question_id</span><span class="se">\"</span><span class="s2">:123,</span><span class="se">\"</span><span class="s2">metadata</span><span class="se">\"</span><span class="s2">:{</span><span class="se">\"</span><span class="s2">foo</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="s2">bar</span><span class="se">\"</span><span class="s2">, </span><span class="se">\"</span><span class="s2">count</span><span class="se">\"</span><span class="s2">: 2},
-,</span><span class="se">\"</span><span class="s2">external_predictor_attributes</span><span class="se">\"</span><span class="s2">:{</span><span class="se">\"</span><span class="s2">method_name</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">red</span><span class="se">\"</span><span class="s2">},</span><span class="se">\"</span><span class="s2">external_predictions_attributes</span><span class="se">\"</span><span class="s2">:[{</span><span class="se">\"</span><span class="s2">value</span><span class="se">\"</span><span class="s2">:0.65,</span><span class="se">\"</span><span class="s2">answer_id</span><span class="se">\"</span><span class="s2">:431},{</span><span class="se">\"</span><span class="s2">value</span><span class="se">\"</span><span class="s2">:0.34,</span><span class="se">\"</span><span class="s2">answer_id</span><span class="se">\"</span><span class="s2">:432}]}}"</span>
+    -d <span class="s2">"{</span><span class="se">\"</span><span class="s2">external_prediction_set</span><span class="se">\"</span><span class="s2">:{</span><span class="se">\"</span><span class="s2">question_id</span><span class="se">\"</span><span class="s2">:123,</span><span class="se">\"</span><span class="s2">external_predictor_attributes</span><span class="se">\"</span><span class="s2">:{</span><span class="se">\"</span><span class="s2">method_name</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">red</span><span class="se">\"</span><span class="s2">},</span><span class="se">\"</span><span class="s2">external_predictions_attributes</span><span class="se">\"</span><span class="s2">:[{</span><span class="se">\"</span><span class="s2">value</span><span class="se">\"</span><span class="s2">:0.65,</span><span class="se">\"</span><span class="s2">answer_id</span><span class="se">\"</span><span class="s2">:431},{</span><span class="se">\"</span><span class="s2">value</span><span class="se">\"</span><span class="s2">:0.34,</span><span class="se">\"</span><span class="s2">answer_id</span><span class="se">\"</span><span class="s2">:432}]}}"</span>
 </code></pre>
 <blockquote>
 <p>Request body example:</p>
@@ -566,18 +569,21 @@
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"external_prediction_set"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"question_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="s2">"foo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bar"</span><span class="p">,</span><span class="w"> </span><span class="s2">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">},</span><span class="w">
     </span><span class="s2">"external_predictor_attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"method_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"red"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"external_predictions_attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.65</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.6</span><span class="p">,</span><span class="w">
         </span><span class="s2">"answer_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">431</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="p">{</span><span class="w">
         </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.35</span><span class="p">,</span><span class="w">
         </span><span class="s2">"answer_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">432</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.05</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"answer_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">433</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
   </span><span class="p">}</span><span class="w">
@@ -589,8 +595,6 @@
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
   </span><span class="s2">"question_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"site_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"membership_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
   </span><span class="s2">"method_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"red"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-06-15T21:07:04.092Z"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-06-15T21:07:04.092Z"</span><span class="p">,</span><span class="w">
@@ -600,8 +604,6 @@
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
       </span><span class="s2">"question_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
       </span><span class="s2">"answer_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">431</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"site_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"membership_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
       </span><span class="s2">"method_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"red"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-06-15T21:07:04.113Z"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-06-15T21:07:04.113Z"</span><span class="p">,</span><span class="w">
@@ -612,8 +614,6 @@
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
       </span><span class="s2">"question_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
       </span><span class="s2">"answer_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">432</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"site_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"membership_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
       </span><span class="s2">"method_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"red"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-06-15T21:07:04.126Z"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-06-15T21:07:04.126Z"</span><span class="p">,</span><span class="w">
@@ -642,14 +642,9 @@
 <td>The <a href="#question-id-vs-discover-question-id">question id</a> associated with this forecast. This should be a question id, not a discover question id.</td>
 </tr>
 <tr>
-<td>metadata</td>
-<td>Yes</td>
-<td>A JSON-formatted string containing metadata describing how this forecast was generated.</td>
-</tr>
-<tr>
 <td>external_predictor_attributes.method_name</td>
 <td>Yes</td>
-<td>A string identifying the method you&rsquo;re using to generate this forecast. Can be any string.</td>
+<td>A string identifying the method you&rsquo;re using to generate this forecast. Can be up to 50 characters.</td>
 </tr>
 <tr>
 <td>external_predictions_attributes</td>
@@ -673,9 +668,9 @@
 <td>The answer id associated with this forecast</td>
 </tr>
 <tr>
-<td>external_predictions_attributes.value</td>
+<td>value</td>
 <td>Yes</td>
-<td>Contains the value of the forecast. Must be a number between 1 and 0.</td>
+<td>Contains the value of the forecast. Must be a number between 0 and 1.</td>
 </tr>
 </tbody></table>
 
@@ -711,17 +706,7 @@
 <tr>
 <td>forecast_at</td>
 <td>date</td>
-<td>The auto-generated timestamp of when this forecast was submitted. This timestamp is used for scoring forecasts.</td>
-</tr>
-<tr>
-<td>site_id</td>
-<td>string</td>
-<td>The site id associated with this forecast</td>
-</tr>
-<tr>
-<td>membership_id</td>
-<td>string</td>
-<td>The id of the membership that submitted this forecast</td>
+<td>The auto-generated timestamp of when this forecast was submitted.</td>
 </tr>
 <tr>
 <td>external_predictions</td>
@@ -763,16 +748,6 @@
 <td>forecast_at</td>
 <td>date</td>
 <td>The auto-generated timestamp of when this forecast was submitted. This timestamp is used for scoring forecasts.</td>
-</tr>
-<tr>
-<td>site_id</td>
-<td>string</td>
-<td>The site id associated with this forecast</td>
-</tr>
-<tr>
-<td>membership_id</td>
-<td>string</td>
-<td>The id of the membership that submitted this forecast</td>
 </tr>
 <tr>
 <td>value</td>
@@ -818,11 +793,8 @@
           </span><span class="s2">"answer_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
           </span><span class="s2">"discover_answer_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">65</span><span class="p">,</span><span class="w">
           </span><span class="s2">"membership_guid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cc4c30df5539f534690f0a36209738ce78a04180"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"filled_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-26T01:34:25.530Z"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"refunded_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
           </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-26T01:34:25.530Z"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-26T01:34:25.530Z"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"confidence_level"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
           </span><span class="s2">"made_after_correctness_known"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
           </span><span class="s2">"forecasted_probability"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.05</span><span class="p">,</span><span class="w">
           </span><span class="s2">"starting_probability"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.5</span><span class="p">,</span><span class="w">
@@ -849,11 +821,8 @@
           </span><span class="s2">"answer_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">35</span><span class="p">,</span><span class="w">
           </span><span class="s2">"discover_answer_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">62</span><span class="p">,</span><span class="w">
           </span><span class="s2">"membership_guid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6fb38cdbc0340cc7dba954afaefc70b0869f91bb"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"filled_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-26T01:33:56.957Z"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"refunded_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
           </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-26T01:33:56.957Z"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-26T01:33:56.957Z"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"confidence_level"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
           </span><span class="s2">"made_after_correctness_known"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
           </span><span class="s2">"forecasted_probability"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.25</span><span class="p">,</span><span class="w">
           </span><span class="s2">"starting_probability"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.3333</span><span class="p">,</span><span class="w">
@@ -866,11 +835,8 @@
           </span><span class="s2">"answer_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">34</span><span class="p">,</span><span class="w">
           </span><span class="s2">"discover_answer_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">63</span><span class="p">,</span><span class="w">
           </span><span class="s2">"membership_guid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6fb38cdbc0340cc7dba954afaefc70b0869f91bb"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"filled_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-26T01:33:56.962Z"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"refunded_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
           </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-26T01:33:56.962Z"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-26T01:33:56.962Z"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"confidence_level"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
           </span><span class="s2">"made_after_correctness_known"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
           </span><span class="s2">"forecasted_probability"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.45</span><span class="p">,</span><span class="w">
           </span><span class="s2">"starting_probability"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.3333</span><span class="p">,</span><span class="w">
@@ -883,11 +849,8 @@
           </span><span class="s2">"answer_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">33</span><span class="p">,</span><span class="w">
           </span><span class="s2">"discover_answer_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">64</span><span class="p">,</span><span class="w">
           </span><span class="s2">"membership_guid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6fb38cdbc0340cc7dba954afaefc70b0869f91bb"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"filled_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-26T01:33:56.967Z"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"refunded_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
           </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-26T01:33:56.967Z"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-26T01:33:56.967Z"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"confidence_level"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
           </span><span class="s2">"made_after_correctness_known"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
           </span><span class="s2">"forecasted_probability"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.3</span><span class="p">,</span><span class="w">
           </span><span class="s2">"starting_probability"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.3333</span><span class="p">,</span><span class="w">
@@ -987,11 +950,6 @@
 <td>predictions.answer_id</td>
 <td>integer</td>
 <td>The id of the answer this prediction belongs to</td>
-</tr>
-<tr>
-<td>predictions.filled_at</td>
-<td>date</td>
-<td>The timestamp of when the prediction was processed. This timestamp is used for scoring</td>
 </tr>
 <tr>
 <td>predictions.made_after_correctness_known</td>
