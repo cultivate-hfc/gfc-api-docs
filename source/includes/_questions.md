@@ -20,15 +20,12 @@ curl "https://api.gfc-staging.com/api/v1/questions" \
       "discover_question_id": 123,
       "name": "question-2",
       "type": "Forecast::Question",
-      "site_id": 1,
-      "membership_id": 1,
       "ends_at": "2015-09-15T00:21:35.906Z",
       "description": "question-desc-5",
       "published_at": null,
       "starts_at": null,
       "resolved_at": null,
       "voided_at": null,
-      "predictions_count": 0,
       "comments_count": 0,
       "created_at": "2015-08-04T00:21:35.910Z",
       "updated_at": "2015-08-04T00:21:35.910Z",
@@ -43,8 +40,6 @@ curl "https://api.gfc-staging.com/api/v1/questions" \
           "discover_answer_id": 423,
           "membership_id": 1,
           "name": "answer-name-11",
-          "positions_count": null,
-          "predictions_count": 0,
           "probability": "0.3333",
           "probability_formatted": "33.33%",
           "question_id": 5,
@@ -61,8 +56,6 @@ curl "https://api.gfc-staging.com/api/v1/questions" \
           "discover_answer_id": 424,
           "membership_id": 1,
           "name": "answer-name-12",
-          "positions_count": null,
-          "predictions_count": 0,
           "probability": "0.3333",
           "probability_formatted": "33.33%",
           "question_id": 5,
@@ -79,8 +72,6 @@ curl "https://api.gfc-staging.com/api/v1/questions" \
           "discover_answer_id": 425,
           "membership_id": 1,
           "name": "answer-name-13",
-          "positions_count": null,
-          "predictions_count": 0,
           "probability": "0.3333",
           "probability_formatted": "33.33%",
           "question_id": 5,
@@ -104,15 +95,12 @@ curl "https://api.gfc-staging.com/api/v1/questions" \
       "discover_question_id": 31,
       "name": "binary_question-2",
       "type": "Forecast::Binary::Question",
-      "site_id": 1,
-      "membership_id": 1,
       "ends_at": "2015-09-15T00:21:35.945Z",
       "description": "question-desc-6",
       "published_at": null,
       "starts_at": null,
       "resolved_at": null,
       "voided_at": null,
-      "predictions_count": 0,
       "comments_count": 0,
       "created_at": "2015-08-04T00:21:35.953Z",
       "updated_at": "2015-08-04T00:21:35.953Z",
@@ -127,8 +115,6 @@ curl "https://api.gfc-staging.com/api/v1/questions" \
           "discover_answer_id": 429,
           "membership_id": 1,
           "name": "answer-name-14",
-          "positions_count": null,
-          "predictions_count": 0,
           "probability": "0.5",
           "probability_formatted": "50.00%",
           "question_id": 6,
@@ -168,7 +154,6 @@ id | integer | The [id of the question](#question-id-vs-discover-question-id)
 discover_question_id | integer | The [id of the discover question](#question-id-vs-discover-question-id)  used to generate/publish this question, if collaborative question generation (Discover) is being used
 name | string | The question content
 type | string | The internal question type (e.g. prediction market, binary prediction market, opinion pool)
-site_id | integer | The id of the site that this question belongs to
 membership_id | integer | The id of the membership who created this question
 ends_at | datetime | The date & time that this question stops accepting forecasts
 description | string | The description & background information for the question
@@ -194,10 +179,7 @@ discover_answer_id | integer | The id of the discover answer used to generate/pu
 created_at | datetime | The date & time that this answer was created
 updated_at | datetime | The date & time that this answer was last updated
 ends_at | datetime | The date & time that this answer stops accepting forecasts
-membership_id | integer | The id of the membership who created this answer
 name | string | The answer content
-positions_count | integer | The number of positions forecasters have taken in this answer
-predictions_count | integer | The number of predictions forecasters have made in this answer
 probability | float | The current consensus probability for this answer
 probability_formatted | string | The current consensus probability for this answer, formatted as a percentage
 question_id | integer | The id of the question that this answer belongs to
