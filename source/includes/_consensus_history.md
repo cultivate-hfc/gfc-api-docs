@@ -92,6 +92,7 @@ curl "https://api.gfc-staging.com/aggregation/api/v1/control/consensus_histories
 Parameter | Default | Description
 --------- | ------- | -----------
 page | 0 | Pagination page number
+question_id | none | Returns only history records for the given question.
 created_before | none | Returns only history records created before the passed date. Date should be in iso8601 format (e.g. 2015-08-23T15:43:11-05:00)
 created_after | none | Returns only history records created after the passed date. Date should be in iso8601 format (e.g. 2015-08-23T15:43:11-05:00)
 updated_before | none | Returns only history records updated before the passed date. Date should be in iso8601 format (e.g. 2015-08-23T15:43:11-05:00)
