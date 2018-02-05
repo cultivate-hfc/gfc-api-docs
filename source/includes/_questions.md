@@ -38,7 +38,6 @@ curl "https://api.gfc-staging.com/api/v1/questions" \
           "ends_at": "2016-02-04T00:21:35.916Z",
           "id": 11,
           "discover_answer_id": 423,
-          "membership_id": 1,
           "name": "answer-name-11",
           "probability": "0.3333",
           "probability_formatted": "33.33%",
@@ -54,7 +53,6 @@ curl "https://api.gfc-staging.com/api/v1/questions" \
           "ends_at": "2016-02-04T00:21:35.925Z",
           "id": 12,
           "discover_answer_id": 424,
-          "membership_id": 1,
           "name": "answer-name-12",
           "probability": "0.3333",
           "probability_formatted": "33.33%",
@@ -70,7 +68,6 @@ curl "https://api.gfc-staging.com/api/v1/questions" \
           "ends_at": "2016-02-04T00:21:35.931Z",
           "id": 13,
           "discover_answer_id": 425,
-          "membership_id": 1,
           "name": "answer-name-13",
           "probability": "0.3333",
           "probability_formatted": "33.33%",
@@ -113,7 +110,6 @@ curl "https://api.gfc-staging.com/api/v1/questions" \
           "ends_at": "2016-02-04T00:21:35.962Z",
           "id": 14,
           "discover_answer_id": 429,
-          "membership_id": 1,
           "name": "answer-name-14",
           "probability": "0.5",
           "probability_formatted": "50.00%",
@@ -154,7 +150,6 @@ id | integer | The [id of the question](#question-id-vs-discover-question-id)
 discover_question_id | integer | The [id of the discover question](#question-id-vs-discover-question-id)  used to generate/publish this question, if collaborative question generation (Discover) is being used
 name | string | The question content
 type | string | The internal question type (e.g. prediction market, binary prediction market, opinion pool)
-membership_id | integer | The id of the membership who created this question
 ends_at | datetime | The date & time that this question stops accepting forecasts
 description | string | The description & background information for the question
 published_at | datetime | The date & time that this question was published
