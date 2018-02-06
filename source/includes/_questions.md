@@ -32,6 +32,14 @@ curl "https://api.gfc-staging.com/api/v1/questions" \
       "active?": true,
       "resolved?": false,
       "use_ordinal_scoring": false,
+      "metadata": {
+        "Topic": "Cyber attacks",
+        "Domain": "Natural sciences/Climate",
+        "Region": "North America",
+        "Country - Primary": "USA",
+        "Country - Secondary": "France",
+        "IFP Generation Method": "Geopolitical Grab Bag"
+      },
       "answers": [
         {
           "created_at": "2015-08-04T00:21:35.918Z",
@@ -104,6 +112,14 @@ curl "https://api.gfc-staging.com/api/v1/questions" \
       "active?": true,
       "resolved?": false,
       "use_ordinal_scoring": false,
+      "metadata": {
+        "Topic": "Cyber attacks",
+        "Domain": "Natural sciences/Climate",
+        "Region": "North America",
+        "Country - Primary": "USA",
+        "Country - Secondary": "France",
+        "IFP Generation Method": "Geopolitical Grab Bag"
+      },
       "answers": [
         {
           "created_at": "2015-08-04T00:21:35.965Z",
