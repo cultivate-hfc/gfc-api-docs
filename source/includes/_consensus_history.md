@@ -6,7 +6,7 @@ The Consensus History API provides a stream of aggregate forecasts derived from 
 
 Within HFC, the consensus is calculated using an aggregation algorithm called logit. The logit aggregation method is an extremizing method that uses a weighted geometric mean to aggregate forecasts. Forecaster weights are calculated based on 3 factors: historical accuracy, the frequency with which the forecaster updates his or her forecasts, and whether the forecaster completed a training course.
 
-When using this API, you should always utilize the `created_after` parameter to pull only those records that have been created since you last accessed the API. **Do not attempt to pull** every record/page of the history.
+When accessing this API, use the `created_after` parameter to pull only those records that have been created since you last accessed the API. **Do not attempt to pull** every record/page of the history, except the first time you hit the API. The data will not change after creation.
 
 Prior to question/answer resolution, the most recent (as determined by `consensus_at`) record can be considered the current consensus for that answer.
 
