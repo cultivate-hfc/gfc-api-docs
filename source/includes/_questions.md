@@ -172,13 +172,12 @@ published_at | datetime | The date & time that this question was published
 starts_at | datetime | The date & time that this question started accepting forecasts
 resolved_at | datetime | The date & time that this question was resolved
 voided_at | datetime | The date & time that this question was voided. Blank if the question has not been voided. A voided question will not be resolved or scored.
-predictions_count | integer | The number of predictions that have been made in this question
-comments_count | integer | The number of comments that have been made in this question  
 created_at | datetime | The date & time that this question was created
 updated_at | datetime | The date & time that this question was last updated
 active | boolean | Whether or not this question is currently active for forecasting
 resolved | boolean | Whether or not this question has been resolved
 use_ordinal_scoring | boolean | Whether or not this question uses ordinal scoring for calculating Brier scores
+metadata | hash | A hash containing classification information about the question. Keys will included `Topic`, `Domain`, `Region`, `Country - Primary`, `Country - Secondary`, and `IFP Generation Method`.
 clarifications | array | An array of clarifications issued for the question. Used to clarify things like resolution criteria for the question.
 
 ### Answer Attributes
