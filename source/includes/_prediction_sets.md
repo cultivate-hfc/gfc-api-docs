@@ -3,7 +3,7 @@
 
 The Prediction Sets API provides a stream of individual-level forecasts submitted by users in the HFC benchmark condition. Each prediction set will contain one prediction for each answer in the question.
 
-If you want to connect all forecasts made by a given forecaster, you can do so using the `membership_guid`. This field is a masked ID that uniquely identifies a given forecaster. For example, if John Doe has a `membership_guid=cc4c30df5539f534690f0a36209738ce78a04180`, then all of John Doe's forecasts will contain that same value.
+If you want to connect all forecasts made by a given forecaster, you can do so using the `membership_guid`. This field is a unique identifier for a given forecaster. For example, if John Doe has a `membership_guid=cc4c30df5539f534690f0a36209738ce78a04180`, then all of John Doe's forecasts will contain that same value.
 
 ## Prediction Sets List
 
@@ -129,7 +129,7 @@ updated_after | none | Returns only prediction sets updated after the passed dat
 Parameter | Type | Description
 --------- | ------- | -----------
 id | integer | The id of the prediction set
-membership_guid | string | A masked ID that uniquely identifies the user who made the forecast
+membership_guid | string | A unique ID for the user who made the forecast
 question_id | integer | The id of the question that this prediction set belongs to
 discover_question_id | integer | The [discover question id](#question-id-vs-discover-question-id) of the question that this prediction set belongs to
 rationale | string | The text of the rationale (if any) that the user submitted with the forecast
@@ -138,4 +138,4 @@ predictions.answer_id | integer | The id of the answer this prediction belongs t
 predictions.made_after_correctness_known | boolean | Whether or not the prediction was submitted after the "correctness" of the answer was already known
 predictions.forecasted_probability | float | The probability estimate that the user submitted with the forecast
 predictions.starting_probability | float | The consensus probability of the answer prior to incorporating this forecast
-predictions.final_probability | float | The consensus probability of the answer prior to incorporating this forecast
+predictions.final_probability | float | The consensus probability of the answer after incorporating this forecast
