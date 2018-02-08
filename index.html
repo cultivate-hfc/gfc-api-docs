@@ -218,9 +218,6 @@
         <ul class="search-results"></ul>
       <div id="toc">
       </div>
-        <ul class="toc-footer">
-            <li><a href='#'>Sign Up for a Developer Key</a></li>
-        </ul>
     </div>
     <div class="page-wrapper">
       <div class="dark-box"></div>
@@ -347,7 +344,7 @@
 
 <p>Within HFC, the consensus is calculated using an aggregation algorithm called logit. The logit aggregation method is an extremizing method that uses a weighted geometric mean to aggregate forecasts. Forecaster weights are calculated based on 3 factors: historical accuracy, the frequency with which the forecaster updates his or her forecasts, and whether the forecaster completed a training course.</p>
 
-<p>When using this API, you should always utilize the <code class="prettyprint">created_after</code> parameter to pull only those records that have been created since you last accessed the API. <strong>Do not attempt to pull</strong> every record/page of the history.</p>
+<p>When accessing this API, use the <code class="prettyprint">created_after</code> parameter to pull only those records that have been created since you last accessed the API. <strong>Do not attempt to pull</strong> every record/page of the history, except the first time you hit the API. The data will not change after creation.</p>
 
 <p>Prior to question/answer resolution, the most recent (as determined by <code class="prettyprint">consensus_at</code>) record can be considered the current consensus for that answer.</p>
 
@@ -453,16 +450,6 @@
 <td>created_after</td>
 <td>none</td>
 <td>Returns only history records created after the passed date. Date should be in iso8601 format (e.g. 2015-08-23T15:43:11-05:00)</td>
-</tr>
-<tr>
-<td>updated_before</td>
-<td>none</td>
-<td>Returns only history records updated before the passed date. Date should be in iso8601 format (e.g. 2015-08-23T15:43:11-05:00)</td>
-</tr>
-<tr>
-<td>updated_after</td>
-<td>none</td>
-<td>Returns only history records updated after the passed date. Date should be in iso8601 format (e.g. 2015-08-23T15:43:11-05:00)</td>
 </tr>
 </tbody></table>
 
@@ -765,7 +752,7 @@
 
 <p>The Prediction Sets API provides a stream of individual-level forecasts submitted by users in the HFC benchmark condition. Each prediction set will contain one prediction for each answer in the question.</p>
 
-<p>If you want to connect all forecasts made by a given forecaster, you can do so using the <code class="prettyprint">membership_guid</code>. This field is a masked ID that uniquely identifies a given forecaster. For example, if John Doe has a <code class="prettyprint">membership_guid=cc4c30df5539f534690f0a36209738ce78a04180</code>, then all of John Doe&rsquo;s forecasts will contain that same value.</p>
+<p>If you want to connect all forecasts made by a given forecaster, you can do so using the <code class="prettyprint">membership_guid</code>. This field is a unique identifier for a given forecaster. For example, if John Doe has a <code class="prettyprint">membership_guid=cc4c30df5539f534690f0a36209738ce78a04180</code>, then all of John Doe&rsquo;s forecasts will contain that same value.</p>
 
 <h2 id="prediction-sets-list">Prediction Sets List</h2>
 
@@ -929,7 +916,7 @@
 <tr>
 <td>membership_guid</td>
 <td>string</td>
-<td>A masked ID that uniquely identifies the user who made the forecast</td>
+<td>A unique ID for the user who made the forecast</td>
 </tr>
 <tr>
 <td>question_id</td>
@@ -974,7 +961,7 @@
 <tr>
 <td>predictions.final_probability</td>
 <td>float</td>
-<td>The consensus probability of the answer prior to incorporating this forecast</td>
+<td>The consensus probability of the answer after incorporating this forecast</td>
 </tr>
 </tbody></table>
 
@@ -1140,7 +1127,7 @@
 <tr>
 <td>status</td>
 <td>active</td>
-<td>A question status filter to apply to the question list. Possible values: <code class="prettyprint">closed</code>, <code class="prettyprint">all</code>. If this value is omitted, only active questions are returned. To include all questions, you should pass <code class="prettyprint">all</code> for this value.</td>
+<td>A question status filter to apply to the question list. Possible values: <code class="prettyprint">active</code>, <code class="prettyprint">closed</code>, <code class="prettyprint">all</code>. By default, active questions are returned. To include all questions, you should pass <code class="prettyprint">all</code> for this value.</td>
 </tr>
 <tr>
 <td>sort</td>
@@ -1229,16 +1216,6 @@
 <td>The date &amp; time that this question was voided. Blank if the question has not been voided. A voided question will not be resolved or scored.</td>
 </tr>
 <tr>
-<td>predictions_count</td>
-<td>integer</td>
-<td>The number of predictions that have been made in this question</td>
-</tr>
-<tr>
-<td>comments_count</td>
-<td>integer</td>
-<td>The number of comments that have been made in this question</td>
-</tr>
-<tr>
 <td>created_at</td>
 <td>datetime</td>
 <td>The date &amp; time that this question was created</td>
@@ -1262,6 +1239,11 @@
 <td>use_ordinal_scoring</td>
 <td>boolean</td>
 <td>Whether or not this question uses ordinal scoring for calculating Brier scores</td>
+</tr>
+<tr>
+<td>metadata</td>
+<td>hash</td>
+<td>A hash containing classification information about the question. Keys will included <code class="prettyprint">Topic</code>, <code class="prettyprint">Domain</code>, <code class="prettyprint">Region</code>, <code class="prettyprint">Country - Primary</code>, <code class="prettyprint">Country - Secondary</code>, and <code class="prettyprint">IFP Generation Method</code>.</td>
 </tr>
 <tr>
 <td>clarifications</td>
