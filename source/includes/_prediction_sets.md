@@ -27,7 +27,6 @@ curl "https://api.gfc-staging.com/api/v1/control/prediction_sets" \
       "updated_at": "2018-01-26T01:34:25.519Z",
       "membership_guid": "cc4c30df5539f534690f0a36209738ce78a04180",
       "question_name": "Will Kim Jong Un, Supreme Leader of North Korea, receive a haircut on 27 January 2018?",
-      "discover_question_id": 30,
       "rationale": "no way",
       "comment_id": 2,
       "predictions": [
@@ -35,7 +34,6 @@ curl "https://api.gfc-staging.com/api/v1/control/prediction_sets" \
           "id": 586,
           "type": "Forecast::Prediction",
           "answer_id": 20,
-          "discover_answer_id": 65,
           "membership_guid": "cc4c30df5539f534690f0a36209738ce78a04180",
           "created_at": "2018-01-26T01:34:25.530Z",
           "updated_at": "2018-01-26T01:34:25.530Z",
@@ -55,7 +53,6 @@ curl "https://api.gfc-staging.com/api/v1/control/prediction_sets" \
       "updated_at": "2018-01-26T01:33:56.946Z",
       "membership_guid": "6fb38cdbc0340cc7dba954afaefc70b0869f91bb",
       "question_name": "How many total civilian deaths for January 2018 will the Syrian Network for Human Rights (SNHR) report?",
-      "discover_question_id": 29,
       "rationale": "sounds right",
       "comment_id": 3,
       "predictions": [
@@ -63,7 +60,6 @@ curl "https://api.gfc-staging.com/api/v1/control/prediction_sets" \
           "id": 583,
           "type": "Forecast::Prediction",
           "answer_id": 35,
-          "discover_answer_id": 62,
           "membership_guid": "6fb38cdbc0340cc7dba954afaefc70b0869f91bb",
           "created_at": "2018-01-26T01:33:56.957Z",
           "updated_at": "2018-01-26T01:33:56.957Z",
@@ -77,7 +73,6 @@ curl "https://api.gfc-staging.com/api/v1/control/prediction_sets" \
           "id": 584,
           "type": "Forecast::Prediction",
           "answer_id": 34,
-          "discover_answer_id": 63,
           "membership_guid": "6fb38cdbc0340cc7dba954afaefc70b0869f91bb",
           "created_at": "2018-01-26T01:33:56.962Z",
           "updated_at": "2018-01-26T01:33:56.962Z",
@@ -91,7 +86,6 @@ curl "https://api.gfc-staging.com/api/v1/control/prediction_sets" \
           "id": 585,
           "type": "Forecast::Prediction",
           "answer_id": 33,
-          "discover_answer_id": 64,
           "membership_guid": "6fb38cdbc0340cc7dba954afaefc70b0869f91bb",
           "created_at": "2018-01-26T01:33:56.967Z",
           "updated_at": "2018-01-26T01:33:56.967Z",
@@ -131,7 +125,6 @@ Parameter | Type | Description
 id | integer | The id of the prediction set
 membership_guid | string | A unique ID for the user who made the forecast
 question_id | integer | The id of the question that this prediction set belongs to
-discover_question_id | integer | The [discover question id](#question-id-vs-discover-question-id) of the question that this prediction set belongs to
 rationale | string | The text of the rationale (if any) that the user submitted with the forecast
 predictions.id | integer | The id of the prediction
 predictions.answer_id | integer | The id of the answer this prediction belongs to

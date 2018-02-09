@@ -52,16 +52,6 @@ Production | [https://api.iarpagfchallenge.com/api_management/oauth_tokens](http
 
 The GFC team is providing a stream of [individual-level forecasts](#prediction-sets) and [aggregate "crowd" forecasts](#consensus-history) that are derived from the HFC benchmark condition. The [individual-level forecast stream](#prediction-sets) contains forecasts submitted by human participants, while the [aggregate forecast stream](#consensus-history) contains a consensus forecast computed by aggregating those individual-level forecasts.
 
-## Question ID vs. Discover Question ID
-
-Throughout the GFC API, you will encounter two types of ID's for questions: a question ID and a discover question ID.
-
-The discover question ID is consistent across HFC and GFC and can therefore be used to tie HFC-derived data to GFC questions. For example, if you are looking at records from the [Consensus History API](#consensus-history), you will see both `question_id` and `discover_question_id`. The `question_id` is unique to the HFC benchmark condition where the Consensus History records are generated, but the `discover_question_id` for the Consensus History record will match the `discover_question_id` that you see in the [Questions API](#questions).
-
-When submitting questions via the [External Prediction Sets API](#external-prediction-sets), you **will not** use the `discover_question_id`. Instead, take the `id` field found in the Questions API and include that as the `question_id` in your External Prediction Set submission.
-
-This same concept holds for answer ID's and discover answer ID's.
-
 
 ## Authentication
 

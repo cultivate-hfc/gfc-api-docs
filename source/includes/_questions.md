@@ -17,7 +17,6 @@ curl "https://api.gfc-staging.com/api/v1/questions" \
   "questions": [
     {
       "id": 5,
-      "discover_question_id": 123,
       "name": "question-2",
       "type": "Forecast::Question",
       "ends_at": "2015-09-15T00:21:35.906Z",
@@ -45,7 +44,6 @@ curl "https://api.gfc-staging.com/api/v1/questions" \
           "created_at": "2015-08-04T00:21:35.918Z",
           "ends_at": "2016-02-04T00:21:35.916Z",
           "id": 11,
-          "discover_answer_id": 423,
           "name": "answer-name-11",
           "probability": "0.3333",
           "probability_formatted": "33.33%",
@@ -60,7 +58,6 @@ curl "https://api.gfc-staging.com/api/v1/questions" \
           "created_at": "2015-08-04T00:21:35.927Z",
           "ends_at": "2016-02-04T00:21:35.925Z",
           "id": 12,
-          "discover_answer_id": 424,
           "name": "answer-name-12",
           "probability": "0.3333",
           "probability_formatted": "33.33%",
@@ -75,7 +72,6 @@ curl "https://api.gfc-staging.com/api/v1/questions" \
           "created_at": "2015-08-04T00:21:35.933Z",
           "ends_at": "2016-02-04T00:21:35.931Z",
           "id": 13,
-          "discover_answer_id": 425,
           "name": "answer-name-13",
           "probability": "0.3333",
           "probability_formatted": "33.33%",
@@ -97,7 +93,6 @@ curl "https://api.gfc-staging.com/api/v1/questions" \
     },
     {
       "id": 6,
-      "discover_question_id": 31,
       "name": "binary_question-2",
       "type": "Forecast::Binary::Question",
       "ends_at": "2015-09-15T00:21:35.945Z",
@@ -125,7 +120,6 @@ curl "https://api.gfc-staging.com/api/v1/questions" \
           "created_at": "2015-08-04T00:21:35.965Z",
           "ends_at": "2016-02-04T00:21:35.962Z",
           "id": 14,
-          "discover_answer_id": 429,
           "name": "answer-name-14",
           "probability": "0.5",
           "probability_formatted": "50.00%",
@@ -162,8 +156,7 @@ updated_after | none | Returns only questions updated after the passed date. Dat
 
 Parameter | Type | Description
 --------- | ------- | -----------
-id | integer | The [id of the question](#question-id-vs-discover-question-id)
-discover_question_id | integer | The [id of the discover question](#question-id-vs-discover-question-id)  used to generate/publish this question, if collaborative question generation (Discover) is being used
+id | integer | The id of the question
 name | string | The question content
 type | string | The internal question type (e.g. prediction market, binary prediction market, opinion pool)
 ends_at | datetime | The date & time that this question stops accepting forecasts
@@ -185,7 +178,6 @@ clarifications | array | An array of clarifications issued for the question. Use
 Parameter | Type | Description
 --------- | ------- | -----------
 id | integer | The id of the answer
-discover_answer_id | integer | The id of the discover answer used to generate/publish this question, if collaborative question generation (Discover) is being used
 created_at | datetime | The date & time that this answer was created
 updated_at | datetime | The date & time that this answer was last updated
 ends_at | datetime | The date & time that this answer stops accepting forecasts

@@ -34,9 +34,7 @@ curl "https://api.gfc-staging.com/aggregation/api/v1/control/consensus_histories
     {
       "id": 209,
       "answer_id": 120,
-      "discover_answer_id": 66,
       "question_id": 50,
-      "discover_question_id": 31,
       "prediction_set_id": 265,
       "consensus_at": "2018-01-26T01:34:39.261Z",
       "strategy": "Aggregation::Strategies::WeightedVoting",
@@ -58,9 +56,7 @@ curl "https://api.gfc-staging.com/aggregation/api/v1/control/consensus_histories
     {
       "id": 208,
       "answer_id": 120,
-      "discover_answer_id": 66,
       "question_id": 50,
-      "discover_question_id": 31,
       "prediction_set_id": 265,
       "consensus_at": "2018-01-26T01:34:39.261Z",
       "strategy": "Aggregation::Strategies::L2e",
@@ -102,9 +98,7 @@ Parameter | Type | Description
 --------- | ------- | -----------
 id | integer | The id of the consensus history record
 answer_id | integer | The answer that this record pertains to
-question_id | integer | The [question id](#question-id-vs-discover-question-id) that this record pertains to
-discover_question_id | integer | The [discover question id](#question-id-vs-discover-question-id) that this record pertains to
-discover_answer_id | integer | The [discover answer id](#question-id-vs-discover-question-id) that this record pertains to
+question_id | integer | The question id that this record pertains to
 prediction_set_id | integer | The prediction set that caused the consensus change
 consensus_at | datetime | The time at which this was the consensus for the answer
 strategy | string | The aggregation algorithm used to calculate the value
