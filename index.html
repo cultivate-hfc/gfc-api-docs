@@ -288,16 +288,6 @@
 
 <p>The GFC team is providing a stream of <a href="#prediction-sets">individual-level forecasts</a> and <a href="#consensus-history">aggregate &ldquo;crowd&rdquo; forecasts</a> that are derived from the HFC benchmark condition. The <a href="#prediction-sets">individual-level forecast stream</a> contains forecasts submitted by human participants, while the <a href="#consensus-history">aggregate forecast stream</a> contains a consensus forecast computed by aggregating those individual-level forecasts.</p>
 
-<h2 id="question-id-vs-discover-question-id">Question ID vs. Discover Question ID</h2>
-
-<p>Throughout the GFC API, you will encounter two types of ID&rsquo;s for questions: a question ID and a discover question ID.</p>
-
-<p>The discover question ID is consistent across HFC and GFC and can therefore be used to tie HFC-derived data to GFC questions. For example, if you are looking at records from the <a href="#consensus-history">Consensus History API</a>, you will see both <code class="prettyprint">question_id</code> and <code class="prettyprint">discover_question_id</code>. The <code class="prettyprint">question_id</code> is unique to the HFC benchmark condition where the Consensus History records are generated, but the <code class="prettyprint">discover_question_id</code> for the Consensus History record will match the <code class="prettyprint">discover_question_id</code> that you see in the <a href="#questions">Questions API</a>.</p>
-
-<p>When submitting questions via the <a href="#external-prediction-sets">External Prediction Sets API</a>, you <strong>will not</strong> use the <code class="prettyprint">discover_question_id</code>. Instead, take the <code class="prettyprint">id</code> field found in the Questions API and include that as the <code class="prettyprint">question_id</code> in your External Prediction Set submission.</p>
-
-<p>This same concept holds for answer ID&rsquo;s and discover answer ID&rsquo;s.</p>
-
 <h2 id="authentication">Authentication</h2>
 
 <p>Authentication is done via OAuth. To obtain an oauth token, you can visit <a href="https://api.iarpagfchallenge.com/api_management/oauth_tokens">https://api.iarpagfchallenge.com/api_management/oauth_tokens</a> (make sure you are logged in first).</p>
@@ -370,9 +360,7 @@
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">209</span><span class="p">,</span><span class="w">
       </span><span class="s2">"answer_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">120</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"discover_answer_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">66</span><span class="p">,</span><span class="w">
       </span><span class="s2">"question_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"discover_question_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">31</span><span class="p">,</span><span class="w">
       </span><span class="s2">"prediction_set_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">265</span><span class="p">,</span><span class="w">
       </span><span class="s2">"consensus_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-26T01:34:39.261Z"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"strategy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Aggregation::Strategies::WeightedVoting"</span><span class="p">,</span><span class="w">
@@ -394,9 +382,7 @@
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">208</span><span class="p">,</span><span class="w">
       </span><span class="s2">"answer_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">120</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"discover_answer_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">66</span><span class="p">,</span><span class="w">
       </span><span class="s2">"question_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"discover_question_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">31</span><span class="p">,</span><span class="w">
       </span><span class="s2">"prediction_set_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">265</span><span class="p">,</span><span class="w">
       </span><span class="s2">"consensus_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-26T01:34:39.261Z"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"strategy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Aggregation::Strategies::L2e"</span><span class="p">,</span><span class="w">
@@ -475,17 +461,7 @@
 <tr>
 <td>question_id</td>
 <td>integer</td>
-<td>The <a href="#question-id-vs-discover-question-id">question id</a> that this record pertains to</td>
-</tr>
-<tr>
-<td>discover_question_id</td>
-<td>integer</td>
-<td>The <a href="#question-id-vs-discover-question-id">discover question id</a> that this record pertains to</td>
-</tr>
-<tr>
-<td>discover_answer_id</td>
-<td>integer</td>
-<td>The <a href="#question-id-vs-discover-question-id">discover answer id</a> that this record pertains to</td>
+<td>The question id that this record pertains to</td>
 </tr>
 <tr>
 <td>prediction_set_id</td>
@@ -542,7 +518,7 @@
 
 <p>Each submission is known as an <code class="prettyprint">ExternalPredictionSet</code> and each prediction set contains 1 or more predictions. If a question has 3 possible answers, then a prediction set for that question should contain 3 predictions &ndash; one for each answer. If a question is a binary question (i.e. a Yes/No question), then the prediction set should have a single prediction (and the opposing value is automatically calculated). Other than binary questions, all predictions in a prediction set should sum to 1.0 (e.g. in a 3-option question, answer a: 0.2, answer b: 0.3, answer c: 0.5).</p>
 
-<p>When submitting a prediction set, you will need to include <code class="prettyprint">question_id</code> and <code class="prettyprint">answer_id</code> values, as illustrated in the request body example to the right. These values can be found in the Questions API in the <code class="prettyprint">id</code> fields. These <strong>should not</strong> be <code class="prettyprint">discover_question_id</code>/<code class="prettyprint">discover_answer_id</code> values.</p>
+<p>When submitting a prediction set, you will need to include <code class="prettyprint">question_id</code> and <code class="prettyprint">answer_id</code> values, as illustrated in the request body example to the right. These values can be found via the Questions API in the <code class="prettyprint">id</code> fields.</p>
 
 <p>Each prediction set should also contain information about the method used to generate it. Each method is tracked by the platform with a model known as an <code class="prettyprint">ExternalPredictor</code>. You must embed the name of your forecasting method within the forecast submission, via the <code class="prettyprint">external_predictor_attributes.method_name</code> attribute.</p>
 
@@ -631,7 +607,7 @@
 <tr>
 <td>question_id</td>
 <td>Yes</td>
-<td>The <a href="#question-id-vs-discover-question-id">question id</a> associated with this forecast. This should be a question id, not a discover question id.</td>
+<td>The question id associated with this forecast.</td>
 </tr>
 <tr>
 <td>external_predictor_attributes.method_name</td>
@@ -775,7 +751,6 @@
       </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-26T01:34:25.519Z"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"membership_guid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cc4c30df5539f534690f0a36209738ce78a04180"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"question_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Will Kim Jong Un, Supreme Leader of North Korea, receive a haircut on 27 January 2018?"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"discover_question_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span><span class="w">
       </span><span class="s2">"rationale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"no way"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"comment_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
       </span><span class="s2">"predictions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -783,7 +758,6 @@
           </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">586</span><span class="p">,</span><span class="w">
           </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Forecast::Prediction"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"answer_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"discover_answer_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">65</span><span class="p">,</span><span class="w">
           </span><span class="s2">"membership_guid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cc4c30df5539f534690f0a36209738ce78a04180"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-26T01:34:25.530Z"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-26T01:34:25.530Z"</span><span class="p">,</span><span class="w">
@@ -803,7 +777,6 @@
       </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-26T01:33:56.946Z"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"membership_guid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6fb38cdbc0340cc7dba954afaefc70b0869f91bb"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"question_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"How many total civilian deaths for January 2018 will the Syrian Network for Human Rights (SNHR) report?"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"discover_question_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">29</span><span class="p">,</span><span class="w">
       </span><span class="s2">"rationale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sounds right"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"comment_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
       </span><span class="s2">"predictions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -811,7 +784,6 @@
           </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">583</span><span class="p">,</span><span class="w">
           </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Forecast::Prediction"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"answer_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">35</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"discover_answer_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">62</span><span class="p">,</span><span class="w">
           </span><span class="s2">"membership_guid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6fb38cdbc0340cc7dba954afaefc70b0869f91bb"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-26T01:33:56.957Z"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-26T01:33:56.957Z"</span><span class="p">,</span><span class="w">
@@ -825,7 +797,6 @@
           </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">584</span><span class="p">,</span><span class="w">
           </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Forecast::Prediction"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"answer_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">34</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"discover_answer_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">63</span><span class="p">,</span><span class="w">
           </span><span class="s2">"membership_guid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6fb38cdbc0340cc7dba954afaefc70b0869f91bb"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-26T01:33:56.962Z"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-26T01:33:56.962Z"</span><span class="p">,</span><span class="w">
@@ -839,7 +810,6 @@
           </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">585</span><span class="p">,</span><span class="w">
           </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Forecast::Prediction"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"answer_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">33</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"discover_answer_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">64</span><span class="p">,</span><span class="w">
           </span><span class="s2">"membership_guid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6fb38cdbc0340cc7dba954afaefc70b0869f91bb"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-26T01:33:56.967Z"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-26T01:33:56.967Z"</span><span class="p">,</span><span class="w">
@@ -924,11 +894,6 @@
 <td>The id of the question that this prediction set belongs to</td>
 </tr>
 <tr>
-<td>discover_question_id</td>
-<td>integer</td>
-<td>The <a href="#question-id-vs-discover-question-id">discover question id</a> of the question that this prediction set belongs to</td>
-</tr>
-<tr>
 <td>rationale</td>
 <td>string</td>
 <td>The text of the rationale (if any) that the user submitted with the forecast</td>
@@ -982,7 +947,6 @@
   </span><span class="s2">"questions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"discover_question_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
       </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"question-2"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Forecast::Question"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"ends_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-09-15T00:21:35.906Z"</span><span class="p">,</span><span class="w">
@@ -1010,7 +974,6 @@
           </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-04T00:21:35.918Z"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"ends_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-02-04T00:21:35.916Z"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">11</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"discover_answer_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">423</span><span class="p">,</span><span class="w">
           </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"answer-name-11"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"probability"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.3333"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"probability_formatted"</span><span class="p">:</span><span class="w"> </span><span class="s2">"33.33%"</span><span class="p">,</span><span class="w">
@@ -1025,7 +988,6 @@
           </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-04T00:21:35.927Z"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"ends_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-02-04T00:21:35.925Z"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"discover_answer_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">424</span><span class="p">,</span><span class="w">
           </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"answer-name-12"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"probability"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.3333"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"probability_formatted"</span><span class="p">:</span><span class="w"> </span><span class="s2">"33.33%"</span><span class="p">,</span><span class="w">
@@ -1040,7 +1002,6 @@
           </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-04T00:21:35.933Z"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"ends_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-02-04T00:21:35.931Z"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">13</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"discover_answer_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">425</span><span class="p">,</span><span class="w">
           </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"answer-name-13"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"probability"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.3333"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"probability_formatted"</span><span class="p">:</span><span class="w"> </span><span class="s2">"33.33%"</span><span class="p">,</span><span class="w">
@@ -1062,7 +1023,6 @@
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"discover_question_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">31</span><span class="p">,</span><span class="w">
       </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"binary_question-2"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Forecast::Binary::Question"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"ends_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-09-15T00:21:35.945Z"</span><span class="p">,</span><span class="w">
@@ -1090,7 +1050,6 @@
           </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-04T00:21:35.965Z"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"ends_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-02-04T00:21:35.962Z"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">14</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"discover_answer_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">429</span><span class="p">,</span><span class="w">
           </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"answer-name-14"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"probability"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.5"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"probability_formatted"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50.00%"</span><span class="p">,</span><span class="w">
@@ -1168,12 +1127,7 @@
 <tr>
 <td>id</td>
 <td>integer</td>
-<td>The <a href="#question-id-vs-discover-question-id">id of the question</a></td>
-</tr>
-<tr>
-<td>discover_question_id</td>
-<td>integer</td>
-<td>The <a href="#question-id-vs-discover-question-id">id of the discover question</a>  used to generate/publish this question, if collaborative question generation (Discover) is being used</td>
+<td>The id of the question</td>
 </tr>
 <tr>
 <td>name</td>
@@ -1265,11 +1219,6 @@
 <td>id</td>
 <td>integer</td>
 <td>The id of the answer</td>
-</tr>
-<tr>
-<td>discover_answer_id</td>
-<td>integer</td>
-<td>The id of the discover answer used to generate/publish this question, if collaborative question generation (Discover) is being used</td>
 </tr>
 <tr>
 <td>created_at</td>
