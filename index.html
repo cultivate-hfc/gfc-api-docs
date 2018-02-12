@@ -520,7 +520,7 @@
 
 <p>When submitting a prediction set, you will need to include <code class="prettyprint">question_id</code> and <code class="prettyprint">answer_id</code> values, as illustrated in the request body example to the right. These values can be found via the Questions API in the <code class="prettyprint">id</code> fields.</p>
 
-<p>Each prediction set should also contain information about the method used to generate it. Each method is tracked by the platform with a model known as an <code class="prettyprint">ExternalPredictor</code>. You must embed the name of your forecasting method within the forecast submission, via the <code class="prettyprint">external_predictor_attributes.method_name</code> attribute.</p>
+<p>Each prediction set should also contain information about the method used to generate it. Each method is tracked by the platform with a model known as an <code class="prettyprint">ExternalPredictor</code>. You must embed the name of your forecasting method within the forecast submission, via the <code class="prettyprint">external_predictor_attributes.method_name</code> attribute. <strong>The <code class="prettyprint">method_name</code> field will be used to identify your submission on challenge leaderboards.</strong></p>
 
 <blockquote>
 <p>Request:</p>
@@ -612,7 +612,7 @@
 <tr>
 <td>external_predictor_attributes.method_name</td>
 <td>Yes</td>
-<td>A string identifying the method you&rsquo;re using to generate this forecast. Can be up to 50 characters.</td>
+<td>A string identifying the method you&rsquo;re using to generate this forecast. Can be up to 50 characters. Method names will be used to identify forecasting methods on the challenge leaderboards.</td>
 </tr>
 <tr>
 <td>external_predictions_attributes</td>
