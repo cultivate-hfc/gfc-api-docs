@@ -9,7 +9,7 @@ Each submission is known as an `ExternalPredictionSet` and each prediction set c
 
 When submitting a prediction set, you will need to include `question_id` and `answer_id` values, as illustrated in the request body example to the right. These values can be found via the Questions API in the `id` fields.
 
-Each prediction set should also contain information about the method used to generate it. Each method is tracked by the platform with a model known as an `ExternalPredictor`. You must embed the name of your forecasting method within the forecast submission, via the `external_predictor_attributes.method_name` attribute.
+Each prediction set should also contain information about the method used to generate it. Each method is tracked by the platform with a model known as an `ExternalPredictor`. You must embed the name of your forecasting method within the forecast submission, via the `external_predictor_attributes.method_name` attribute. **The `method_name` field will be used to identify your submission on challenge leaderboards.**
 
 
 > Request:
@@ -95,7 +95,7 @@ curl -X "POST" "https://api.gfc-staging.com/api/v1/external_prediction_sets" \
 Parameter | Required? | Description
 --------- | --------- | -----------
 question_id | Yes | The question id associated with this forecast.
-external_predictor_attributes.method_name | Yes | A string identifying the method you're using to generate this forecast. Can be up to 50 characters.
+external_predictor_attributes.method_name | Yes | A string identifying the method you're using to generate this forecast. Can be up to 50 characters. Method names will be used to identify forecasting methods on the challenge leaderboards.
 external_predictions_attributes | Yes | An array of external prediction objects that are part of this prediction set. Valid parameters for external predictions are listed below.
 
 
