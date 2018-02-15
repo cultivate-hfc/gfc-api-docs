@@ -11,7 +11,11 @@ Each prediction set should also contain information about the method used to gen
 
 Submissions should also contain a `metadata` field. This string should contain JSON-formatted information about how the forecast was generated and any associated parameters that were used to generate it.
 
-Only administrators can access this API.
+### Official vs. Experimental Method Designation
+
+The first time you submit a forecast for a method, you should designate whether the method is an official or experimental method. Once this designation has been set (via the first forecast), it cannot be changed.
+
+To designate a method as experimental, you should set `exclude_from_best_method` to `true` in the `external_predictor_attributes` of your request body. The request body example to the right shows an example of this. If you want a method to be considered an official method, you can omit the `exclude_from_best_method` or set it to `false`.
 
 > Request:
 
@@ -32,7 +36,8 @@ curl -X "POST" "https://yoursite.hfc-staging.com/api/v1/external_prediction_sets
     "question_id": 123,
     "metadata": {"foo": "bar", "count": 2},
     "external_predictor_attributes": {
-      "method_name": "red"
+      "method_name": "red",
+      "exclude_from_best_method": true
     },
     "external_predictions_attributes": [
       {
