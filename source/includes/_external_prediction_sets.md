@@ -94,9 +94,15 @@ curl -X "POST" "https://api.gfc-staging.com/api/v1/external_prediction_sets" \
 
 Parameter | Required? | Description
 --------- | --------- | -----------
-question_id | Yes | The question id associated with this forecast.
-external_predictor_attributes.method_name | Yes | A string identifying the method you're using to generate this forecast. Can be up to 50 characters. Method names will be used to identify forecasting methods on the challenge leaderboards.
+question_id | Yes | The question id associated with this forecast
+metadata | Yes | A JSON-formatted string containing metadata describing how this forecast was generated.
 external_predictions_attributes | Yes | An array of external prediction objects that are part of this prediction set. Valid parameters for external predictions are listed below.
+
+### Embedded External Predictor Parameters
+
+Parameter | Required? | Description
+--------- | --------- | -----------
+method_name | Yes | A string identifying the method you're using to generate this forecast. Can be any string.
 
 
 ### External Prediction Parameters
