@@ -13,7 +13,7 @@ Submissions should also contain a `metadata` field. This string should contain J
 
 ### Official vs. Experimental vs. Machine Method Designation
 
-The first time you submit a forecast for a method, you should designate the method type. Once this designation has been set (via the first forecast), it cannot be changed.
+The first time you submit a forecast for a method, you must designate the method type. Once this designation has been set (via the first forecast), it cannot be changed.
 
 To designate a method type, you should include a `method_type` value in the `external_predictor_attributes` of your request body. The request body example to the right shows an example of this. The options for this value are: `official`, `experimental`, and `machine`.
 
