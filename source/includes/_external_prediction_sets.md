@@ -11,11 +11,11 @@ Each prediction set should also contain information about the method used to gen
 
 Submissions should also contain a `metadata` field. This string should contain JSON-formatted information about how the forecast was generated and any associated parameters that were used to generate it.
 
-### Official vs. Experimental Method Designation
+### Official vs. Experimental vs. Machine Method Designation
 
-The first time you submit a forecast for a method, you should designate whether the method is an official or experimental method. Once this designation has been set (via the first forecast), it cannot be changed.
+The first time you submit a forecast for a method, you should designate the method type. Once this designation has been set (via the first forecast), it cannot be changed.
 
-To designate a method as experimental, you should set `exclude_from_best_method` to `true` in the `external_predictor_attributes` of your request body. The request body example to the right shows an example of this. If you want a method to be considered an official method, you can omit the `exclude_from_best_method` or set it to `false`.
+To designate a method type, you should include a `method_type` value in the `external_predictor_attributes` of your request body. The request body example to the right shows an example of this. The options for this value are: `official`, `experimental`, and `machine`.
 
 > Request:
 
@@ -37,7 +37,7 @@ curl -X "POST" "https://yoursite.hfc-staging.com/api/v1/external_prediction_sets
     "metadata": {"foo": "bar", "count": 2},
     "external_predictor_attributes": {
       "method_name": "red",
-      "exclude_from_best_method": true
+      "method_type": "experimental"
     },
     "external_predictions_attributes": [
       {
@@ -63,6 +63,7 @@ curl -X "POST" "https://yoursite.hfc-staging.com/api/v1/external_prediction_sets
   "site_id": 2,
   "membership_id": 3,
   "method_name": "red",
+  "method_type": "experimental",
   "created_at": "2017-06-15T21:07:04.092Z",
   "updated_at": "2017-06-15T21:07:04.092Z",
   "forecast_at": "2017-06-15T21:07:04Z",
@@ -113,7 +114,7 @@ external_predictions_attributes | Yes | An array of external prediction objects 
 Parameter | Required? | Description
 --------- | --------- | -----------
 method_name | Yes | A string identifying the method you're using to generate this forecast. Can be any string.
-exclude_from_best_method | No | A boolean indicating whether this is a experimental or official method.
+method_type | On initial forecast | A method type designation. Options include: `official`, `experimental`, and `machine`.
 
 
 ### External Prediction Parameters
