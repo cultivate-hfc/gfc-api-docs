@@ -98,7 +98,7 @@ curl -X "POST" "https://yoursite.cultivateforecasts.com/api/v1/users/" \
     "password": "slartibartfast77",
     "first_name": "Slarti",
     "last_name": "bartfast",
-    "description": "Indescriabable",
+    "description": "Indescribable",
     "interface_mode": "simple_interface"
   }
 }
