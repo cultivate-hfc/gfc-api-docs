@@ -114,7 +114,7 @@ curl -X "POST" "https://yoursite.cultivateforecasts.com/api/v1/users/" \
 Parameter | Required? | Description | Requirements
 --------- | --------- | ----------- | ------------
 email | Yes | The user's email address | Users must have unique email addresses
-username | Yes | | Allowed characters: letters, numbers, hyphens and underscores
+username | Yes | | Usernames must be unique, and only allow letters, numbers, hyphens and underscores (no other characters)
 password | Yes | | Must be at least 8 characters long
 first_name | No | |
 last_name | No | |
