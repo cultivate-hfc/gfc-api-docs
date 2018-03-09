@@ -73,3 +73,50 @@ curl "https://yoursite.cultivateforecasts.com/api/v1/me" \
 ### Query Parameters
 
 None.
+
+## Creation
+
+Use this endpoint to create new user accounts. Only certain users have permission to access this endpoint.
+
+> Request:
+
+```shell
+curl -X "POST" "https://yoursite.cultivateforecasts.com/api/v1/users/" \
+  -H "Authorization: Bearer b95b4f848cd226e55b7a42f6a8e8669350730270f5a91d64b6c70328b0156d75" \
+  -H "Content-Type: application/json" \
+  -H "Accept: application/json" \
+  -d "{\"user\":{\"email\":\"slartibartfast@emaildomain.org\",\"username\":\"slartibartfast77\",\"password\":\"someamazingpassword\",\"first_name\":\"Slarti\",\"last_name\":\"bartfast\",\"description\":\"Indescribable\",\"interface_mode\":\"simple_interface\"}}"
+```
+
+> Request body example:
+
+```json
+{
+  "user": {
+    "email": "slartibartfast@emaildomain.org",
+    "username": "slartibartfast77",
+    "password": "slartibartfast77",
+    "first_name": "Slarti",
+    "last_name": "bartfast",
+    "description": "Indescribable",
+    "interface_mode": "simple_interface"
+  }
+}
+```
+
+### HTTP Request
+
+`POST https://yoursite.cultivateforecasts.com/api/v1/users`
+
+
+### User Parameters
+
+Parameter | Required? | Description | Requirements
+--------- | --------- | ----------- | ------------
+email | Yes | The user's email address | Users must have unique email addresses
+username | Yes | | Usernames must be unique, and only allow letters, numbers, hyphens and underscores (no other characters)
+password | Yes | | Must be at least 8 characters long
+first_name | No | |
+last_name | No | |
+description | No | |
+interface_mode | No | Determines which forecasting interface the user will see on the website | Options are "simple_interface" and "advanced_interface". "simple_interface" is selected by default.
