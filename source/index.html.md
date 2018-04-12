@@ -17,6 +17,7 @@ includes:
 - memberships
 - prediction_sets
 - questions
+- scores
 
 search: true
 ---
