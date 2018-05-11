@@ -23,13 +23,16 @@ curl "https://api.gfc-staging.com/api/v1/questions" \
       "description": "question-desc-5",
       "published_at": null,
       "starts_at": null,
-      "resolved_at": null,
+      "resolved_at": "2015-09-15T00:21:35.906Z",
       "voided_at": null,
       "comments_count": 0,
       "created_at": "2015-08-04T00:21:35.910Z",
       "updated_at": "2015-08-04T00:21:35.910Z",
-      "active?": true,
-      "resolved?": false,
+      "active?": false,
+      "resolved?": true,
+      "resolution_notes": [
+        "This question was resolved based on the ABC data source."
+      ],
       "use_ordinal_scoring": false,
       "metadata": {
         "Topic": "Cyber attacks",
@@ -48,9 +51,11 @@ curl "https://api.gfc-staging.com/api/v1/questions" \
           "probability": "0.3333",
           "probability_formatted": "33.33%",
           "question_id": 5,
-          "resolved_at": null,
-          "resolved_by_id": null,
-          "correctness_known_at": null,
+          "refunded_at": null,
+          "refunded_by_id": null,
+          "resolved_at": "2015-09-15T00:21:35.906Z",
+          "resolved_by_id": 12,
+          "correctness_known_at": "2015-09-15T00:21:35.906Z",
           "type": null,
           "updated_at": "2015-08-04T00:21:35.918Z"
         },
@@ -62,9 +67,11 @@ curl "https://api.gfc-staging.com/api/v1/questions" \
           "probability": "0.3333",
           "probability_formatted": "33.33%",
           "question_id": 5,
-          "resolved_at": null,
-          "resolved_by_id": null,
-          "correctness_known_at": null,
+          "refunded_at": null,
+          "refunded_by_id": null,
+          "resolved_at": "2015-09-15T00:21:35.906Z",
+          "resolved_by_id": 12,
+          "correctness_known_at": "2015-09-15T00:21:35.906Z",
           "type": null,
           "updated_at": "2015-08-04T00:21:35.927Z"
         },
@@ -76,9 +83,11 @@ curl "https://api.gfc-staging.com/api/v1/questions" \
           "probability": "0.3333",
           "probability_formatted": "33.33%",
           "question_id": 5,
-          "resolved_at": null,
-          "resolved_by_id": null,
-          "correctness_known_at": null,
+          "refunded_at": null,
+          "refunded_by_id": null,
+          "resolved_at": "2015-09-15T00:21:35.906Z",
+          "resolved_by_id": 12,
+          "correctness_known_at": "2015-09-15T00:21:35.906Z",
           "type": null,
           "updated_at": "2015-08-04T00:21:35.933Z"
         }
@@ -169,6 +178,7 @@ created_at | datetime | The date & time that this question was created
 updated_at | datetime | The date & time that this question was last updated
 active | boolean | Whether or not this question is currently active for forecasting
 resolved | boolean | Whether or not this question has been resolved
+resolution_notes | array | Any notes/information provided by an admin describing the resolution of the question and any data sources used.
 use_ordinal_scoring | boolean | Whether or not this question uses ordinal scoring for calculating Brier scores
 metadata | hash | A hash containing classification information about the question. Keys will included `Topic`, `Domain`, `Region`, `Country - Primary`, `Country - Secondary`, and `IFP Generation Method`.
 clarifications | array | An array of clarifications issued for the question. Used to clarify things like resolution criteria for the question.
