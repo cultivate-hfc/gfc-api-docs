@@ -6,7 +6,6 @@ language_tabs:
 
 includes:
 - pagination
-- push_apis
 - consensus_history
 - external_prediction_sets
 - prediction_sets
