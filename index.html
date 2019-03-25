@@ -296,6 +296,12 @@
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.gfc-staging.com/api/v1/questions"</span> <span class="se">\</span>
   -H <span class="s2">"Authorization: Bearer b95b4f848cd226e55b7a42f6a8e8669350730270f5a91d64b6c70328b0156d75"</span>
 </code></pre>
+          <h2 id="training-data">Training Data</h2>
+
+<p>Both the production and staging environments provide training data. To access this data, append <code class="prettyprint">training_data=true</code> as a parameter (e.g. <code class="prettyprint">/api/v1/questions?training_data=true</code>) to the endpoint you&rsquo;d like to access. This parameter is supported by the <a href="#consensus-history">Consensus History</a>, <a href="#prediction-sets">Prediction Sets</a>, and <a href="#questions">Questions</a> endpoints.</p>
+
+<p>Please note that any questions in the training dataset <strong>do not</strong> accept new forecast submissions. </p>
+
           <h2 id="pagination">Pagination</h2>
 
 <p>All list-based endpoints utilize pagination and return only the first page by default. To retrieve subsequent pages, you can append a <code class="prettyprint">page</code> parameter to your request (e.g. <code class="prettyprint">/api/v1/questions?page=2</code>).</p>
