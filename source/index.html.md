@@ -5,6 +5,7 @@ language_tabs:
   - shell
 
 includes:
+- training_data
 - pagination
 - consensus_history
 - external_prediction_sets
