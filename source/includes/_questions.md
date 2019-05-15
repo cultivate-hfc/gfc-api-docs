@@ -51,7 +51,10 @@ curl "https://api.gfc-staging.com/api/v1/questions" \
           "question_id": 5,
           "resolved_at": "2015-09-15T00:21:35.906Z",
           "correctness_known_at": "2015-09-15T00:21:35.906Z",
-          "updated_at": "2015-08-04T00:21:35.918Z"
+          "updated_at": "2015-08-04T00:21:35.918Z",
+          "probability_formatted": "100%",
+          "normalized_probability": 1.0,
+          "probability": 1.0
         },
         {
           "created_at": "2015-08-04T00:21:35.927Z",
@@ -61,7 +64,10 @@ curl "https://api.gfc-staging.com/api/v1/questions" \
           "question_id": 5,
           "resolved_at": "2015-09-15T00:21:35.906Z",
           "correctness_known_at": "2015-09-15T00:21:35.906Z",
-          "updated_at": "2015-08-04T00:21:35.927Z"
+          "updated_at": "2015-08-04T00:21:35.927Z",
+          "probability_formatted": "0%",
+          "normalized_probability": 0.0,
+          "probability": 0.0
         },
         {
           "created_at": "2015-08-04T00:21:35.933Z",
@@ -71,7 +77,10 @@ curl "https://api.gfc-staging.com/api/v1/questions" \
           "question_id": 5,
           "resolved_at": "2015-09-15T00:21:35.906Z",
           "correctness_known_at": "2015-09-15T00:21:35.906Z",
-          "updated_at": "2015-08-04T00:21:35.933Z"
+          "updated_at": "2015-08-04T00:21:35.933Z",
+          "probability_formatted": "0%",
+          "normalized_probability": 0.0,
+          "probability": 0.0
         }
       ],
       "clarifications":[{
@@ -174,3 +183,6 @@ name | string | The answer content
 question_id | integer | The id of the question that this answer belongs to
 resolved_at | datetime | The date & time that this answer was resolved
 correctness_known_at | datetime | The date & time that the correctness of this answer was known. If an administrator sets this value when resolving the answer, all forecasts made after it will be invalidated.
+probability_formatted | string | The formatted final probability for the answer. Only appears after question is resolved.
+normalized_probability | float | The normalized final probability for the answer. Only appears after question is resolved.
+probability | float | The final probability for the answer. Only appears after question is resolved.
